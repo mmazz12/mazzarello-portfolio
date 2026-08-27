@@ -1022,11 +1022,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .thread-name[data-thread="data"]{--dot-color:var(--thread-data);}
 .thread-name[data-thread="design"]{--dot-color:var(--thread-design);}
 .threads-viz__divider{position:absolute; top:0; bottom:0; width:1px; background:var(--line); pointer-events:none;}
-.threads-viz__phase-tag{
-  position:absolute; top:6px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--fluo);
-  background:var(--paper); padding:2px 6px 2px 0; z-index:3; display:none;
-}
-@media (max-width:760px){ .threads-viz__phase-tag{display:block;} }
 .threads-viz__lines{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
 .thread-line{fill:none; stroke-width:2; opacity:.55; vector-effect:non-scaling-stroke;}
 .thread-line[data-thread="behavior"]{stroke:var(--thread-behavior);}
@@ -2340,9 +2335,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="threads-viz__canvas">
           <div class="threads-viz__divider" style="left:31.7%"></div>
           <div class="threads-viz__divider" style="left:68.3%"></div>
-          <span class="threads-viz__phase-tag" style="left:2%;">01</span>
-          <span class="threads-viz__phase-tag" style="left:34%;">02</span>
-          <span class="threads-viz__phase-tag" style="left:70.5%;">03</span>
         
         <span class="thread-name" data-thread="behavior" style="top:9.5%;">Human Behavior</span>
         <span class="thread-name" data-thread="data" style="top:31.0%;">Urban Data &amp; Sensing</span>
