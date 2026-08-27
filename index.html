@@ -1612,6 +1612,67 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 @media (prefers-reduced-motion:reduce){
   .speak__photo, .speak, .book-feature__cover{transition:none;}
 }
+
+/* ------------------------------------------------------------
+   HERO — due sfondi a scelta.
+   "Photo": la foto sotto il velo scuro, come sopra.
+   "Plain": campo chiaro costruito sull'azzurrino del sito, con mint e
+   un soffio di arancione. Stessa impaginazione, testo scuro.
+   ------------------------------------------------------------ */
+.hero-mode{
+  position:absolute; right:32px; bottom:40px; z-index:4;
+  display:flex; align-items:center; gap:2px; padding:3px;
+  border:1px solid currentColor; border-radius:999px; opacity:.55;
+  transition:opacity .25s ease;
+}
+.hero-mode:hover{opacity:1;}
+.hero-mode__btn{
+  appearance:none; border:0; background:transparent; cursor:pointer; color:inherit;
+  font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  padding:5px 12px; border-radius:999px; transition:background .25s ease, color .25s ease;
+}
+.hero-mode__btn[aria-pressed="true"]{background:var(--deep-teal); color:var(--paper);}
+.hero-mode__btn:focus-visible{outline:1px solid currentColor; outline-offset:2px;}
+@media (max-width:900px){ .hero-mode{right:16px; bottom:24px;} }
+
+/* ---- variante chiara ---- */
+.hero.is-plain{
+  --paper:#ECF0F4; --paper-2:#ECF0F4;
+  --ink:#20242A; --ink-soft:#4A5158; --ink-faint:#666E78;
+  --deep-teal:#161A1F; --teal:#2F6B84;
+  --line:rgba(32,36,42,0.16);
+  color:#20242A;
+  background-color:#ECF0F4;
+  background-image:
+    radial-gradient(62% 58% at 14% 24%, rgba(134,184,214,0.62) 0%, rgba(134,184,214,0.18) 42%, transparent 68%),
+    radial-gradient(52% 48% at 84% 26%, rgba(93,202,165,0.34) 0%, rgba(93,202,165,0.10) 44%, transparent 70%),
+    radial-gradient(74% 62% at 66% 84%, rgba(159,187,212,0.46) 0%, rgba(159,187,212,0.12) 46%, transparent 72%),
+    radial-gradient(46% 42% at 24% 92%, rgba(255,90,31,0.10) 0%, transparent 68%);
+  background-size:auto; background-position:center; background-repeat:no-repeat;
+}
+.hero.is-plain .hero__figure{display:none;}
+.hero.is-plain::before{
+  background:radial-gradient(58% 52% at 78% 34%, rgba(134,184,214,0.30) 0%, transparent 72%);
+  filter:blur(70px);
+}
+.hero.is-plain::after{
+  height:26vh; min-height:180px;
+  background:linear-gradient(0deg, #ECF0F4 0%, rgba(236,240,244,0.55) 46%, transparent 100%);
+}
+/* il mint pieno su carta chiara sta a 1.9:1: qui serve la versione scura */
+.hero.is-plain .hero__eyebrow, .hero.is-plain .hero__eyebrow .thread{color:#15795A;}
+.hero.is-plain .hero__cta .arrow{color:#FF4D14;}
+.hero.is-plain .node__dot{background:#15795A;}
+.hero.is-plain .node.is-linked .node__dot{box-shadow:0 0 0 5px rgba(21,121,90,0.20);}
+/* i puntini ambientali erano chiari su fondo scuro */
+.hero.is-plain .hero__nodes-lines .ambient{fill:rgba(32,36,42,0.20);}
+.hero.is-plain .hero__grid{opacity:.24;}
+.hero.is-plain .blur-seam{display:none;}
+.hero.is-plain .hero__ambient-mobile .pinball{fill:#2F6B84;}
+.hero.is-plain .hero__ambient-mobile .pinball--b{fill:#15795A; filter:drop-shadow(0 0 4px rgba(21,121,90,.4));}
+/* sopra l'hero il JS mette la barra in modalita scura: qui va rimessa chiara */
+.nav.is-dark.is-over-plain{background:rgba(236,240,244,0.30); color:#20242A;}
+.nav.is-dark.is-over-plain.is-scrolled{background:rgba(236,240,244,0.88); color:#20242A;}
 </style>
 </head>
 <body>
@@ -1645,6 +1706,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <a href="#impact" class="hero__cta">Explore <span class="arrow">↓</span></a>
 
     <!-- mobile-only plain nav row (desktop uses the node-network below) -->
+  </div>
+
+  <div class="hero-mode" role="group" aria-label="Hero background">
+    <button type="button" class="hero-mode__btn" data-mode="photo" aria-pressed="true">Photo</button>
+    <button type="button" class="hero-mode__btn" data-mode="plain" aria-pressed="false">Plain</button>
   </div>
 
   <!-- desktop interactive node-network — doubles as primary navigation,
@@ -3360,6 +3426,33 @@ document.querySelectorAll('.filter').forEach(btn => {
   scrollEl.addEventListener('scroll', () => requestAnimationFrame(updateActivePhase), {passive:true});
   window.addEventListener('resize', updateActivePhase);
   updateActivePhase();
+})();
+
+// hero — scelta fra foto e campo chiaro, ricordata fra le visite
+(() => {
+  const hero = document.getElementById('hero');
+  const group = document.querySelector('.hero-mode');
+  if (!hero || !group) return;
+  const btns = Array.from(group.querySelectorAll('.hero-mode__btn'));
+  const nav = document.querySelector('.nav');
+
+  const apply = (mode) => {
+    const plain = mode === 'plain';
+    hero.classList.toggle('is-plain', plain);
+    // la barra sopra l'hero e in modalita scura: va avvisata del cambio
+    if (nav) nav.classList.toggle('is-over-plain', plain);
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+    try { localStorage.setItem('hero-mode', mode); } catch (e) {}
+  };
+
+  group.addEventListener('click', (e) => {
+    const b = e.target.closest('.hero-mode__btn');
+    if (b) apply(b.dataset.mode);
+  });
+
+  let saved = 'photo';
+  try { saved = localStorage.getItem('hero-mode') || 'photo'; } catch (e) {}
+  apply(saved);
 })();
 
 // binario dei talk — stessa navigazione delle exhibitions
