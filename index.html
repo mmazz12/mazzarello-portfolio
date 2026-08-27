@@ -297,6 +297,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   --deep-teal:#EDF2F6;
   --teal:#9FBBD4;
   --line:rgba(237,239,242,0.18);
+  /* toggle: azzurro sul fondo scuro, pillola chiara quando e attivo */
+  --tg-line:#9FBBD4; --tg-on-bg:#EDF2F6; --tg-on-fg:#101317;
   position:relative;
   min-height:100vh;
   display:flex; align-items:flex-end;
@@ -1622,8 +1624,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero-mode{
   position:absolute; right:32px; bottom:40px; z-index:4;
   display:flex; align-items:center; gap:2px; padding:3px;
-  border:1px solid currentColor; border-radius:999px; opacity:.55;
-  transition:opacity .25s ease;
+  border:1px solid var(--tg-line); border-radius:999px; color:var(--tg-line);
+  opacity:.75; transition:opacity .25s ease;
 }
 .hero-mode:hover{opacity:1;}
 .hero-mode__btn{
@@ -1631,17 +1633,19 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
   padding:5px 12px; border-radius:999px; transition:background .25s ease, color .25s ease;
 }
-.hero-mode__btn[aria-pressed="true"]{background:var(--deep-teal); color:var(--paper);}
-.hero-mode__btn:focus-visible{outline:1px solid currentColor; outline-offset:2px;}
+.hero-mode__btn[aria-pressed="true"]{background:var(--tg-on-bg); color:var(--tg-on-fg);}
+.hero-mode__btn:focus-visible{outline:1px solid var(--tg-line); outline-offset:2px;}
 @media (max-width:900px){ .hero-mode{right:16px; bottom:24px;} }
 
 /* ---- variante chiara ---- */
 .hero.is-plain{
   --paper:#ECF0F4; --paper-2:#ECF0F4;
   --ink:#20242A; --ink-soft:#4A5158; --ink-faint:#666E78;
-  --deep-teal:#161A1F; --teal:#2F6B84;
+  --deep-teal:#16273A; --teal:#2F6B84;
   --line:rgba(32,36,42,0.16);
   color:#20242A;
+  /* toggle: blu sul chiaro, pillola blu scura quando e attivo */
+  --tg-line:#2F6B84; --tg-on-bg:#16273A; --tg-on-fg:#ECF0F4;
   background-color:#ECF0F4;
   background-image:
     radial-gradient(62% 58% at 14% 24%, rgba(134,184,214,0.62) 0%, rgba(134,184,214,0.18) 42%, transparent 68%),
