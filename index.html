@@ -1048,13 +1048,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   box-shadow:0 0 0 10px rgba(255,77,20,.20); outline:none;
 }
 .threads-viz__final-label{
-  position:absolute; right:22px; top:50%; transform:translateY(-50%);
+  /* sotto il punto, non a sinistra: li convergono le curve */
+  position:absolute; left:50%; top:20px; transform:translateX(-50%) translateY(-3px);
   font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
   color:var(--fluo); white-space:nowrap; opacity:0; pointer-events:none;
-  transition:opacity .25s ease;
+  transition:opacity .25s ease, transform .25s ease;
 }
 .threads-viz__final:hover .threads-viz__final-label,
-.threads-viz__final:focus-visible .threads-viz__final-label{opacity:1;}
+.threads-viz__final:focus-visible .threads-viz__final-label{opacity:1; transform:translateX(-50%) translateY(0);}
 /* i due bersagli dei nuovi link non sono <section> e non hanno padding
    in cima: senza questo finirebbero sotto la barra fissa del menu */
 #where-this-leads, #publications{scroll-margin-top:100px;}
@@ -1364,6 +1365,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .partner-group h4{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--brass); margin:0 0 16px;}
 .partner-group ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
 .partner-group li{font-family:var(--display); font-size:16px; color:var(--ink-soft);}
+/* i partner vivono ora dentro una sezione scura: colori e misure ridotti */
+.partners{margin-top:66px;}
+.section--dark .partners-grid{margin-top:26px; gap:28px 40px;}
+.section--dark .partner-group h4{color:var(--accent-on-navy); margin-bottom:11px;}
+.section--dark .partner-group ul{gap:7px;}
+.section--dark .partner-group li{font-size:14px; color:var(--soft-on-navy);}
 
 /* ============================================================
    CLOSING CTA
@@ -1739,7 +1746,29 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
     <p class="programs-footnote reveal">* Numbers reflect each program's own stage and shape, not a shared template.</p>
 
-    <div class="eyebrow eyebrow--center reveal programs-closing-head">The common thread</div>
+    
+      <div class="partners reveal">
+        <div class="eyebrow eyebrow--center">Partners &amp; collaborators</div>
+        <div class="partners-grid">
+      <div class="partner-group">
+        <h4>Dubai / UAE</h4>
+        <ul><li>Dubai Future Foundation</li><li>Talabat</li><li>LIVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>Abu Dhabi DMT</li><li>XMap</li></ul>
+      </div>
+      <div class="partner-group">
+        <h4>Rio de Janeiro</h4>
+        <ul><li>Municipality of Rio de Janeiro</li><li>Redes da Maré</li></ul>
+      </div>
+      <div class="partner-group">
+        <h4>Seoul &amp; Amsterdam</h4>
+        <ul><li>Seoul AI Foundation</li><li>AMS Institute</li></ul>
+      </div>
+      <div class="partner-group">
+        <h4>Additional collaborators</h4>
+        <ul><li>Sidara</li><li>A2A</li><li>SAMOO Architects &amp; Engineers</li><li>University of Pisa</li><li>KTH Royal Institute of Technology</li></ul>
+      </div>
+      </div>
+
+      <div class="eyebrow eyebrow--center reveal programs-closing-head">The common thread</div>
     <p class="programs-closing reveal" style="margin-top:14px;">Across these cities, the same research practice has emerged: start with a real urban problem, build what is needed to observe it, and translate that evidence into tools for planning and design.</p>
   </div>
 </section>
@@ -2303,7 +2332,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="pub pub--visual" data-theme="behavior ai"><div class="pub__year">2022</div><img class="pub__thumb" src="images/img-24.jpg" alt="Proximate network visualization" loading="lazy"><div><div class="pub__title">The effect of co-location on human communication networks</div><div class="pub__venue">Nature Computational Science · Carmody, Mazzarello, Santi, Harris, Lehman, Abbiasov, Dunbar, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
       <div class="pub" data-theme="behavior data"><div class="pub__year">2020</div><div><div class="pub__title">Leveraging the use of digital technologies to activate public areas and foster creativity</div><div class="pub__venue">How Smart is your city? (Springer) · Mazzarello, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20201215_Mazzarello-Ratti_LeveragingDigital_Springer-chapter.pdf" target="_blank" rel="noopener">Read ↗</a></div>
-<div class="preprints-head reveal" style="margin-top:72px; padding-top:44px; border-top:1px solid var(--line);">
+<div class="preprints-head reveal" style="margin-top:64px; padding-top:0;">
       <div class="eyebrow">Preprints &amp; Manuscripts</div>
       <p class="lead" style="margin-top:12px; max-width:62ch;">Selected ongoing research, including preprints and manuscripts under review or submission.</p>
     </div>
@@ -2416,7 +2445,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 <section class="section" id="speaking">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">Teaching</div>
+      <div class="eyebrow">Talks and lectures</div>
       <h2 class="h2">Ideas are meant to travel.</h2>
       <p class="lead" style="margin-top:18px;">Talks and lectures worldwide on technology, design, data-driven urbanism, AI, sustainability, and new ways of living in cities.</p>
     </div>
@@ -2457,33 +2486,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   </div>
 </section>
 
-<!-- ============================================================ 09 PARTNERSHIPS ============================================================ -->
-<section class="section section--tight">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">Built Through Collaboration</div>
-      <h2 class="h2" style="font-size:clamp(26px,3.4vw,38px);">Institutional partners &amp; research collaborators</h2>
-    </div>
-    <div class="partners-grid reveal">
-      <div class="partner-group">
-        <h4>Dubai / UAE</h4>
-        <ul><li>Dubai Future Foundation</li><li>Talabat</li><li>LIVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>Abu Dhabi DMT</li><li>XMap</li></ul>
-      </div>
-      <div class="partner-group">
-        <h4>Rio de Janeiro</h4>
-        <ul><li>Municipality of Rio de Janeiro</li><li>Redes da Maré</li></ul>
-      </div>
-      <div class="partner-group">
-        <h4>Seoul &amp; Amsterdam</h4>
-        <ul><li>Seoul AI Foundation</li><li>AMS Institute</li></ul>
-      </div>
-      <div class="partner-group">
-        <h4>Additional collaborators</h4>
-        <ul><li>Sidara</li><li>A2A</li><li>SAMOO Architects &amp; Engineers</li><li>University of Pisa</li><li>KTH Royal Institute of Technology</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ============================================================ 11 CLOSING CTA ============================================================ -->
 <!-- ============================================================ 06B GET THE BOOK ============================================================ -->

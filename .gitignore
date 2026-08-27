@@ -8,3 +8,6 @@ links/
 # file di sistema macOS
 .DS_Store
 **/.DS_Store
+
+# config temporanea di anteprima
+.claude/
