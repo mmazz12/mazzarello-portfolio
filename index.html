@@ -1824,10 +1824,18 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
     <a href="#research" class="work-trajectory-link">Follow the trajectory ↓</a>
 
+    <div class="filters reveal" role="group" aria-label="Filter projects by theme">
+      <button class="filter filter--work is-active" data-work-filter="all">All</button>
+      <button class="filter filter--work" data-work-filter="ai">AI &amp; Computational Urbanism</button>
+      <button class="filter filter--work" data-work-filter="behavior">Human Behavior &amp; Public Life</button>
+      <button class="filter filter--work" data-work-filter="climate">Climate, Environment &amp; Urban Health</button>
+      <button class="filter filter--work" data-work-filter="data">Urban Data, Sensing &amp; Digital Systems</button>
+      <button class="filter filter--work" data-work-filter="design">Design, Mobility &amp; Actionable City Tools</button>
+    </div>
     <div class="reel-wrap reveal">
       <div class="reel" id="workReel">
       <div class="reel-item">
-        <button class="reel-thumb" data-name="proximate" style="background-image:url('images/img-02.jpg');" aria-label="Open Physical space, human connection.">
+        <button class="reel-thumb" data-name="proximate" data-theme="behavior data" style="background-image:url('images/img-02.jpg');" aria-label="Open Physical space, human connection.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">01 / Proximate</span>
             <span class="reel-thumb__title">Space shapes connection.</span>
@@ -1837,7 +1845,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="data-slots" style="background-image:url('images/img-03.jpg');" aria-label="Open What should cities be allowed to know?">
+        <button class="reel-thumb" data-name="data-slots" data-theme="data behavior" style="background-image:url('images/img-03.jpg');" aria-label="Open What should cities be allowed to know?">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">02 / Data Slots</span>
             <span class="reel-thumb__title">Who decides what cities should know about us?</span>
@@ -1847,7 +1855,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="jackson-boiling" style="background-image:url('images/img-04.jpg');" aria-label="Open What happens when infrastructure fails?">
+        <button class="reel-thumb" data-name="jackson-boiling" data-theme="climate behavior" style="background-image:url('images/img-04.jpg');" aria-label="Open What happens when infrastructure fails?">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">03 / Jackson Boiling</span>
             <span class="reel-thumb__title">Infrastructure failures become social inequalities.</span>
@@ -1857,7 +1865,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="indoors" style="background-image:url('images/img-05.jpg');" aria-label="Open Understanding life beyond the outdoors.">
+        <button class="reel-thumb" data-name="indoors" data-theme="ai behavior" style="background-image:url('images/img-05.jpg');" aria-label="Open Understanding life beyond the outdoors.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">04 / A Geography of Indoors</span>
             <span class="reel-thumb__title">Making the private city measurable.</span>
@@ -1867,7 +1875,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="walking-smart" style="background-image:url('images/img-06.jpg');" aria-label="Open The shortest walk is not always the best walk.">
+        <button class="reel-thumb" data-name="walking-smart" data-theme="climate design" style="background-image:url('images/img-06.jpg');" aria-label="Open The shortest walk is not always the best walk.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">05 / Cooling Path</span>
             <span class="reel-thumb__title">What if the best route isn't the shortest one?</span>
@@ -1877,7 +1885,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="re-leaf" style="background-image:url('images/img-07.jpg');" aria-label="Open Trees as climate infrastructure.">
+        <button class="reel-thumb" data-name="re-leaf" data-theme="ai climate design" style="background-image:url('images/img-07.jpg');" aria-label="Open Trees as climate infrastructure.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">06 / Re-Leaf</span>
             <span class="reel-thumb__title">Trees as climate infrastructure.</span>
@@ -1887,7 +1895,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="traveling-tastes" style="background-image:url('images/img-08.jpg');" aria-label="Open What does a city make us choose?">
+        <button class="reel-thumb" data-name="traveling-tastes" data-theme="behavior climate ai" style="background-image:url('images/img-08.jpg');" aria-label="Open What does a city make us choose?">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">07 / Traveling Tastes</span>
             <span class="reel-thumb__title">What does a city make us choose?</span>
@@ -1897,7 +1905,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="octopus" style="background-image:url('images/img-09.jpg');" aria-label="Open We worked with communities to create the missing data.">
+        <button class="reel-thumb" data-name="octopus" data-theme="climate data" style="background-image:url('images/img-09.jpg');" aria-label="Open We worked with communities to create the missing data.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">08 / Octopus</span>
             <span class="reel-thumb__title">We worked with communities to create the missing data.</span>
@@ -1907,7 +1915,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="brisa-plus" style="background-image:url('images/img-10.jpg');" aria-label="Open Where should cities intervene?">
+        <button class="reel-thumb" data-name="brisa-plus" data-theme="climate design" style="background-image:url('images/img-10.jpg');" aria-label="Open Where should cities intervene?">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">09 / Brisa+</span>
             <span class="reel-thumb__title">Where should cities intervene?</span>
@@ -1917,7 +1925,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="breathing-the-city" style="background-image:url('images/img-11.jpg');" aria-label="Open What does a person actually breathe?">
+        <button class="reel-thumb" data-name="breathing-the-city" data-theme="climate data" style="background-image:url('images/img-11.jpg');" aria-label="Open What does a person actually breathe?">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">10 / Breathing the City</span>
             <span class="reel-thumb__title">What does a person actually breathe?</span>
@@ -1927,7 +1935,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="open-walks" data-hero-img="images/img-12.jpg" style="background-image:url('images/img-13.jpg');" aria-label="Open Cities can't improve what they can't see.">
+        <button class="reel-thumb" data-name="open-walks" data-theme="ai data" data-hero-img="images/img-12.jpg" style="background-image:url('images/img-13.jpg');" aria-label="Open Cities can't improve what they can't see.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">11 / Open Walks</span>
             <span class="reel-thumb__title">Cities can't improve what they can't see.</span>
@@ -1937,7 +1945,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="location-reasoner" style="background-image:url('images/img-14.jpg');" aria-label="Open From urban data to urban decisions.">
+        <button class="reel-thumb" data-name="location-reasoner" data-theme="ai design" style="background-image:url('images/img-14.jpg');" aria-label="Open From urban data to urban decisions.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">12 / Location Reasoner</span>
             <span class="reel-thumb__title">From urban data to urban decisions.</span>
@@ -2775,7 +2783,8 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
 
   // highlight whichever card sits closest to the center of the reel as the user scrolls,
   // and drive a thin scrub track (rather than boxed pagination) to read as native scrolling
-  const thumbs = Array.from(reel.querySelectorAll('.reel-thumb'));
+  const allThumbs = Array.from(reel.querySelectorAll('.reel-thumb'));
+  let thumbs = allThumbs;
   let currentIndex = -1;
 
   const trackFill = document.getElementById('reelTrackFill');
@@ -2801,6 +2810,24 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
       trackFill.style.left = leftPct + '%';
     }
   }
+  // filtri progetti: stesso vocabolario delle pubblicazioni.
+  // 'thumbs' viene ricalcolata cosi il modale non naviga verso schede nascoste.
+  document.querySelectorAll('[data-work-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.workFilter;
+      document.querySelectorAll('[data-work-filter]').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      allThumbs.forEach(t => {
+        const temi = t.dataset.theme || '';
+        const item = t.closest('.reel-item') || t;
+        item.classList.toggle('is-hidden', f !== 'all' && !temi.split(' ').includes(f));
+      });
+      thumbs = allThumbs.filter(t => !(t.closest('.reel-item') || t).classList.contains('is-hidden'));
+      currentIndex = -1;
+      reel.scrollTo({left:0, behavior:'smooth'});
+      updateActiveThumb();
+    });
+  });
   reel.addEventListener('scroll', () => requestAnimationFrame(updateActiveThumb), {passive:true});
   window.addEventListener('resize', updateActiveThumb);
   updateActiveThumb();
