@@ -44,26 +44,26 @@
    TOKENS
    ============================================================ */
 :root{
-  --paper:#EEF1EA;
-  --paper-2:#F5F7F2;
-  --ink:#2B2E28;
-  --ink-soft:#4E534B;
-  --ink-faint:#868C7E;
-  --navy:#0F1E1A;
-  --navy-2:#24231A;
-  --paper-on-navy:#E9EDE3;
-  --soft-on-navy:#AEB5A6;
-  --teal:#0F6E56;
-  --deep-teal:#16211D;
-  --teal-deep:#6E6340;
-  --brass:#7C8A6A;
-  --accent-on-navy:#B7C4A8;
-  --teal-on-navy:#8FC9BB;
+  --paper:#F0F1F3;
+  --paper-2:#F8F9FA;
+  --ink:#20242A;
+  --ink-soft:#4A5158;
+  --ink-faint:#666E78;
+  --navy:#171B21;
+  --navy-2:#232830;
+  --paper-on-navy:#E7E9EC;
+  --soft-on-navy:#AEB5BE;
+  --teal:#4F6E8C;
+  --deep-teal:#20242A;
+  --teal-deep:#3C566E;
+  --brass:#8A929B;
+  --accent-on-navy:#C6CFD9;
+  --teal-on-navy:#9FBBD4;
   --fluo:#FF4D14;
   --fluo-soft:rgba(255,77,20,0.16);
-  --teal-soft:rgba(46,107,96,0.22);
-  --line:#D8DED0;
-  --line-on-navy:rgba(143,201,187,0.18);
+  --teal-soft:rgba(79,110,140,0.18);
+  --line:#DDE0E4;
+  --line-on-navy:rgba(231,233,236,0.20);
   --radius:2px;
   --maxw:1240px;
   --display:'Fraunces', serif;
@@ -209,7 +209,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    sfocatura, cosi la foto passa attraverso e il testo resta leggibile.
    Il fondo pieno torna solo da scrollata in poi. */
 .nav.is-dark:not(.is-scrolled){
-  background:rgba(11,16,13,0.08);
+  background:rgba(15,17,21,0.10);
   -webkit-backdrop-filter:blur(8px) saturate(125%);
   backdrop-filter:blur(8px) saturate(125%);
 }
@@ -217,12 +217,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    su desktop le versioni traslucide vivevano solo nella media query
    del mobile, quindi qui il fondo diventava opaco. */
 .nav.is-scrolled{
-  background:rgba(238,241,234,0.72);
+  background:rgba(240,241,243,0.72);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   backdrop-filter:blur(18px) saturate(160%);
 }
 .nav.is-dark.is-scrolled{
-  background:rgba(15,30,26,0.72);
+  background:rgba(23,27,33,0.72);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   backdrop-filter:blur(18px) saturate(160%);
 }
@@ -247,7 +247,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .nav__links{
     display:flex; flex-direction:column; gap:2px;
     position:fixed; top:64px; right:16px; left:16px; z-index:99;
-    background:rgba(11,16,13,0.97);
+    background:rgba(15,17,21,0.97);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--paper);
@@ -270,13 +270,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .nav__toggle{display:block;}
 
   .nav.is-scrolled{
-    background:rgba(238,241,234,0.68);
+    background:rgba(240,241,243,0.68);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--ink);
   }
   .nav.is-dark{
-    background:rgba(15,30,26,0.75);
+    background:rgba(23,27,33,0.75);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--paper-on-navy);
@@ -289,20 +289,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero{
   /* hero scuro: foto di sfondo sotto un velo, piu leggero a destra
      dove compare la figura, piu denso a sinistra sotto il titolo */
-  --paper:#111612;
-  --paper-2:#171D19;
-  --ink:#E9EDE3;
-  --ink-soft:#C3CBBC;
-  --ink-faint:#93A08F;
-  --deep-teal:#EEF1EA;
-  --teal:#5DCAA5;
-  --line:rgba(233,237,227,0.18);
+  --paper:#101317;
+  --paper-2:#171B21;
+  --ink:#EDEFF2;
+  --ink-soft:#C2C8D0;
+  --ink-faint:#8A929B;
+  --deep-teal:#F3F5F7;
+  --teal:#9FBBD4;
+  --line:rgba(237,239,242,0.18);
   position:relative;
   min-height:100vh;
   display:flex; align-items:flex-end;
   padding:140px 0 80px;
   background-image:
-    linear-gradient(100deg, rgba(11,16,13,0.97) 0%, rgba(11,16,13,0.94) 40%, rgba(11,16,13,0.86) 66%, rgba(11,16,13,0.80) 100%),
+    linear-gradient(100deg, rgba(15,17,21,0.97) 0%, rgba(15,17,21,0.94) 40%, rgba(15,17,21,0.86) 66%, rgba(15,17,21,0.80) 100%),
     url('images/img-52.jpg');
   /* la foto ha lo stesso rapporto dell'hero: con "cover" non resterebbe
      margine per spostarla, quindi la ingrandisco al 145% e la porto a destra */
@@ -315,13 +315,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero::before{
   content:""; position:absolute; z-index:1; pointer-events:none; inset:0;
   background:
-    radial-gradient(circle at 14% 78%, rgba(255,77,20,0.28) 0%, rgba(255,77,20,0.12) 34%, transparent 62%),
-    radial-gradient(circle at 84% 20%, rgba(46,107,96,0.32) 0%, rgba(46,107,96,0.14) 36%, transparent 64%);
+    radial-gradient(circle at 78% 26%, rgba(79,110,140,0.40) 0%, rgba(79,110,140,0.16) 40%, transparent 70%);
   filter:blur(55px);
 }
 .hero::after{
   content:""; position:absolute; z-index:1; pointer-events:none; left:0; right:0; bottom:0; height:38vh; min-height:260px;
-  background:linear-gradient(0deg, rgba(11,16,13,0.98) 0%, rgba(11,16,13,0.62) 45%, transparent 100%);
+  background:linear-gradient(0deg, rgba(15,17,21,0.98) 0%, rgba(15,17,21,0.62) 45%, transparent 100%);
 }
 
 /* blurred seam transition between hero and next section */
@@ -382,23 +381,23 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     background-position:center, 58% 0%;
     background-image:
       linear-gradient(180deg,
-        rgba(11,16,13,0.66) 0%,
-        rgba(11,16,13,0.74) 22%,
-        rgba(11,16,13,0.93) 44%,
-        rgba(11,16,13,0.975) 64%,
-        rgba(11,16,13,0.985) 100%),
+        rgba(15,17,21,0.66) 0%,
+        rgba(15,17,21,0.74) 22%,
+        rgba(15,17,21,0.93) 44%,
+        rgba(15,17,21,0.975) 64%,
+        rgba(15,17,21,0.985) 100%),
       url('images/img-52.jpg');
   }
 }
 .hero__ambient-mobile{position:absolute; inset:0; z-index:1; pointer-events:none; display:block;}
-.hero__ambient-mobile .pinball{fill:var(--teal); filter:drop-shadow(0 0 4px rgba(46,107,96,.6));}
+.hero__ambient-mobile .pinball{fill:var(--teal); filter:drop-shadow(0 0 4px rgba(159,187,212,.6));}
 .hero__ambient-mobile .pinball--b{fill:var(--fluo); filter:drop-shadow(0 0 4px rgba(255,77,20,.55));}
 @media (min-width:900px){ .hero__ambient-mobile{display:none;} }
 .hero__nodes-lines{position:absolute; inset:0; width:100%; height:100%;}
 .hero__nodes-lines path{fill:none; stroke:transparent; stroke-width:0.6; transition:stroke .3s ease, stroke-width .3s ease;}
 .hero__nodes-lines path.is-active{stroke:var(--teal); stroke-width:0.35;}
-.hero__nodes-lines .pulse{fill:var(--teal); filter:drop-shadow(0 0 5px rgba(46,107,96,.85));}
-.hero__nodes-lines .ambient{fill:rgba(238,241,234,0.28); animation:twinkle 4.5s ease-in-out infinite;}
+.hero__nodes-lines .pulse{fill:var(--teal); filter:drop-shadow(0 0 5px rgba(159,187,212,.85));}
+.hero__nodes-lines .ambient{fill:rgba(240,241,243,0.28); animation:twinkle 4.5s ease-in-out infinite;}
 .node{
   cursor:pointer;
   position:absolute; transform:translateY(-50%);
@@ -543,7 +542,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 }
 .timeline__category{margin-top:16px;}
 .timeline__category:first-child{margin-top:0;}
-.timeline__category-label{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--fluo);}
+.timeline__category-label{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#15795A;}
 .timeline__category-desc{margin-top:4px; font-size:14px; line-height:1.6; color:var(--ink-soft); max-width:56ch;}
 
 .about-story{margin-top:56px; max-width:64ch;}
@@ -592,7 +591,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .labs-map{flex:0 0 auto; max-width:100%; width:100%;}
 }
 .labs-map__svg--mobile{display:none;}
-.labs-map__tour{fill:var(--teal); opacity:.75; filter:drop-shadow(0 0 3px rgba(46,107,96,.5));}
+.labs-map__tour{fill:var(--teal); opacity:.75; filter:drop-shadow(0 0 3px rgba(79,110,140,.5));}
 @media (max-width:640px){
   .labs-map__svg--desktop{display:none;}
   .labs-map__svg--mobile{display:block;}
@@ -649,7 +648,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   transition:background .2s ease, color .2s ease, border-color .2s ease;
 }
 .city-nav__item:hover, .city-nav__item:focus-visible, .city-nav__item:active{
-  background:rgba(46,107,96,0.75); color:var(--paper); border-color:var(--teal-on-navy);
+  background:rgba(79,110,140,0.75); color:var(--paper); border-color:var(--teal-on-navy);
 }
 .city-nav__preview{
   margin-top:14px; min-height:1.4em; font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
@@ -818,9 +817,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .reel-thumb--pending{
   background:repeating-linear-gradient(135deg, var(--paper-2), var(--paper-2) 10px, var(--paper) 10px, var(--paper) 20px);
 }
-.reel-thumb--pending::after{background:linear-gradient(0deg, rgba(238,241,234,.85) 0%, rgba(238,241,234,0) 55%);}
+.reel-thumb--pending::after{background:linear-gradient(0deg, rgba(240,241,243,.85) 0%, rgba(240,241,243,0) 55%);}
 .reel-thumb--pending:hover::after, .reel-thumb--pending.is-active::after{
-  background:linear-gradient(0deg, rgba(238,241,234,.95) 0%, rgba(238,241,234,.55) 55%, rgba(238,241,234,.18) 80%);
+  background:linear-gradient(0deg, rgba(240,241,243,.95) 0%, rgba(240,241,243,.55) 55%, rgba(240,241,243,.18) 80%);
 }
 .reel-thumb--pending .reel-thumb__title{color:var(--ink);}
 .reel-thumb--pending .reel-thumb__num,
@@ -892,7 +891,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .card__stat-sub{font-family:var(--mono); font-size:10px; letter-spacing:.02em; color:var(--ink-faint); opacity:.8;}
 .work-modal__close{
   position:absolute; top:20px; right:20px; z-index:2; width:42px; height:42px; border-radius:50%;
-  border:1px solid rgba(238,241,234,.7); background:rgba(15,14,10,.35); color:#fff;
+  border:1px solid rgba(240,241,243,.7); background:rgba(16,19,23,.35); color:#fff;
   font-size:20px; line-height:1; cursor:pointer;
 }
 .work-modal__nav{
@@ -923,28 +922,28 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .video-gallery figcaption{font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin-top:8px; letter-spacing:.03em;}
 
 /* abstract project art, keyed to each project's "visual language" */
-.art-reflect{background:linear-gradient(160deg,#2A2A1C,#1B1A11); position:relative;}
+.art-reflect{background:linear-gradient(160deg,#242830,#14171C); position:relative;}
 .art-reflect .dots{position:absolute; inset:0; background-image:radial-gradient(circle, rgba(201,187,142,0.5) 1.6px, transparent 1.6px); background-size:22px 22px;}
 .art-reflect .glow{position:absolute; width:60%; height:60%; right:-10%; top:-10%; background:radial-gradient(circle,rgba(138,124,78,0.55),transparent 70%); filter:blur(6px);}
 
-.art-clouds{background:linear-gradient(160deg,#22201A,#151410); position:relative;}
+.art-clouds{background:linear-gradient(160deg,#20242B,#121519); position:relative;}
 .art-clouds .field{position:absolute; inset:0; background-image:radial-gradient(rgba(184,180,155,0.45) 1px, transparent 1px); background-size:9px 9px; transform:skewY(-6deg) scale(1.2);}
 .card__art--photo{background-size:cover; background-position:center;}
 .card__art--photo::before{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,14,10,0.55), rgba(15,14,10,0.05) 55%);}
 
-.art-octopus{background:linear-gradient(160deg,#241B12,#170F0A); position:relative;}
+.art-octopus{background:linear-gradient(160deg,#272C35,#15181D); position:relative;}
 .art-octopus svg{position:absolute; inset:0; width:100%; height:100%;}
 
-.art-indoors{background:linear-gradient(160deg,#211F18,#161510); position:relative;}
+.art-indoors{background:linear-gradient(160deg,#22262E,#131619); position:relative;}
 .art-indoors .grid{position:absolute; inset:0; display:grid; grid-template-columns:repeat(8,1fr); grid-template-rows:repeat(6,1fr);}
 .art-indoors .grid span{border:1px solid rgba(237,234,224,0.06);}
 
-.art-heat{background:linear-gradient(160deg,#2B1B12,#170F0A); position:relative;}
+.art-heat{background:linear-gradient(160deg,#262A33,#14171B); position:relative;}
 .art-heat svg{position:absolute; inset:0; width:100%; height:100%;}
 
 .art-walks{background:linear-gradient(160deg,#1A1A16,#0D0D0B); position:relative;}
 .art-brisa{background:linear-gradient(160deg,#211A12,#12100A); position:relative;}
-.art-safety{background:radial-gradient(circle at 50% 50%, #2A2A1D, #14130D 72%); position:relative;}
+.art-safety{background:radial-gradient(circle at 50% 50%, #21252C, #111417 72%); position:relative;}
 .art-safety .ring{position:absolute; border:1px solid rgba(201,187,142,0.35); border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%);}
 .art-safety .r1{width:60%; height:60%;}
 .art-safety .r2{width:38%; height:38%;}
@@ -991,17 +990,21 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    RESEARCH THREADS — converging trajectories diagram
    ============================================================ */
 :root{
-  --thread-behavior:#0D453D;
-  --thread-climate:#6FA844;
-  --thread-data:#C2603A;
-  --thread-ai:#9061CC;
-  --thread-design:#2A6296;
+  /* set scelto massimizzando la separazione minima fra le cinque curve
+     simulando visione normale, deuteranopia, protanopia e tritanopia, con
+     contrasto >= 4.5:1 sulla carta (le etichette sono testo colorato) e
+     tenendosi lontano dall'arancione, che qui e gia il puntino finale. */
+  --thread-behavior:#243036;
+  --thread-climate:#417A2E;
+  --thread-data:#1F5F8B;
+  --thread-ai:#7B3FA0;
+  --thread-design:#A03050;
 }
 
 
 .threads-viz{margin-top:46px;}
 .threads-viz__phases{display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; padding-bottom:8px;}
-.threads-viz__phase-num{font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--fluo);}
+.threads-viz__phase-num{font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint);}
 .threads-viz__phase-title{margin-top:6px; font-family:var(--display); font-size:clamp(15px,1.5vw,18px); font-weight:600; color:var(--ink); line-height:1.3;}
 .threads-viz__phase{text-align:center; padding:0 16px;}
 .threads-viz__phase-q{margin:8px auto 0; font-size:12.5px; line-height:1.55; color:var(--ink-faint); max-width:32ch;}
@@ -1127,7 +1130,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   margin-top:56px; text-align:center; font-family:var(--display); font-size:clamp(20px,2.4vw,28px);
   font-weight:600; color:var(--ink); line-height:1.4;
 }
-.threads-viz__arrow{color:var(--fluo); padding:0 4px;}
+.threads-viz__arrow{color:#EE4310; padding:0 4px;}
 
 @media (max-width:900px){
   .threads-viz__phases{grid-template-columns:1fr; gap:20px;}
@@ -1303,7 +1306,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   transition:opacity .25s ease, background .5s ease;
   scroll-margin-top:100px;
 }
-.pub.is-linked{background:rgba(46,107,96,0.08);}
+.pub.is-linked{background:rgba(79,110,140,0.10);}
 .pub.is-hidden{display:none;}
 .pub__year{font-family:var(--mono); font-size:13px; color:var(--ink-faint);}
 .pub__title{font-size:15.5px;}
@@ -1408,8 +1411,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* ============================================================
    SPEAKING
    ============================================================ */
-.speaking-photos{display:grid; grid-template-columns:repeat(4,1fr); gap:3px; margin-top:34px;}
-.speaking-photos img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+.speaking-photos{display:grid; grid-template-columns:repeat(6,1fr); gap:3px; margin-top:30px;}
+.speaking-photos img{
+  width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+  /* duotone freddo sull'asse del sito: misurato H215 S14, il teal della
+     palette sta a H210 S28 e il navy a H216. Le foto entrano nella stessa
+     famiglia invece di portare ognuna la propria dominante. */
+  filter:grayscale(1) sepia(.45) hue-rotate(178deg) saturate(1.75) contrast(1.04);
+}
 .speaking-photos figure{margin:0; position:relative;}
 .speaking-photos figcaption{
   position:absolute; left:0; right:0; bottom:0; padding:18px 20px;
@@ -1493,8 +1502,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .closing{
   position:relative; overflow:hidden;
   background-image:
-    radial-gradient(900px 500px at 15% 100%, rgba(93,202,165,0.14), transparent 62%),
-    linear-gradient(180deg, rgba(16,22,19,0.90), rgba(11,16,14,0.965)),
+    radial-gradient(900px 500px at 15% 100%, rgba(79,110,140,0.20), transparent 62%),
+    linear-gradient(180deg, rgba(15,17,21,0.90), rgba(15,17,21,0.965)),
     url('images/img-57.jpg');
   background-size:cover, cover, cover;
   background-position:center, center, 50% 42%;
@@ -1518,6 +1527,107 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* reveal-on-scroll */
 .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
 .reveal.is-visible{opacity:1; transform:none;}
+
+/* ============================================================
+   ASSEGNAZIONE DEI COLORI  (mint #5DCAA5 + arancione #FF4D14)
+   Il mint su carta chiara sta a 1.9:1: nelle sezioni chiare
+   scende a #15795A, sulle scure resta pieno.
+   ============================================================ */
+
+/* velo aggiuntivo sull'hero: piu denso a sinistra sotto il titolo,
+   piu leggero a destra dove compare la figura */
+.hero__figure{
+  display:block; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(100deg,
+    rgba(15,17,21,0.52) 0%, rgba(15,17,21,0.44) 55%, rgba(15,17,21,0.30) 100%);
+}
+
+/* hero */
+.hero__eyebrow, .hero__eyebrow .thread{color:#5DCAA5;}
+.hero__cta .arrow{color:#FF5A1F;}
+.node__dot{background:#5DCAA5;}
+.node.is-linked .node__dot{box-shadow:0 0 0 5px rgba(93,202,165,0.24);}
+.hero__ambient-mobile .pinball--b{fill:#5DCAA5; filter:drop-shadow(0 0 4px rgba(93,202,165,.55));}
+
+/* at a glance */
+.stat__label{color:#FF4D14;}
+
+/* global programs */
+.lab-row__mini-num{color:#5DCAA5;}
+.partners .eyebrow:not(.programs-closing-head){color:#5DCAA5;}
+.partner-group h4{color:#5DCAA5;}
+.partners .eyebrow.programs-closing-head, .programs-closing-head{color:#FF5A1F;}
+
+/* research: diagramma e pubblicazioni */
+.chain__step{color:#15795A;}
+.chain__dot{background:#15795A;}
+.chain__step:nth-child(4) .chain__dot{box-shadow:0 0 0 4px rgba(23,128,95,0.20);}
+.pub__venue{color:#15795A;}
+
+/* ultime sezioni, alternate */
+#exhibitions{--fluo:#5DCAA5; --fluo-soft:rgba(93,202,165,0.26);}
+#exhibitions .eyebrow{color:#5DCAA5;}
+#book{--fluo:#FF4D14; --fluo-soft:rgba(255,77,20,0.16);}
+.closing{--fluo:#5DCAA5; --fluo-soft:rgba(93,202,165,0.26);}
+
+/* menu: al passaggio del mouse cambia solo il colore.
+   I quadratini non segnalavano la sezione corrente, erano decorazione. */
+.nav__link-mark{display:none;}
+.nav__links a{gap:0;}
+.nav__link-text{background-image:none;}
+.nav__links a:hover .nav__link-text{background-size:0 1px;}
+
+/* l'arancione come TESTO su carta chiara sta a 2.94:1. Dove sono parole
+   scende a #C63308 (4.79:1); dove sono forme — frecce, puntini, bordi —
+   resta #FF4D14, che li la soglia non si applica. */
+.stat__label,
+.btn--quiet.about__more-btn,
+.btn--quiet.statement__more-btn,
+.work-trajectory-link,
+.research-statement__cta{color:#C63308;}
+
+/* ------------------------------------------------------------
+   GALLERIA TALK — su desktop la griglia reagisce al puntatore:
+   le didascalie compaiono solo sulla foto puntata, le altre
+   arretrano. Su touch resta tutto visibile, niente hover.
+   ------------------------------------------------------------ */
+@media (hover:hover) and (pointer:fine){
+  .speaking-photos figure{
+    overflow:hidden; cursor:pointer;
+    transition:opacity .35s ease, filter .35s ease;
+  }
+  .speaking-photos img{
+    transition:transform .5s cubic-bezier(.2,.7,.3,1), filter .45s ease;
+  }
+  /* a riposo la griglia e solo immagini: a 194px le didascalie
+     sovrapposte coprivano i volti */
+  .speaking-photos figcaption{
+    opacity:0; transform:translateY(8px);
+    transition:opacity .3s ease, transform .35s cubic-bezier(.2,.7,.3,1);
+    padding:14px 14px 12px;
+    background:linear-gradient(0deg, rgba(16,19,23,0.88), rgba(16,19,23,0.45) 55%, transparent);
+  }
+  .speaking-photos figcaption::before{
+    content:""; display:block; width:16px; height:2px; background:#5DCAA5;
+    margin-bottom:8px; transform:scaleX(0); transform-origin:left;
+    transition:transform .4s cubic-bezier(.2,.7,.3,1) .06s;
+  }
+  /* mentre punti una foto, le altre si tirano indietro */
+  .speaking-photos:hover figure{opacity:.42;}
+  .speaking-photos figure:hover{opacity:1;}
+  .speaking-photos figure:hover img{filter:grayscale(0) sepia(0) hue-rotate(0deg) saturate(1) contrast(1); transform:scale(1.06);}
+  .speaking-photos figure:hover figcaption{opacity:1; transform:translateY(0);}
+  .speaking-photos figure:hover figcaption::before{transform:scaleX(1);}
+  /* la stessa cosa da tastiera */
+  .speaking-photos figure:focus-within{opacity:1;}
+  .speaking-photos figure:focus-within img{filter:grayscale(0) sepia(0) hue-rotate(0deg) saturate(1) contrast(1); transform:scale(1.06);}
+  .speaking-photos figure:focus-within figcaption{opacity:1; transform:translateY(0);}
+}
+@media (prefers-reduced-motion:reduce){
+  .speaking-photos img, .speaking-photos figcaption,
+  .speaking-photos figcaption::before{transition:none;}
+  .speaking-photos figure:hover img{transform:none;}
+}
 </style>
 </head>
 <body>
@@ -1652,7 +1762,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <p>Over seven years at MIT Senseable City Lab, my role has evolved from researcher to Research Scientist and Global Labs Lead — building research programs, teams, partnerships, and international initiatives across multiple cities.</p>
           <p>I am most interested in what happens when research leaves the paper: when a new way of seeing the city becomes a tool, a collaboration, an experiment, or a decision.</p>
         </div>
-        <button class="btn btn--quiet about__more-btn" id="aboutMore" style="color:var(--fluo);">My path ↓</button>
+        <button class="btn btn--quiet about__more-btn" id="aboutMore">My path ↓</button>
         <div class="about__extended" id="aboutExtended">
           <div class="about-story">
             <p class="about-story__lead">A trajectory from studying cities to building the systems through which they can be studied.</p>
@@ -2256,7 +2366,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="card__refs-label">Research</div>
       <ul class="card__refs-list">
         <li><span class="card__refs-title">Paper 01 — Research in progress.</span> Open Walks: Scalable, Crowdsourced Sidewalk Mapping.</li>
-        <li><span class="card__refs-title">Paper 02 — arXiv preprint.</span> Towards Reliable Sidewalk Accessibility Assessment with VLMs via Conformal Prediction. <a href="#" target="_blank" rel="noopener">↗</a></li>
+        <li><span class="card__refs-title">Paper 02 — arXiv preprint.</span> Towards Reliable Sidewalk Accessibility Assessment with VLMs via Conformal Prediction.<!-- TODO: quando c'e l'URL arXiv, rimettere: <a href="URL" target="_blank" rel="noopener">↗</a> --></li>
       </ul>
     </div>
 
@@ -2596,15 +2706,15 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="speaking-photos reveal" id="speakingPhotos">
       <figure><img src="images/img-52.jpg" alt="Martina Mazzarello speaking on stage" loading="lazy"><figcaption>On stage</figcaption></figure>
       <figure><img src="images/img-54.jpg" alt="Martina Mazzarello speaking on stage" loading="eager" alt="Martina Mazzarello portrait" loading="lazy"><figcaption>Portrait</figcaption></figure>
-      <figure><img src="images/img-53.jpg" alt="Martina Mazzarello presenting Data Clouds, Venice Biennale" loading="lazy"><figcaption>Venice Architecture Biennale</figcaption></figure>
-      <figure><img src="images/img-55.jpg" alt="Open Lab 2025 — Venice Biennale" loading="lazy"><figcaption>Open Lab 2025 — Venice Biennale</figcaption></figure>
-      <figure><img src="images/img-56.jpg" alt="Open Lab 2025 — Venice Biennale" loading="lazy"><figcaption>Open Lab 2025 — Venice Biennale</figcaption></figure>
-      <figure><img src="images/img-60.jpg" alt="Urban Future Week, Dubai — panel on urban storytelling" loading="lazy"><figcaption>Urban Future Week, Dubai — panel on urban storytelling</figcaption></figure>
-      <figure><img src="images/img-61.jpg" alt="Dubai Future Week 2024 — Senseable Dubai presentation" loading="lazy"><figcaption>Dubai Future Week 2024 — Senseable Dubai presentation</figcaption></figure>
-      <figure><img src="images/img-58.jpg" alt="EMTech Caribbean, MIT Technology Review" loading="lazy"><figcaption>EMTech Caribbean, MIT Technology Review</figcaption></figure>
-      <figure><img src="images/img-62.jpg" alt="SCL presentation at MIT — for Generali and Cattolica" loading="lazy"><figcaption>SCL presentation at MIT — for Generali and Cattolica</figcaption></figure>
-      <figure><img src="images/img-59.jpg" alt="CIID Bergamo — on data clouds" loading="lazy"><figcaption>CIID Bergamo — on data clouds</figcaption></figure>
-      <figure><img src="images/img-63.jpg" alt="Opening of Senseable City Rio — with the mayor and municipality" loading="lazy"><figcaption>Opening of Senseable City Rio — with the mayor and municipality</figcaption></figure>
+      <figure><img src="images/img-53.jpg" alt="Martina Mazzarello presenting Data Clouds, Venice Biennale" loading="lazy"><figcaption>Venice Biennale</figcaption></figure>
+      <figure><img src="images/img-55.jpg" alt="Open Lab 2025 — Venice Biennale" loading="lazy"><figcaption>Open Lab, Venice</figcaption></figure>
+      <figure><img src="images/img-56.jpg" alt="Open Lab 2025 — Venice Biennale" loading="lazy"><figcaption>Open Lab, Venice</figcaption></figure>
+      <figure><img src="images/img-60.jpg" alt="Urban Future Week, Dubai — panel on urban storytelling" loading="lazy"><figcaption>Urban Future Week, Dubai</figcaption></figure>
+      <figure><img src="images/img-61.jpg" alt="Dubai Future Week 2024 — Senseable Dubai presentation" loading="lazy"><figcaption>Dubai Future Week</figcaption></figure>
+      <figure><img src="images/img-58.jpg" alt="EMTech Caribbean, MIT Technology Review" loading="lazy"><figcaption>EmTech Caribbean</figcaption></figure>
+      <figure><img src="images/img-62.jpg" alt="SCL presentation at MIT — for Generali and Cattolica" loading="lazy"><figcaption>MIT — Generali &amp; Cattolica</figcaption></figure>
+      <figure><img src="images/img-59.jpg" alt="CIID Bergamo — on data clouds" loading="lazy"><figcaption>CIID Bergamo</figcaption></figure>
+      <figure><img src="images/img-63.jpg" alt="Opening of Senseable City Rio — with the mayor and municipality" loading="lazy"><figcaption>Senseable City Rio</figcaption></figure>
     </div>
     </div>
     <p class="talks-inline reveal">
@@ -2650,7 +2760,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
 <footer class="closing" id="contact">
   <svg class="closing__constellation" viewBox="0 0 620 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle r="5" fill="#EEF1EA" style="filter:drop-shadow(0 0 4px rgba(238,241,234,.5));">
+    <circle r="5" fill="#F0F1F3" style="filter:drop-shadow(0 0 4px rgba(240,241,243,.5));">
       <animateMotion dur="13s" repeatCount="indefinite"
         path="M80,80 L520,140 L140,260 L500,360 L100,440 L460,120 L80,80 Z"/>
     </ellipse>
@@ -2667,7 +2777,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div style="font-family:var(--mono); font-size:13px; letter-spacing:.04em; color:var(--soft-on-navy);">Boston · Global</div>
       <div class="closing__ctas">
         <a class="btn" href="https://www.linkedin.com/in/martina-mazzarello/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="#" title="TODO: link final CV PDF">CV / Resume</a>
+        <!-- TODO: caricare il PDF del CV e ripristinare questa riga con l'href giusto:
+         <a class="btn" href="cv.pdf" target="_blank" rel="noopener">CV / Resume</a> -->
         <a class="btn" href="mailto:mmazz@mit.edu">Get in touch</a>
       </div>
     </div>
