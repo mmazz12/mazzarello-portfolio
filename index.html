@@ -360,10 +360,17 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 @media (min-width:900px){ .hero__nodes{display:block;} }
 @media (max-width:900px){
   .hero{
-    background-size:cover, auto 130%;
-    background-position:center, 78% 12%;
+    /* su mobile il testo occupa tutta la larghezza, quindi la figura sta
+       nella fascia alta vuota: velo leggero sopra, denso sotto il titolo */
+    background-size:cover, auto 118%;
+    background-position:center, 70% 6%;
     background-image:
-      linear-gradient(170deg, rgba(11,16,13,0.90) 0%, rgba(11,16,13,0.95) 55%, rgba(11,16,13,0.985) 100%),
+      linear-gradient(180deg,
+        rgba(11,16,13,0.42) 0%,
+        rgba(11,16,13,0.55) 20%,
+        rgba(11,16,13,0.88) 42%,
+        rgba(11,16,13,0.96) 62%,
+        rgba(11,16,13,0.97) 100%),
       url('images/img-52.jpg');
   }
 }
@@ -1752,7 +1759,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="partners-grid">
       <div class="partner-group">
         <h4>Dubai / UAE</h4>
-        <ul><li>Dubai Future Foundation</li><li>Talabat</li><li>LIVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>Abu Dhabi DMT</li><li>XMap</li></ul>
+        <ul><li>Dubai Future Foundation</li><li>Talabat</li><li>LYVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>Abu Dhabi DMT</li><li>XMap</li></ul>
       </div>
       <div class="partner-group">
         <h4>Rio de Janeiro</h4>
