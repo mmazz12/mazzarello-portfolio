@@ -1422,38 +1422,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* ============================================================
    SPEAKING
    ============================================================ */
-.speaking-photos{display:grid; grid-template-columns:repeat(6,1fr); gap:3px; margin-top:74px;}
-.speaking-photos img{
-  width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
-  /* duotone freddo sull'asse del sito: misurato H215 S14, il teal della
-     palette sta a H210 S28 e il navy a H216. Le foto entrano nella stessa
-     famiglia invece di portare ognuna la propria dominante. */
-  filter:grayscale(1) sepia(.45) hue-rotate(178deg) saturate(1.75) contrast(1.04);
-}
-.speaking-photos figure{margin:0; position:relative;}
-.speaking-photos figcaption{
-  position:absolute; left:0; right:0; bottom:0; padding:18px 20px;
-  font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#fff;
-  background:linear-gradient(0deg, rgba(16,19,23,0.78), transparent);
-}
-.speaking-photos-wrap{position:relative;}
-@media (max-width:640px){
-  .speaking-photos-wrap::after{
-    content:""; position:absolute; top:0; right:0; bottom:0; width:36px; pointer-events:none;
-    background:linear-gradient(90deg, transparent, var(--paper) 92%); opacity:1; transition:opacity .3s ease;
-  }
-  .speaking-photos-wrap.is-end::after{opacity:0;}
-  .speaking-photos{
-    display:flex; grid-template-columns:none; gap:14px; margin-top:56px;
-    overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-    padding:2px 2px 4px;
-  }
-  .speaking-photos::-webkit-scrollbar{display:none;}
-  .speaking-photos figure{flex:0 0 auto; width:78vw; scroll-snap-align:center;}
-  
-  
-  
-}
 
 .talks{border-top:1px solid var(--line);}
 .talk{display:grid; grid-template-columns:120px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);}
@@ -1470,21 +1438,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .section--dark .talk__year{color:var(--teal-on-navy);}
 .section--dark .talk__topic{color:var(--soft-on-navy);}
 
-/* i talk sono un elenco di riferimento: testo scorrevole, non righe
-   marcate. Il blocco Teaching resta a righe perche apre la sezione. */
-.talks-inline{
-  margin-top:26px; max-width:74ch;
-  font-size:13.5px; line-height:2.05; color:var(--soft-on-navy);
-}
-.talks-inline__item{display:inline;}
-.talks-inline__item:not(:last-child)::after{
-  content:"·"; padding:0 9px; color:var(--line-on-navy);
-}
-.talks-inline__year{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
-  color:var(--teal-on-navy); margin-right:4px;
-}
-.talks-inline__topic{color:var(--accent-on-navy); opacity:.75;}
 .beyond-label{margin-top:78px; margin-bottom:-18px;}
 .beyond-label:first-of-type{margin-top:52px;}
 .beyond-label .eyebrow{color:var(--accent-on-navy); margin-bottom:0;}
@@ -1596,49 +1549,61 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .work-trajectory-link,
 .research-statement__cta{color:var(--fluo);}
 
+
 /* ------------------------------------------------------------
-   GALLERIA TALK — su desktop la griglia reagisce al puntatore:
-   le didascalie compaiono solo sulla foto puntata, le altre
-   arretrano. Su touch resta tutto visibile, niente hover.
+   TALK — stesso binario delle exhibitions qui sopra: ogni talk e
+   una voce con anno, evento e tema. Le foto restano nel loro colore
+   vero; a riposo sono desaturate come le exhibitions, e tornano piene
+   su quella al centro. I talk senza foto sono schede di testo nello
+   stesso binario, cosi l'elenco e uno solo.
    ------------------------------------------------------------ */
+.speak-wrap{position:relative; margin-top:56px;}
+.speak-wrap::after{
+  content:""; position:absolute; top:0; right:0; bottom:12px; width:64px; pointer-events:none;
+  background:linear-gradient(90deg, transparent, var(--navy) 92%); opacity:1; transition:opacity .3s ease;
+}
+.speak-wrap.is-end::after{opacity:0;}
+.speak-rail{
+  display:flex; gap:28px; overflow-x:auto; scroll-snap-type:x proximity;
+  padding:4px 4px 12px; margin-left:-4px; margin-right:-4px;
+  -webkit-overflow-scrolling:touch; scrollbar-width:none;
+}
+.speak-rail::-webkit-scrollbar{display:none;}
+.speak{
+  flex:0 0 auto; scroll-snap-align:start; width:min(64vw,232px); margin:0;
+  transition:opacity .38s ease;
+}
+.speak__photo{
+  width:100%; aspect-ratio:4/5; background-size:cover; background-position:center;
+  background-color:rgba(255,255,255,.04);
+  filter:grayscale(65%) brightness(.9); transition:filter .5s ease;
+}
+.speak.is-active .speak__photo{filter:grayscale(0%) brightness(1);}
+/* talk senza foto: stessa impronta, campitura invece dell'immagine */
+.speak__photo--none{
+  background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 10px, transparent 10px, transparent 20px);
+  filter:none; display:flex; align-items:flex-end; padding:14px;
+}
+.speak__notag{
+  font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--soft-on-navy); opacity:.55;
+}
+.speak__caption{padding-top:14px; border-top:1px solid var(--line-on-navy);}
+.speak__year{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; color:var(--teal-on-navy);}
+.speak__event{margin-top:5px; font-size:14.5px; line-height:1.4; color:var(--paper-on-navy);}
+.speak__topic{margin-top:4px; font-size:12.5px; line-height:1.45; color:var(--soft-on-navy);}
+@media (max-width:760px){
+  .speak-rail{scroll-snap-type:x mandatory; gap:18px;}
+  .speak{width:min(70vw,210px);}
+  .speak-wrap::after{width:36px;}
+}
 @media (hover:hover) and (pointer:fine){
-  .speaking-photos figure{
-    overflow:hidden; cursor:pointer;
-    transition:opacity .35s ease, filter .35s ease;
-  }
-  .speaking-photos img{
-    transition:transform .5s cubic-bezier(.2,.7,.3,1), filter .45s ease;
-  }
-  /* a riposo la griglia e solo immagini: a 194px le didascalie
-     sovrapposte coprivano i volti */
-  .speaking-photos figcaption{
-    opacity:0; transform:translateY(8px);
-    transition:opacity .3s ease, transform .35s cubic-bezier(.2,.7,.3,1);
-    padding:14px 14px 12px;
-    background:linear-gradient(0deg, rgba(16,19,23,0.88), rgba(16,19,23,0.45) 55%, transparent);
-  }
-  .speaking-photos figcaption::before{
-    content:""; display:block; width:16px; height:2px; background:#5DCAA5;
-    margin-bottom:8px; transform:scaleX(0); transform-origin:left;
-    transition:transform .4s cubic-bezier(.2,.7,.3,1) .06s;
-  }
-  /* mentre punti una foto, le altre si tirano indietro */
-  .speaking-photos:hover figure{opacity:.42;}
-  .speaking-photos figure:hover{opacity:1;}
-  .speaking-photos figure:hover img{filter:grayscale(.4) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02); transform:scale(1.06);}
-  .speaking-photos figure:hover figcaption{opacity:1; transform:translateY(0);}
-  .speaking-photos figure:hover figcaption::before{transform:scaleX(1);}
-  /* la copertina del libro: puntandola riaffiora quella vera */
+  .speak:hover .speak__photo{filter:grayscale(0%) brightness(1);}
+  /* la copertina del libro: puntandola riaffiora la tinta vera */
   .book-feature__cover:hover{filter:hue-rotate(0deg) saturate(1) contrast(1);}
-  /* la stessa cosa da tastiera */
-  .speaking-photos figure:focus-within{opacity:1;}
-  .speaking-photos figure:focus-within img{filter:grayscale(.4) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02); transform:scale(1.06);}
-  .speaking-photos figure:focus-within figcaption{opacity:1; transform:translateY(0);}
 }
 @media (prefers-reduced-motion:reduce){
-  .speaking-photos img, .speaking-photos figcaption,
-  .speaking-photos figcaption::before, .book-feature__cover{transition:none;}
-  .speaking-photos figure:hover img{transform:none;}
+  .speak__photo, .speak, .book-feature__cover{transition:none;}
 }
 </style>
 </head>
@@ -2714,33 +2679,144 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     </div>
 
     <div class="beyond-label reveal" id="speaking"><div class="eyebrow">Presenting the work</div></div>
-    <div class="speaking-photos-wrap">
-    <div class="speaking-photos reveal" id="speakingPhotos">
-      <figure><img src="images/img-52.jpg" alt="Martina Mazzarello speaking on stage" loading="lazy"><figcaption>On stage</figcaption></figure>
-      <figure><img src="images/img-54.jpg" alt="Martina Mazzarello speaking on stage" loading="eager" alt="Martina Mazzarello portrait" loading="lazy"><figcaption>Portrait</figcaption></figure>
-      <figure><img src="images/img-53.jpg" alt="Martina Mazzarello presenting Data Clouds, Venice Biennale" loading="lazy"><figcaption>Venice Biennale</figcaption></figure>
-      <figure><img src="images/img-55.jpg" alt="Open Lab 2025 — Venice Biennale" loading="lazy"><figcaption>Open Lab, Venice</figcaption></figure>
-      <figure><img src="images/img-56.jpg" alt="Open Lab 2025 — Venice Biennale" loading="lazy"><figcaption>Open Lab, Venice</figcaption></figure>
-      <figure><img src="images/img-60.jpg" alt="Urban Future Week, Dubai — panel on urban storytelling" loading="lazy"><figcaption>Urban Future Week, Dubai</figcaption></figure>
-      <figure><img src="images/img-61.jpg" alt="Dubai Future Week 2024 — Senseable Dubai presentation" loading="lazy"><figcaption>Dubai Future Week</figcaption></figure>
-      <figure><img src="images/img-58.jpg" alt="EMTech Caribbean, MIT Technology Review" loading="lazy"><figcaption>EmTech Caribbean</figcaption></figure>
-      <figure><img src="images/img-62.jpg" alt="SCL presentation at MIT — for Generali and Cattolica" loading="lazy"><figcaption>MIT — Generali &amp; Cattolica</figcaption></figure>
-      <figure><img src="images/img-59.jpg" alt="CIID Bergamo — on data clouds" loading="lazy"><figcaption>CIID Bergamo</figcaption></figure>
-      <figure><img src="images/img-63.jpg" alt="Opening of Senseable City Rio — with the mayor and municipality" loading="lazy"><figcaption>Senseable City Rio</figcaption></figure>
+    <div class="speak-wrap">
+    <div class="speak-rail reveal" id="speakRail">
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-58.jpg');" role="img" aria-label="EmTech Caribbean, MIT Technology Review"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2026</div>
+          <div class="speak__event">EmTech Caribbean — Santo Domingo</div>
+          <div class="speak__topic">MIT Technology Review</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2026</div>
+          <div class="speak__event">IEEE World Technology Summit on Digital Twins — Rabat</div>
+          
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-52.jpg');" role="img" aria-label="Martina Mazzarello on stage, Prague City Data Congress"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2025</div>
+          <div class="speak__event">Prague City Data Congress</div>
+          <div class="speak__topic">&ldquo;Data Clouds&rdquo;</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-53.jpg');" role="img" aria-label="Martina Mazzarello presenting Data Clouds, Venice Biennale"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2025</div>
+          <div class="speak__event">Venice Architecture Biennale</div>
+          <div class="speak__topic">Presenting Data Clouds</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-55.jpg');" role="img" aria-label="Open Lab 2025, Venice Biennale"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2025</div>
+          <div class="speak__event">Open Lab — Venice Biennale</div>
+          
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-60.jpg');" role="img" aria-label="Urban Future Week, Dubai — panel on urban storytelling"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2025</div>
+          <div class="speak__event">Urban Future Week — Dubai</div>
+          <div class="speak__topic">Panel on urban storytelling</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-59.jpg');" role="img" aria-label="CIID Bergamo — on Data Clouds"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2025</div>
+          <div class="speak__event">Copenhagen Institute of Interaction Design — Bergamo</div>
+          <div class="speak__topic">&ldquo;Data Clouds&rdquo;</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-63.jpg');" role="img" aria-label="Opening of Senseable City Rio, with the mayor and municipality"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2025</div>
+          <div class="speak__event">Senseable City Rio — opening</div>
+          <div class="speak__topic">Talk with the mayor and municipality</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-61.jpg');" role="img" aria-label="Dubai Future Week 2024 — Senseable Dubai presentation"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2024</div>
+          <div class="speak__event">Dubai Future Week</div>
+          <div class="speak__topic">Senseable Dubai presentation</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-62.jpg');" role="img" aria-label="Senseable City Lab presentation at MIT, for Generali and Cattolica"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2024</div>
+          <div class="speak__event">MIT — Generali &amp; Cattolica</div>
+          
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2024</div>
+          <div class="speak__event">World Police Summit — Dubai</div>
+          <div class="speak__topic">Sustainable cooling and data-driven solutions for cities</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2024</div>
+          <div class="speak__event">EmTech Europe — Athens</div>
+          <div class="speak__topic">Smart Cities, Smarter Environment</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2023</div>
+          <div class="speak__event">MIT Forum of Future Cities — Boston</div>
+          <div class="speak__topic">Panel Firestarter on Energy</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2023</div>
+          <div class="speak__event">Foodture — Barcelona</div>
+          <div class="speak__topic">Circular Design and Waste Transformation</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2023</div>
+          <div class="speak__event">BARI Conference — Boston</div>
+          <div class="speak__topic">Community-Driven Planning &amp; Data</div>
+        </figcaption>
+      </figure>
+      <figure class="speak">
+        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2023</div>
+          <div class="speak__event">Northeastern University — London</div>
+          <div class="speak__topic">Data Ethics and Urban Trust</div>
+        </figcaption>
+      </figure>
     </div>
     </div>
-    <p class="talks-inline reveal">
-      <span class="talks-inline__item"><span class="talks-inline__year">2026</span> IEEE World Technology Summit on Digital Twins — Rabat</span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2026</span> EmTech Caribbean — Santo Domingo</span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2025</span> Prague City Data Congress, <span class="talks-inline__topic">"Data Clouds"</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2025</span> Copenhagen Institute of Interaction Design (CIID), Bergamo, <span class="talks-inline__topic">"Data Clouds" — November 2025</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2024</span> World Police Summit — Dubai, <span class="talks-inline__topic">Sustainable cooling and data-driven solutions for cities</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2024</span> EmTech Europe — Athens, <span class="talks-inline__topic">Smart Cities, Smarter Environment</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> MIT Forum of Future Cities — Boston, <span class="talks-inline__topic">Panel Firestarter on Energy</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> Foodture Barcelona, <span class="talks-inline__topic">Circular Design and Waste Transformation</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> BARI Conference — Boston, <span class="talks-inline__topic">Community-Driven Planning &amp; Data</span></span>
-      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> Northeastern University London, <span class="talks-inline__topic">Data Ethics and Urban Trust</span></span>
-    </p>
+    <div class="exhibit-nav">
+      <div class="exhibit-nav__count"><strong id="speakCount">01</strong> / 16</div>
+      <div class="exhibit-track"><div class="exhibit-track__fill" id="speakTrackFill"></div></div>
+      <button type="button" id="speakPrev" class="exhibit-arrow" aria-label="Scroll left">Prev</button>
+      <button type="button" id="speakNext" class="exhibit-arrow" aria-label="Scroll right">Next</button>
+    </div>
 
     
   </div>
@@ -3325,30 +3401,48 @@ document.querySelectorAll('.filter').forEach(btn => {
   updateActivePhase();
 })();
 
-// speaking photos — mobile horizontal scroll: sync dots + edge fade
-(function(){
-  const wrap = document.querySelector('.speaking-photos-wrap');
-  const wall = document.getElementById('speakingPhotos');
-  if (!wrap || !wall) return;
-  const figs = Array.from(wall.querySelectorAll('figure'));
-  const dots = Array.from(document.querySelectorAll('.speaking-dots span'));
+// binario dei talk — stessa navigazione delle exhibitions
+(() => {
+  const wrap = document.querySelector('.speak-wrap');
+  const rail = document.getElementById('speakRail');
+  if (!wrap || !rail) return;
+  const cards = Array.from(rail.querySelectorAll('.speak'));
+  const trackFill = document.getElementById('speakTrackFill');
+  const prevBtn = document.getElementById('speakPrev');
+  const nextBtn = document.getElementById('speakNext');
+  const countEl = document.getElementById('speakCount');
 
-  function updateSpeaking(){
-    const rect = wall.getBoundingClientRect();
+  function updateSpeakNav(){
+    const rect = rail.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
-    let closestIdx = 0, closestDist = Infinity;
-    figs.forEach((f, i) => {
-      const r = f.getBoundingClientRect();
+    let closest = null, closestDist = Infinity, closestIdx = 0;
+    cards.forEach((c, i) => {
+      const r = c.getBoundingClientRect();
       const dist = Math.abs((r.left + r.width / 2) - centerX);
-      if (dist < closestDist){ closestDist = dist; closestIdx = i; }
+      if (dist < closestDist){ closestDist = dist; closest = c; closestIdx = i; }
     });
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === closestIdx));
-    const maxScroll = wall.scrollWidth - wall.clientWidth;
-    wrap.classList.toggle('is-end', maxScroll <= 4 || wall.scrollLeft >= maxScroll - 4);
+    cards.forEach(c => c.classList.toggle('is-active', c === closest));
+    if (countEl) countEl.textContent = String(closestIdx + 1).padStart(2, '0');
+
+    const maxScroll = rail.scrollWidth - rail.clientWidth;
+    if (trackFill){
+      const viewRatio = Math.min(1, rail.clientWidth / rail.scrollWidth);
+      const progress = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
+      const widthPct = Math.max(10, viewRatio * 100);
+      trackFill.style.width = widthPct + '%';
+      trackFill.style.left = (progress * (100 - widthPct)) + '%';
+    }
+    if (prevBtn) prevBtn.disabled = rail.scrollLeft <= 4;
+    if (nextBtn) nextBtn.disabled = rail.scrollLeft >= maxScroll - 4;
+    wrap.classList.toggle('is-end', maxScroll <= 4 || rail.scrollLeft >= maxScroll - 4);
   }
-  wall.addEventListener('scroll', () => requestAnimationFrame(updateSpeaking), {passive:true});
-  window.addEventListener('resize', updateSpeaking);
-  updateSpeaking();
+
+  const step = () => (cards[0]?.getBoundingClientRect().width || 232) + 28;
+  prevBtn?.addEventListener('click', () => rail.scrollBy({left:-step()*2, behavior:'smooth'}));
+  nextBtn?.addEventListener('click', () => rail.scrollBy({left:step()*2, behavior:'smooth'}));
+  rail.addEventListener('scroll', () => requestAnimationFrame(updateSpeakNav), {passive:true});
+  window.addEventListener('resize', updateSpeakNav);
+  updateSpeakNav();
 })();
 </script>
 
