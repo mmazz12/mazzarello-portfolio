@@ -1,0 +1,10 @@
+# cartella di lavoro con gli originali: 1,3 GB di foto, video e un pptx.
+# Non deve finire nel repository ne online.
+links/
+
+# configurazione locale di Netlify
+.netlify/
+
+# file di sistema macOS
+.DS_Store
+**/.DS_Store
