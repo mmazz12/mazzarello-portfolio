@@ -1372,6 +1372,21 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .section--dark .talk__topic{color:var(--soft-on-navy);}
 .section--dark .speaking-collage span{color:var(--soft-on-navy); border-color:var(--line-on-navy);}
 .section--dark .speaking-dots span{background:var(--line-on-navy);}
+/* i talk sono un elenco di riferimento: testo scorrevole, non righe
+   marcate. Il blocco Teaching resta a righe perche apre la sezione. */
+.talks-inline{
+  margin-top:26px; max-width:74ch;
+  font-size:13.5px; line-height:2.05; color:var(--soft-on-navy);
+}
+.talks-inline__item{display:inline;}
+.talks-inline__item:not(:last-child)::after{
+  content:"·"; padding:0 9px; color:var(--line-on-navy);
+}
+.talks-inline__year{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
+  color:var(--teal-on-navy); margin-right:4px;
+}
+.talks-inline__topic{color:var(--accent-on-navy); opacity:.75;}
 .beyond-label{margin-top:78px; margin-bottom:-18px;}
 .beyond-label:first-of-type{margin-top:52px;}
 .beyond-label .eyebrow{color:var(--accent-on-navy); margin-bottom:0;}
@@ -2495,18 +2510,18 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="speaking-collage reveal">
       <span>Rabat</span><span>Santo Domingo</span><span>Dubai</span><span>Athens</span><span>Boston</span><span>Barcelona</span><span>Prague</span><span>Bergamo</span><span>London</span>
     </div>
-    <div class="talks reveal">
-      <div class="talk"><div class="talk__year">2026</div><div><div class="talk__event">IEEE World Technology Summit on Digital Twins — Rabat</div></div></div>
-      <div class="talk"><div class="talk__year">2026</div><div><div class="talk__event">EmTech Caribbean — Santo Domingo</div></div></div>
-      <div class="talk"><div class="talk__year">2025</div><div><div class="talk__event">Prague City Data Congress</div><div class="talk__topic">"Data Clouds"</div></div></div>
-      <div class="talk"><div class="talk__year">2025</div><div><div class="talk__event">Copenhagen Institute of Interaction Design (CIID), Bergamo</div><div class="talk__topic">"Data Clouds" — November 2025</div></div></div>
-      <div class="talk"><div class="talk__year">2024</div><div><div class="talk__event">World Police Summit — Dubai</div><div class="talk__topic">Sustainable cooling and data-driven solutions for cities</div></div></div>
-      <div class="talk"><div class="talk__year">2024</div><div><div class="talk__event">EmTech Europe — Athens</div><div class="talk__topic">Smart Cities, Smarter Environment</div></div></div>
-      <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">MIT Forum of Future Cities — Boston</div><div class="talk__topic">Panel Firestarter on Energy</div></div></div>
-      <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">Foodture Barcelona</div><div class="talk__topic">Circular Design and Waste Transformation</div></div></div>
-      <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">BARI Conference — Boston</div><div class="talk__topic">Community-Driven Planning &amp; Data</div></div></div>
-      <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">Northeastern University London</div><div class="talk__topic">Data Ethics and Urban Trust</div></div></div>
-    </div>
+    <p class="talks-inline reveal">
+      <span class="talks-inline__item"><span class="talks-inline__year">2026</span> IEEE World Technology Summit on Digital Twins — Rabat</span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2026</span> EmTech Caribbean — Santo Domingo</span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2025</span> Prague City Data Congress, <span class="talks-inline__topic">"Data Clouds"</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2025</span> Copenhagen Institute of Interaction Design (CIID), Bergamo, <span class="talks-inline__topic">"Data Clouds" — November 2025</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2024</span> World Police Summit — Dubai, <span class="talks-inline__topic">Sustainable cooling and data-driven solutions for cities</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2024</span> EmTech Europe — Athens, <span class="talks-inline__topic">Smart Cities, Smarter Environment</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> MIT Forum of Future Cities — Boston, <span class="talks-inline__topic">Panel Firestarter on Energy</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> Foodture Barcelona, <span class="talks-inline__topic">Circular Design and Waste Transformation</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> BARI Conference — Boston, <span class="talks-inline__topic">Community-Driven Planning &amp; Data</span></span>
+      <span class="talks-inline__item"><span class="talks-inline__year">2023</span> Northeastern University London, <span class="talks-inline__topic">Data Ethics and Urban Trust</span></span>
+    </p>
 
     
   </div>
