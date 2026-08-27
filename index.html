@@ -1637,6 +1637,23 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero-mode__btn:focus-visible{outline:1px solid var(--tg-line); outline-offset:2px;}
 @media (max-width:900px){ .hero-mode{right:16px; bottom:24px;} }
 
+/* ---- variante scura senza foto: stesso campo della chiara, ribaltato.
+   I token dell'hero sono gia quelli giusti, cambia solo il fondo. ---- */
+.hero.is-dark-plain{
+  background-color:#101317;
+  background-image:
+    radial-gradient(62% 58% at 14% 24%, rgba(134,184,214,0.22) 0%, rgba(134,184,214,0.06) 44%, transparent 68%),
+    radial-gradient(52% 48% at 84% 26%, rgba(93,202,165,0.16) 0%, rgba(93,202,165,0.04) 46%, transparent 70%),
+    radial-gradient(74% 62% at 66% 84%, rgba(79,110,140,0.26) 0%, rgba(79,110,140,0.07) 48%, transparent 72%),
+    radial-gradient(46% 42% at 24% 92%, rgba(255,90,31,0.08) 0%, transparent 68%);
+  background-size:auto; background-position:center; background-repeat:no-repeat;
+}
+.hero.is-dark-plain .hero__figure{display:none;}
+.hero.is-dark-plain::before{
+  background:radial-gradient(58% 52% at 78% 34%, rgba(134,184,214,0.16) 0%, transparent 72%);
+  filter:blur(70px);
+}
+
 /* ---- variante chiara ---- */
 .hero.is-plain{
   --paper:#ECF0F4; --paper-2:#ECF0F4;
@@ -1713,8 +1730,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   </div>
 
   <div class="hero-mode" role="group" aria-label="Hero background">
-    <button type="button" class="hero-mode__btn" data-mode="photo" aria-pressed="true">Photo</button>
-    <button type="button" class="hero-mode__btn" data-mode="plain" aria-pressed="false">Plain</button>
+    <button type="button" class="hero-mode__btn" data-mode="photo" aria-pressed="false">Photo</button>
+    <button type="button" class="hero-mode__btn" data-mode="plain" aria-pressed="true">Light</button>
+    <button type="button" class="hero-mode__btn" data-mode="dark" aria-pressed="false">Dark</button>
   </div>
 
   <!-- desktop interactive node-network — doubles as primary navigation,
@@ -3441,10 +3459,11 @@ document.querySelectorAll('.filter').forEach(btn => {
   const nav = document.querySelector('.nav');
 
   const apply = (mode) => {
-    const plain = mode === 'plain';
-    hero.classList.toggle('is-plain', plain);
-    // la barra sopra l'hero e in modalita scura: va avvisata del cambio
-    if (nav) nav.classList.toggle('is-over-plain', plain);
+    hero.classList.toggle('is-plain', mode === 'plain');
+    hero.classList.toggle('is-dark-plain', mode === 'dark');
+    // la barra sopra l'hero e sempre in modalita scura: solo la variante
+    // chiara ha bisogno di riportarla su fondo chiaro
+    if (nav) nav.classList.toggle('is-over-plain', mode === 'plain');
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
     try { localStorage.setItem('hero-mode', mode); } catch (e) {}
   };
