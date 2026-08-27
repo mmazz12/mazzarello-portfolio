@@ -1615,12 +1615,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   /* mentre punti una foto, le altre si tirano indietro */
   .speaking-photos:hover figure{opacity:.42;}
   .speaking-photos figure:hover{opacity:1;}
-  .speaking-photos figure:hover img{filter:grayscale(0) sepia(0) hue-rotate(0deg) saturate(1) contrast(1); transform:scale(1.06);}
+  .speaking-photos figure:hover img{filter:grayscale(.4) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02); transform:scale(1.06);}
   .speaking-photos figure:hover figcaption{opacity:1; transform:translateY(0);}
   .speaking-photos figure:hover figcaption::before{transform:scaleX(1);}
   /* la stessa cosa da tastiera */
   .speaking-photos figure:focus-within{opacity:1;}
-  .speaking-photos figure:focus-within img{filter:grayscale(0) sepia(0) hue-rotate(0deg) saturate(1) contrast(1); transform:scale(1.06);}
+  .speaking-photos figure:focus-within img{filter:grayscale(.4) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02); transform:scale(1.06);}
   .speaking-photos figure:focus-within figcaption{opacity:1; transform:translateY(0);}
 }
 @media (prefers-reduced-motion:reduce){
@@ -2777,8 +2777,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div style="font-family:var(--mono); font-size:13px; letter-spacing:.04em; color:var(--soft-on-navy);">Boston · Global</div>
       <div class="closing__ctas">
         <a class="btn" href="https://www.linkedin.com/in/martina-mazzarello/" target="_blank" rel="noopener">LinkedIn</a>
-        <!-- TODO: caricare il PDF del CV e ripristinare questa riga con l'href giusto:
-         <a class="btn" href="cv.pdf" target="_blank" rel="noopener">CV / Resume</a> -->
         <a class="btn" href="mailto:mmazz@mit.edu">Get in touch</a>
       </div>
     </div>
