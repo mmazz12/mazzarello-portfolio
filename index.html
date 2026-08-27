@@ -202,6 +202,27 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   background:var(--navy);
   color:var(--paper-on-navy);
 }
+/* sopra l'hero: vetro, non fascia. Fondo quasi trasparente con
+   sfocatura, cosi la foto passa attraverso e il testo resta leggibile.
+   Il fondo pieno torna solo da scrollata in poi. */
+.nav.is-dark:not(.is-scrolled){
+  background:rgba(11,16,13,0.20);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  backdrop-filter:blur(16px) saturate(150%);
+}
+/* anche da scrollata la barra resta vetro, non un pannello pieno:
+   su desktop le versioni traslucide vivevano solo nella media query
+   del mobile, quindi qui il fondo diventava opaco. */
+.nav.is-scrolled{
+  background:rgba(238,241,234,0.72);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  backdrop-filter:blur(18px) saturate(160%);
+}
+.nav.is-dark.is-scrolled{
+  background:rgba(15,30,26,0.72);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  backdrop-filter:blur(18px) saturate(160%);
+}
 .nav.is-dark .nav__links a:hover{color:var(--fluo);}
 .nav__brand{display:flex; align-items:center; gap:11px;}
 .nav__mark{display:grid; grid-template-columns:repeat(4,2px); grid-template-rows:repeat(4,2px); gap:1.5px; opacity:.9;}
@@ -257,14 +278,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--paper-on-navy);
   }
-/* sopra l'hero la barra non deve leggersi come una fascia: niente
-   fondo pieno, solo una velatura che sfuma a zero. Il fondo compare
-   appena si scorre, dove serve per la leggibilita. */
-.nav.is-dark:not(.is-scrolled){
-  background:linear-gradient(180deg, rgba(11,16,13,0.50) 0%, rgba(11,16,13,0.22) 55%, rgba(11,16,13,0) 100%);
-  -webkit-backdrop-filter:none;
-  backdrop-filter:none;
-}
 }
 
 /* ============================================================
@@ -1353,11 +1366,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 }
 @media (min-width:641px){ .speaking-dots{display:none;} }
 
-.speaking-collage{display:flex; flex-wrap:wrap; gap:12px; margin:44px 0 56px;}
-.speaking-collage span{
-  font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--ink-faint); padding:8px 14px; border:1px solid var(--line);
-}
 .talks{border-top:1px solid var(--line);}
 .talk{display:grid; grid-template-columns:120px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);}
 @media (max-width:640px){ .talk{grid-template-columns:1fr; gap:6px;} }
@@ -1372,7 +1380,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .section--dark .talk{border-bottom-color:var(--line-on-navy);}
 .section--dark .talk__year{color:var(--teal-on-navy);}
 .section--dark .talk__topic{color:var(--soft-on-navy);}
-.section--dark .speaking-collage span{color:var(--soft-on-navy); border-color:var(--line-on-navy);}
 .section--dark .speaking-dots span{background:var(--line-on-navy);}
 /* i talk sono un elenco di riferimento: testo scorrevole, non righe
    marcate. Il blocco Teaching resta a righe perche apre la sezione. */
@@ -2506,9 +2513,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="speaking-dots">
         <span class="is-active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
-    </div>
-    <div class="speaking-collage reveal">
-      <span>Rabat</span><span>Santo Domingo</span><span>Dubai</span><span>Athens</span><span>Boston</span><span>Barcelona</span><span>Prague</span><span>Bergamo</span><span>London</span>
     </div>
     <p class="talks-inline reveal">
       <span class="talks-inline__item"><span class="talks-inline__year">2026</span> IEEE World Technology Summit on Digital Twins — Rabat</span>
