@@ -217,12 +217,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    su desktop le versioni traslucide vivevano solo nella media query
    del mobile, quindi qui il fondo diventava opaco. */
 .nav.is-scrolled{
-  background:rgba(236,240,244,0.72);
+  background:rgba(236,240,244,0.55);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   backdrop-filter:blur(18px) saturate(160%);
 }
 .nav.is-dark.is-scrolled{
-  background:rgba(23,27,33,0.72);
+  background:rgba(23,27,33,0.55);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   backdrop-filter:blur(18px) saturate(160%);
 }
@@ -270,13 +270,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .nav__toggle{display:block;}
 
   .nav.is-scrolled{
-    background:rgba(236,240,244,0.68);
+    background:rgba(236,240,244,0.52);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--ink);
   }
   .nav.is-dark{
-    background:rgba(23,27,33,0.75);
+    background:rgba(23,27,33,0.58);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--paper-on-navy);
@@ -287,8 +287,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    HERO
    ============================================================ */
 .hero{
-  /* hero scuro: foto di sfondo sotto un velo, piu leggero a destra
-     dove compare la figura, piu denso a sinistra sotto il titolo */
+  /* hero scuro: campo di gradienti, nessuna foto. La variante chiara
+     e la stessa cosa ribaltata, vedi .hero.is-plain */
   --paper:#101317;
   --paper-2:#171B21;
   --ink:#EDEFF2;
@@ -303,13 +303,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   min-height:100vh;
   display:flex; align-items:flex-end;
   padding:140px 0 80px;
+  background-color:#101317;
   background-image:
-    linear-gradient(100deg, rgba(15,17,21,0.97) 0%, rgba(15,17,21,0.94) 40%, rgba(15,17,21,0.86) 66%, rgba(15,17,21,0.80) 100%),
-    url('images/img-52.jpg');
-  /* la foto ha lo stesso rapporto dell'hero: con "cover" non resterebbe
-     margine per spostarla, quindi la ingrandisco al 145% e la porto a destra */
-  background-size:cover, auto 145%;
-  background-position:center, 8% 20%;
+    radial-gradient(62% 58% at 14% 24%, rgba(134,184,214,0.22) 0%, rgba(134,184,214,0.06) 44%, transparent 68%),
+    radial-gradient(52% 48% at 84% 26%, rgba(93,202,165,0.16) 0%, rgba(93,202,165,0.04) 46%, transparent 70%),
+    radial-gradient(74% 62% at 66% 84%, rgba(79,110,140,0.26) 0%, rgba(79,110,140,0.07) 48%, transparent 72%),
+    radial-gradient(46% 42% at 24% 92%, rgba(255,90,31,0.08) 0%, transparent 68%);
   background-repeat:no-repeat;
   color:var(--deep-teal);
   overflow:hidden;
@@ -317,8 +316,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero::before{
   content:""; position:absolute; z-index:1; pointer-events:none; inset:0;
   background:
-    radial-gradient(circle at 78% 26%, rgba(79,110,140,0.40) 0%, rgba(79,110,140,0.16) 40%, transparent 70%);
-  filter:blur(55px);
+    radial-gradient(58% 52% at 78% 34%, rgba(134,184,214,0.16) 0%, transparent 72%);
+  filter:blur(70px);
 }
 .hero::after{
   content:""; position:absolute; z-index:1; pointer-events:none; left:0; right:0; bottom:0; height:38vh; min-height:260px;
@@ -350,7 +349,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .blur-seam__blob--2{width:180px; height:180px;}
   .blur-seam__blob--3{width:280px; height:280px;}
 }
-.hero__figure{display:none;}
 .hero__grid{position:absolute; inset:0; opacity:.5; z-index:1;}
 .hero__inner{position:relative; z-index:2; width:100%;}
 .hero__eyebrow{
@@ -375,22 +373,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* interactive node-network navigation, embedded in the hero dataviz field */
 .hero__nodes{position:absolute; inset:0; z-index:3; display:none; pointer-events:none;}
 @media (min-width:900px){ .hero__nodes{display:block;} }
-@media (max-width:900px){
-  .hero{
-    /* su mobile il testo occupa tutta la larghezza, quindi la figura sta
-       nella fascia alta vuota: velo leggero sopra, denso sotto il titolo */
-    background-size:cover, auto 104%;
-    background-position:center, 58% 0%;
-    background-image:
-      linear-gradient(180deg,
-        rgba(15,17,21,0.66) 0%,
-        rgba(15,17,21,0.74) 22%,
-        rgba(15,17,21,0.93) 44%,
-        rgba(15,17,21,0.975) 64%,
-        rgba(15,17,21,0.985) 100%),
-      url('images/img-52.jpg');
-  }
-}
 .hero__ambient-mobile{position:absolute; inset:0; z-index:1; pointer-events:none; display:block;}
 .hero__ambient-mobile .pinball{fill:var(--teal); filter:drop-shadow(0 0 4px rgba(159,187,212,.6));}
 .hero__ambient-mobile .pinball--b{fill:var(--fluo); filter:drop-shadow(0 0 4px rgba(255,77,20,.55));}
@@ -1473,9 +1455,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .closing{
   position:relative; overflow:hidden;
   background-image:
-    radial-gradient(900px 500px at 15% 100%, rgba(79,110,140,0.20), transparent 62%),
-    linear-gradient(180deg, rgba(15,17,21,0.90), rgba(15,17,21,0.965)),
-    url('images/img-57.jpg');
+    radial-gradient(900px 500px at 15% 100%, rgba(79,110,140,0.18), transparent 62%),
+    linear-gradient(180deg, rgba(15,17,21,0.95), rgba(15,17,21,0.985)),
+    url('images/img-52.jpg');
   background-size:cover, cover, cover;
   background-position:center, center, 50% 42%;
   background-repeat:no-repeat;
@@ -1507,11 +1489,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
 /* velo aggiuntivo sull'hero: piu denso a sinistra sotto il titolo,
    piu leggero a destra dove compare la figura */
-.hero__figure{
-  display:block; position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:linear-gradient(100deg,
-    rgba(15,17,21,0.72) 0%, rgba(15,17,21,0.66) 55%, rgba(15,17,21,0.54) 100%);
-}
 
 /* hero */
 .hero__eyebrow, .hero__eyebrow .thread{color:#5DCAA5;}
@@ -1642,23 +1619,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero-mode__btn:focus-visible{outline:1px solid var(--tg-line); outline-offset:2px;}
 @media (max-width:900px){ .hero-mode{right:16px; bottom:24px;} }
 
-/* ---- variante scura senza foto: stesso campo della chiara, ribaltato.
-   I token dell'hero sono gia quelli giusti, cambia solo il fondo. ---- */
-.hero.is-dark-plain{
-  background-color:#101317;
-  background-image:
-    radial-gradient(62% 58% at 14% 24%, rgba(134,184,214,0.22) 0%, rgba(134,184,214,0.06) 44%, transparent 68%),
-    radial-gradient(52% 48% at 84% 26%, rgba(93,202,165,0.16) 0%, rgba(93,202,165,0.04) 46%, transparent 70%),
-    radial-gradient(74% 62% at 66% 84%, rgba(79,110,140,0.26) 0%, rgba(79,110,140,0.07) 48%, transparent 72%),
-    radial-gradient(46% 42% at 24% 92%, rgba(255,90,31,0.08) 0%, transparent 68%);
-  background-size:auto; background-position:center; background-repeat:no-repeat;
-}
-.hero.is-dark-plain .hero__figure{display:none;}
-.hero.is-dark-plain::before{
-  background:radial-gradient(58% 52% at 78% 34%, rgba(134,184,214,0.16) 0%, transparent 72%);
-  filter:blur(70px);
-}
-
 /* ---- variante chiara ---- */
 .hero.is-plain{
   --paper:#ECF0F4; --paper-2:#ECF0F4;
@@ -1676,8 +1636,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     radial-gradient(46% 42% at 24% 92%, rgba(255,90,31,0.10) 0%, transparent 68%);
   background-size:auto; background-position:center; background-repeat:no-repeat;
 }
-.hero.is-plain .hero__figure{display:none;}
-.hero.is-plain::before{
+.hero.is-plain .hero.is-plain::before{
   background:radial-gradient(58% 52% at 78% 34%, rgba(134,184,214,0.30) 0%, transparent 72%);
   filter:blur(70px);
 }
@@ -1698,7 +1657,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .hero.is-plain .hero__ambient-mobile .pinball--b{fill:#15795A; filter:drop-shadow(0 0 4px rgba(21,121,90,.4));}
 /* sopra l'hero il JS mette la barra in modalita scura: qui va rimessa chiara */
 .nav.is-dark.is-over-plain{background:rgba(236,240,244,0.30); color:#20242A;}
-.nav.is-dark.is-over-plain.is-scrolled{background:rgba(236,240,244,0.88); color:#20242A;}
+.nav.is-dark.is-over-plain.is-scrolled{background:rgba(236,240,244,0.55); color:#20242A;}
 </style>
 </head>
 <body>
@@ -1722,8 +1681,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 </nav>
 
 <!-- ============================================================ 01 HERO ============================================================ -->
-<header class="hero" id="hero">
-  <div class="hero__figure"></div>
+<header class="hero is-plain" id="hero">
   <svg class="hero__grid" width="100%" height="100%"></svg>
   <div class="wrap hero__inner">
     <div class="hero__eyebrow"><span class="thread"><span class="dot"></span><span class="rule"></span></span> Urban Research + Design</div>
@@ -1735,8 +1693,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   </div>
 
   <div class="hero-mode" role="group" aria-label="Hero background">
-    <button type="button" class="hero-mode__btn" data-mode="photo" aria-pressed="false">Photo</button>
-    <button type="button" class="hero-mode__btn" data-mode="plain" aria-pressed="true">Light</button>
+    <button type="button" class="hero-mode__btn" data-mode="light" aria-pressed="true">Light</button>
     <button type="button" class="hero-mode__btn" data-mode="dark" aria-pressed="false">Dark</button>
   </div>
 
@@ -2790,7 +2747,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         </figcaption>
       </figure>
       <figure class="speak">
-        <div class="speak__photo" style="background-image:url('images/img-52.jpg');" role="img" aria-label="Martina Mazzarello on stage, Prague City Data Congress"></div>
+        <div class="speak__photo" style="background-image:url('images/img-54.jpg');" role="img" aria-label="Martina Mazzarello, Prague City Data Congress"></div>
         <figcaption class="speak__caption">
           <div class="speak__year">2025</div>
           <div class="speak__event">Prague City Data Congress</div>
@@ -3464,11 +3421,11 @@ document.querySelectorAll('.filter').forEach(btn => {
   const nav = document.querySelector('.nav');
 
   const apply = (mode) => {
-    hero.classList.toggle('is-plain', mode === 'plain');
-    hero.classList.toggle('is-dark-plain', mode === 'dark');
+    const light = mode !== 'dark';
+    hero.classList.toggle('is-plain', light);
     // la barra sopra l'hero e sempre in modalita scura: solo la variante
     // chiara ha bisogno di riportarla su fondo chiaro
-    if (nav) nav.classList.toggle('is-over-plain', mode === 'plain');
+    if (nav) nav.classList.toggle('is-over-plain', light);
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
     try { localStorage.setItem('hero-mode', mode); } catch (e) {}
   };
@@ -3478,8 +3435,10 @@ document.querySelectorAll('.filter').forEach(btn => {
     if (b) apply(b.dataset.mode);
   });
 
-  let saved = 'plain';
-  try { saved = localStorage.getItem('hero-mode') || 'plain'; } catch (e) {}
+  let saved = 'light';
+  try { saved = localStorage.getItem('hero-mode') || 'light'; } catch (e) {}
+  // chi aveva salvato la vecchia modalita con la foto torna al chiaro
+  if (saved !== 'dark') saved = 'light';
   apply(saved);
 })();
 
