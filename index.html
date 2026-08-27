@@ -983,25 +983,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    RESEARCH THREADS — converging trajectories diagram
    ============================================================ */
 :root{
-  --thread-behavior:#2E6B60;
+  --thread-behavior:#0D453D;
   --thread-health:#FF4D14;
-  --thread-environment:#5C7A4A;
-  --thread-ai:#8A7C4E;
-  --thread-decision:#3E5C82;
+  --thread-environment:#6FA844;
+  --thread-ai:#9061CC;
+  --thread-decision:#2A6296;
 }
 
-.threads-meta{margin-top:32px;}
-.threads-meta__list{margin-top:0; display:flex; flex-wrap:wrap; gap:10px 20px;}
-.threads-meta__item{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:var(--mono); font-size:12px; letter-spacing:.03em; color:var(--ink-soft);
-}
-.threads-meta__item::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--dot-color, var(--ink-faint)); flex:none;}
-.threads-meta__item[data-thread="behavior"]{--dot-color:var(--thread-behavior);}
-.threads-meta__item[data-thread="health"]{--dot-color:var(--thread-health);}
-.threads-meta__item[data-thread="environment"]{--dot-color:var(--thread-environment);}
-.threads-meta__item[data-thread="ai"]{--dot-color:var(--thread-ai);}
-.threads-meta__item[data-thread="decision"]{--dot-color:var(--thread-decision);}
 
 .threads-viz{margin-top:46px;}
 .threads-viz__phases{display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; padding-bottom:8px;}
@@ -1011,6 +999,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .threads-viz__phase-q{margin:8px auto 0; font-size:12.5px; line-height:1.55; color:var(--ink-faint); max-width:32ch;}
 
 .threads-viz__canvas{position:relative; width:100%; aspect-ratio:1200/330;}
+/* il colore da solo non separa cinque categorie per chi ha un deficit
+   di visione: le curve portano il proprio nome all'origine, dove sono
+   ancora distanti fra loro. */
+.thread-name{
+  position:absolute; left:0; transform:translateY(-140%);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.05em;
+  text-transform:uppercase; white-space:nowrap; pointer-events:none;
+  color:var(--dot-color,var(--ink-faint));
+}
+.thread-name[data-thread="behavior"]{--dot-color:var(--thread-behavior);}
+.thread-name[data-thread="health"]{--dot-color:var(--thread-health);}
+.thread-name[data-thread="environment"]{--dot-color:var(--thread-environment);}
+.thread-name[data-thread="ai"]{--dot-color:var(--thread-ai);}
+.thread-name[data-thread="decision"]{--dot-color:var(--thread-decision);}
 .threads-viz__divider{position:absolute; top:0; bottom:0; width:1px; background:var(--line); pointer-events:none;}
 .threads-viz__phase-tag{
   position:absolute; top:6px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--fluo);
@@ -2249,15 +2251,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="eyebrow">Research Portfolio</div>
       <h2 class="h2">Connecting the dots.</h2>
       <p class="lead" style="margin-top:18px;">From human behavior and public space to AI, climate, and urban health — seven years of research forming an interconnected agenda around how cities can be observed, understood, and acted upon.</p>
-      <div class="threads-meta">
-          <div class="threads-meta__list">
-          <span class="threads-meta__item" data-thread="behavior">Human Behavior</span>
-          <span class="threads-meta__item" data-thread="health">Urban Health</span>
-          <span class="threads-meta__item" data-thread="environment">Environment</span>
-          <span class="threads-meta__item" data-thread="ai">Urban AI</span>
-          <span class="threads-meta__item" data-thread="decision">Decision-Making</span>
-        </div>
-      </div>
+      
 
       <div class="threads-viz">
         <div class="threads-viz__phases" id="threadsPhases">
@@ -2285,7 +2279,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <span class="threads-viz__phase-tag" style="left:2%;">01</span>
           <span class="threads-viz__phase-tag" style="left:34%;">02</span>
           <span class="threads-viz__phase-tag" style="left:70.5%;">03</span>
-          <svg class="threads-viz__lines" viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true">
+                  <span class="thread-name" data-thread="behavior" style="top:9.5%;">Human Behavior</span>
+        <span class="thread-name" data-thread="health" style="top:31.0%;">Urban Health</span>
+        <span class="thread-name" data-thread="environment" style="top:50.0%;">Environment</span>
+        <span class="thread-name" data-thread="ai" style="top:69.0%;">Urban AI</span>
+        <span class="thread-name" data-thread="decision" style="top:90.5%;">Decision-Making</span>
+        <svg class="threads-viz__lines" viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true">
             <path class="thread-line" data-thread="behavior" d="M20,40 C90.0,40 90.0,55 160,55 C390.0,55 390.0,150 620,150 C800.0,150 800.0,195 980,195 C1070.0,195 1070.0,210 1160,210"></path>
             <path class="thread-line" data-thread="health" d="M20,130 C175.0,130 175.0,140 330,140 C445.0,140 445.0,165 560,165 C630.0,165 630.0,180 700,180 C840.0,180 840.0,200 980,200 C1070.0,200 1070.0,210 1160,210"></path>
             <path class="thread-line" data-thread="environment" d="M20,210 C90.0,210 90.0,208 160,208 C330.0,208 330.0,208 500,208 C550.0,208 550.0,208 600,208 C650.0,208 650.0,209 700,209 C750.0,209 750.0,210 800,210 C890.0,210 890.0,210 980,210 C1070.0,210 1070.0,210 1160,210"></path>
