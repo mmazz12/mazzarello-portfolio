@@ -1362,6 +1362,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .talk__year{font-family:var(--mono); font-size:13px; color:var(--teal);}
 .talk__event{font-size:15px;}
 .talk__topic{font-size:14px; color:var(--ink-faint); margin-top:4px;}
+/* blocco teaching: la colonna anno ospita anche "2023 · 2024 · 2026" */
+.teaching{margin-top:58px;}
+.teaching__list .talk{grid-template-columns:150px 1fr;}
+@media (max-width:760px){ .teaching__list .talk{grid-template-columns:1fr;} }
 
 /* ============================================================
    PARTNERSHIPS
@@ -2480,6 +2484,25 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">Foodture Barcelona</div><div class="talk__topic">Circular Design and Waste Transformation</div></div></div>
       <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">BARI Conference — Boston</div><div class="talk__topic">Community-Driven Planning &amp; Data</div></div></div>
       <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">Northeastern University London</div><div class="talk__topic">Data Ethics and Urban Trust</div></div></div>
+    </div>
+
+    <div class="teaching reveal">
+      <div class="eyebrow">Teaching</div>
+      <div class="talks teaching__list">
+        <div class="talk">
+          <div class="talk__year">2023&ndash;2024</div>
+          <div>
+            <div class="talk__event">Visiting Professor, Politecnico di Milano &mdash; Design for Complexity Seminars</div>
+            <div class="talk__topic">Taught graduate seminars on systems thinking, complexity, and data-informed approaches to city design.</div>
+          </div>
+        </div>
+        <div class="talk">
+          <div class="talk__year">2023 &middot; 2024 &middot; 2026</div>
+          <div>
+            <div class="talk__event">Graduate Instructor, MIT 11.320 &mdash; Digital City Design Workshop: Urban Visual Intelligence</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
