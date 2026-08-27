@@ -257,6 +257,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--paper-on-navy);
   }
+/* sopra l'hero la barra non deve leggersi come una fascia: niente
+   fondo pieno, solo una velatura che sfuma a zero. Il fondo compare
+   appena si scorre, dove serve per la leggibilita. */
+.nav.is-dark:not(.is-scrolled){
+  background:linear-gradient(180deg, rgba(11,16,13,0.50) 0%, rgba(11,16,13,0.22) 55%, rgba(11,16,13,0) 100%);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
 }
 
 /* ============================================================
