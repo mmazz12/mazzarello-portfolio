@@ -122,6 +122,9 @@ p{margin:0;}
   opacity:.55; transition:width .22s ease, height .22s ease, opacity .2s ease, background .22s ease, border-color .22s ease;
 }
 .cursor-ring.is-hover{width:56px; height:56px; background:var(--teal-soft); opacity:.9;}
+/* sui bersagli piccoli l'anello si stringe invece di allargarsi:
+   a 56px copriva i pallini da 6 e impediva di mirare */
+.cursor-ring.is-precise{width:16px; height:16px; background:transparent; opacity:.95;}
 .cursor-ring.is-down{width:24px; height:24px;}
 html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-ring{display:none;}
 @media (max-width:640px){ .wrap{padding:0 20px;} }
@@ -1050,24 +1053,28 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .threads-viz__canvas .thread-node[data-thread="ai"]{--dot-color:var(--thread-ai);}
 .threads-viz__canvas .thread-node[data-thread="data"]{--dot-color:var(--thread-data);}
 .threads-viz__canvas .thread-node[data-thread="design"]{--dot-color:var(--thread-design);}
-.threads-viz__canvas .thread-node__label{
-  white-space:nowrap; opacity:0; transform:translateY(-3px); transition:opacity .18s ease, transform .18s ease;
+.threads-viz__canvas /* fuori dal flusso: il pulsante resta largo quanto il pallino, cosi
+   i nodi non si coprono a vicenda ne coprono i punti pubblicazione */
+.thread-node__label{position:absolute; bottom:100%; left:50%; margin-bottom:6px;
+  pointer-events:none;
+  white-space:nowrap; opacity:0; transform:translate(-50%,-3px); transition:opacity .18s ease, transform .18s ease;
   background:var(--ink); color:var(--paper); padding:4px 8px;
 }
 .threads-viz__canvas .thread-node:hover .thread-node__dot,
 .threads-viz__canvas .thread-node:focus-visible .thread-node__dot{transform:scale(1.5);}
 .threads-viz__canvas .thread-node:hover .thread-node__label,
-.threads-viz__canvas .thread-node:focus-visible .thread-node__label{opacity:1; transform:translateY(0);}
+.threads-viz__canvas .thread-node:focus-visible .thread-node__label{opacity:1; transform:translate(-50%,0);}
 
 /* pubblicazioni: punti minori, indice cliccabile verso la riga
    corrispondente nell'elenco sotto. Sottotono per non competere
    con i progetti, che restano i punti principali. */
 .pub-dot{
   position:absolute; left:var(--nx); top:var(--ny); transform:translate(-50%,-50%);
-  width:6px; height:6px; border-radius:50%; z-index:1; cursor:pointer;
+  width:6px; height:6px; border-radius:50%; z-index:3; cursor:pointer;
   background:var(--dot-color,var(--ink-faint));
   transition:transform .2s ease, box-shadow .2s ease;
 }
+.pub-dot::after{content:""; position:absolute; inset:-6px; border-radius:50%;}
 .pub-dot:hover, .pub-dot:focus-visible{
   transform:translate(-50%,-50%) scale(1.7);
   box-shadow:0 0 0 4px rgba(134,184,214,.38);
@@ -1138,6 +1145,34 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .research-statement{margin-top:72px; padding-top:48px; border-top:1px solid var(--line); max-width:68ch;}
 .research-statement__title{margin-top:14px; font-family:var(--display); font-size:clamp(24px,3vw,32px); font-weight:600; color:var(--ink); line-height:1.2;}
 .research-statement__text em{font-style:italic; color:var(--teal);}
+.statement__extended{display:none;}
+.statement__extended.is-open{display:block;}
+.statement__more-btn{display:block; margin-top:20px; color:var(--fluo);}
+/* la catena dichiarata nell'ultimo paragrafo, resa visibile:
+   osservazione -> ragionamento -> alternative -> azione collettiva */
+.chain{
+  list-style:none; margin:34px 0 6px; padding:0;
+  display:flex; flex-wrap:wrap; align-items:center; gap:0;
+}
+.chain__step{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--ink-soft); white-space:nowrap;
+}
+.chain__step + .chain__step{margin-left:14px;}
+.chain__step + .chain__step::before{
+  content:""; width:26px; height:1px; background:var(--line); margin-right:14px; flex:none;
+}
+.chain__dot{width:7px; height:7px; border-radius:50%; background:var(--teal); flex:none;}
+.chain__step:nth-child(1) .chain__dot{opacity:.42;}
+.chain__step:nth-child(2) .chain__dot{opacity:.62;}
+.chain__step:nth-child(3) .chain__dot{opacity:.8;}
+.chain__step:nth-child(4) .chain__dot{opacity:1; box-shadow:0 0 0 4px var(--teal-soft);}
+@media (max-width:760px){
+  .chain{flex-direction:column; align-items:flex-start; gap:10px;}
+  .chain__step + .chain__step{margin-left:0;}
+  .chain__step + .chain__step::before{display:none;}
+}
 .research-statement__text{margin-top:18px; font-size:16px; line-height:1.75; color:var(--ink-soft);}
 .research-statement__text + .research-statement__text{margin-top:14px;}
 .research-statement__cta{
@@ -2337,20 +2372,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="open-walks" style="--nx:83%; --ny:51.18%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
           <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open Location Reasoner"><span class="thread-node__dot"></span><span class="thread-node__label">Location Reasoner</span></button>
 
-                  <a class="pub-dot" data-thread="ai" href="#pub-01" style="--nx:19.6%; --ny:66.22%;" aria-label="Publication 1"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-03" style="--nx:34.8%; --ny:60.05%;" aria-label="Publication 3"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-06" style="--nx:50.0%; --ny:55.98%;" aria-label="Publication 6"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-08" style="--nx:65.2%; --ny:54.03%;" aria-label="Publication 8"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-10" style="--nx:80.4%; --ny:51.20%;" aria-label="Publication 10"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-02" style="--nx:19.6%; --ny:14.04%;" aria-label="Publication 2"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-04" style="--nx:34.8%; --ny:27.07%;" aria-label="Publication 4"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-05" style="--nx:50.0%; --ny:35.65%;" aria-label="Publication 5"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-13" style="--nx:65.2%; --ny:40.04%;" aria-label="Publication 13"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-14" style="--nx:80.4%; --ny:46.40%;" aria-label="Publication 14"></a>
-        <a class="pub-dot" data-thread="design" href="#pub-07" style="--nx:50.0%; --ny:64.34%;" aria-label="Publication 7"></a>
-        <a class="pub-dot" data-thread="climate" href="#pub-09" style="--nx:31.0%; --ny:49.52%;" aria-label="Publication 9"></a>
-        <a class="pub-dot" data-thread="climate" href="#pub-12" style="--nx:69.0%; --ny:50.00%;" aria-label="Publication 12"></a>
-        <a class="pub-dot" data-thread="data" href="#pub-11" style="--nx:50.0%; --ny:39.80%;" aria-label="Publication 11"></a>
+                  <a class="pub-dot" data-thread="climate" href="#pub-01" style="--nx:79.7%; --ny:50.00%;" aria-label="Publication 1"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-03" style="--nx:4.3%; --ny:68.85%;" aria-label="Publication 3"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-06" style="--nx:9.7%; --ny:67.08%;" aria-label="Publication 6"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-08" style="--nx:85.7%; --ny:51.04%;" aria-label="Publication 8"></a>
+        <a class="pub-dot" data-thread="design" href="#pub-10" style="--nx:91.7%; --ny:51.17%;" aria-label="Publication 10"></a>
+        <a class="pub-dot" data-thread="data" href="#pub-02" style="--nx:30.7%; --ny:33.59%;" aria-label="Publication 2"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-04" style="--nx:50.3%; --ny:35.67%;" aria-label="Publication 4"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-05" style="--nx:55.7%; --ny:36.01%;" aria-label="Publication 5"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-13" style="--nx:39.7%; --ny:31.75%;" aria-label="Publication 13"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-14" style="--nx:66.0%; --ny:40.60%;" aria-label="Publication 14"></a>
+        <a class="pub-dot" data-thread="design" href="#pub-07" style="--nx:73.7%; --ny:55.47%;" aria-label="Publication 7"></a>
+        <a class="pub-dot" data-thread="climate" href="#pub-09" style="--nx:47.7%; --ny:49.52%;" aria-label="Publication 9"></a>
+        <a class="pub-dot" data-thread="climate" href="#pub-12" style="--nx:63.7%; --ny:49.94%;" aria-label="Publication 12"></a>
+        <a class="pub-dot" data-thread="data" href="#pub-11" style="--nx:33.0%; --ny:34.19%;" aria-label="Publication 11"></a>
         <a class="threads-viz__final" href="#where-this-leads" style="--nx:96.7%; --ny:50%;" aria-label="My next steps"><span class="threads-viz__final-label">My next steps</span></a>
         </div>
         </div>
@@ -2368,9 +2403,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="eyebrow">Where this leads</div>
       <h3 class="research-statement__title">From Urban Perception to Urban Reasoning</h3>
       <p class="research-statement__text">My research asks how AI can expand our capacity not only to observe and understand cities, but to reason about how they should change. My work has progressively moved from using computational methods to reveal spatial, environmental, and behavioral conditions that are difficult to measure, toward systems that connect this evidence to planning and design decisions.</p>
-      <p class="research-statement__text">The next phase of this research advances urban AI from perception to reasoning. I am developing human-centered systems that can reason across spatial evidence, design objectives, constraints, uncertainty, and competing priorities; generate and compare alternative spatial interventions; and make the logic and trade-offs behind those alternatives explicit. Rather than optimizing toward a single answer, these systems can become a design and deliberation medium through which planners, designers, and communities explore possible urban futures while retaining human judgment and accountability.</p>
-      <p class="research-statement__text">This shift also creates an opportunity to rethink who participates in producing urban knowledge and making spatial decisions. By combining computational evidence with community-generated data and lived experience, I aim to develop tools that expand local communities&rsquo; capacity to represent their environments, articulate priorities, interrogate proposed interventions, and participate in evaluating alternatives. In this sense, human-centered urban AI can contribute to spatial justice not simply by producing better evidence, but by making the processes through which urban choices are formulated more transparent, contestable, and collectively shaped.</p>
-      <p class="research-statement__text">My broader goal is to establish AI as a new medium for evidence-driven urban design: connecting observation to reasoning, reasoning to spatial alternatives, and alternatives to collective action. The question guiding this agenda is therefore not simply <em>what can AI tell us about cities?</em> &mdash; but <em>how can AI and design expand who has the capacity to reason about, imagine, and shape their transformation?</em></p>
+
+      <ol class="chain" aria-label="From observation to collective action">
+        <li class="chain__step"><span class="chain__dot"></span>Observation</li>
+        <li class="chain__step"><span class="chain__dot"></span>Reasoning</li>
+        <li class="chain__step"><span class="chain__dot"></span>Alternatives</li>
+        <li class="chain__step"><span class="chain__dot"></span>Collective action</li>
+      </ol>
+
+      <div class="statement__extended" id="statementExtended">
+        <p class="research-statement__text">The next phase of this research advances urban AI from perception to reasoning. I am developing human-centered systems that can reason across spatial evidence, design objectives, constraints, uncertainty, and competing priorities; generate and compare alternative spatial interventions; and make the logic and trade-offs behind those alternatives explicit. Rather than optimizing toward a single answer, these systems can become a design and deliberation medium through which planners, designers, and communities explore possible urban futures while retaining human judgment and accountability.</p>
+        <p class="research-statement__text">This shift also creates an opportunity to rethink who participates in producing urban knowledge and making spatial decisions. By combining computational evidence with community-generated data and lived experience, I aim to develop tools that expand local communities&rsquo; capacity to represent their environments, articulate priorities, interrogate proposed interventions, and participate in evaluating alternatives. In this sense, human-centered urban AI can contribute to spatial justice not simply by producing better evidence, but by making the processes through which urban choices are formulated more transparent, contestable, and collectively shaped.</p>
+        <p class="research-statement__text">My broader goal is to establish AI as a new medium for evidence-driven urban design: connecting observation to reasoning, reasoning to spatial alternatives, and alternatives to collective action. The question guiding this agenda is therefore not simply <em>what can AI tell us about cities?</em> &mdash; but <em>how can AI and design expand who has the capacity to reason about, imagine, and shape their transformation?</em></p>
+      </div>
+      <button class="btn btn--quiet statement__more-btn" id="statementMore">Read the full statement ↓</button>
       <a class="research-statement__cta" href="#publications">See the work behind it →</a>
     </div>
 
@@ -2784,6 +2830,11 @@ document.querySelectorAll('.timeline-dot--pub[data-pub-href]').forEach(dot => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // about "my story" expand
+document.getElementById('statementMore')?.addEventListener('click', (e) => {
+  const ext = document.getElementById('statementExtended');
+  ext.classList.toggle('is-open');
+  e.target.textContent = ext.classList.contains('is-open') ? 'Show less ↑' : 'Read the full statement ↓';
+});
 document.getElementById('aboutMore').addEventListener('click', (e) => {
   const ext = document.getElementById('aboutExtended');
   ext.classList.toggle('is-open');
@@ -3097,10 +3148,11 @@ document.querySelectorAll('.filter').forEach(btn => {
 
   const hoverSelector = 'a, button, .reel-thumb, .timeline-dot, [role="button"], input, textarea';
   document.addEventListener('mouseover', (e) => {
-    if (e.target.closest(hoverSelector)) ring.classList.add('is-hover');
+    if (e.target.closest('.pub-dot, .thread-node, .node')) { ring.classList.add('is-precise'); ring.classList.remove('is-hover'); }
+      else if (e.target.closest(hoverSelector)) ring.classList.add('is-hover');
   });
   document.addEventListener('mouseout', (e) => {
-    if (e.target.closest(hoverSelector)) ring.classList.remove('is-hover');
+    if (e.target.closest(hoverSelector)) ring.classList.remove('is-hover'); ring.classList.remove('is-precise');
   });
 
   document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
