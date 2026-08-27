@@ -1579,15 +1579,22 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   filter:grayscale(65%) brightness(.9); transition:filter .5s ease;
 }
 .speak.is-active .speak__photo{filter:grayscale(0%) brightness(1);}
-/* talk senza foto: stessa impronta, campitura invece dell'immagine */
-.speak__photo--none{
-  background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 10px, transparent 10px, transparent 20px);
-  filter:none; display:flex; align-items:flex-end; padding:14px;
+/* i talk senza foto non occupano una scheda vuota: proseguono sotto,
+   su una riga sola, con gli stessi campi del binario. */
+.other-talks{
+  margin-top:30px;
+  font-size:13px; line-height:2.05; color:var(--soft-on-navy);
 }
-.speak__notag{
-  font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--soft-on-navy); opacity:.55;
+.other-talks__label{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--accent-on-navy); margin-right:14px;
 }
+.other-talk:not(:last-child)::after{content:"\00b7"; padding:0 9px; color:var(--line-on-navy);}
+.other-talk__year{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
+  color:var(--teal-on-navy); margin-right:5px;
+}
+@media (max-width:760px){ .other-talks{margin-top:24px; line-height:1.95;} }
 .speak__caption{padding-top:14px; border-top:1px solid var(--line-on-navy);}
 .speak__year{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; color:var(--teal-on-navy);}
 .speak__event{margin-top:5px; font-size:14.5px; line-height:1.4; color:var(--paper-on-navy);}
@@ -2690,14 +2697,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         </figcaption>
       </figure>
       <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2026</div>
-          <div class="speak__event">IEEE World Technology Summit on Digital Twins — Rabat</div>
-          
-        </figcaption>
-      </figure>
-      <figure class="speak">
         <div class="speak__photo" style="background-image:url('images/img-52.jpg');" role="img" aria-label="Martina Mazzarello on stage, Prague City Data Congress"></div>
         <figcaption class="speak__caption">
           <div class="speak__year">2025</div>
@@ -2761,61 +2760,23 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           
         </figcaption>
       </figure>
-      <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2024</div>
-          <div class="speak__event">World Police Summit — Dubai</div>
-          <div class="speak__topic">Sustainable cooling and data-driven solutions for cities</div>
-        </figcaption>
-      </figure>
-      <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2024</div>
-          <div class="speak__event">EmTech Europe — Athens</div>
-          <div class="speak__topic">Smart Cities, Smarter Environment</div>
-        </figcaption>
-      </figure>
-      <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2023</div>
-          <div class="speak__event">MIT Forum of Future Cities — Boston</div>
-          <div class="speak__topic">Panel Firestarter on Energy</div>
-        </figcaption>
-      </figure>
-      <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2023</div>
-          <div class="speak__event">Foodture — Barcelona</div>
-          <div class="speak__topic">Circular Design and Waste Transformation</div>
-        </figcaption>
-      </figure>
-      <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2023</div>
-          <div class="speak__event">BARI Conference — Boston</div>
-          <div class="speak__topic">Community-Driven Planning &amp; Data</div>
-        </figcaption>
-      </figure>
-      <figure class="speak">
-        <div class="speak__photo speak__photo--none" aria-hidden="true"><span class="speak__notag">No photo</span></div>
-        <figcaption class="speak__caption">
-          <div class="speak__year">2023</div>
-          <div class="speak__event">Northeastern University — London</div>
-          <div class="speak__topic">Data Ethics and Urban Trust</div>
-        </figcaption>
-      </figure>
     </div>
     </div>
     <div class="exhibit-nav">
-      <div class="exhibit-nav__count"><strong id="speakCount">01</strong> / 16</div>
+      <div class="exhibit-nav__count"><strong id="speakCount">01</strong> / 09</div>
       <div class="exhibit-track"><div class="exhibit-track__fill" id="speakTrackFill"></div></div>
       <button type="button" id="speakPrev" class="exhibit-arrow" aria-label="Scroll left">Prev</button>
       <button type="button" id="speakNext" class="exhibit-arrow" aria-label="Scroll right">Next</button>
+    </div>
+    <div class="other-talks reveal">
+      <span class="other-talks__label">Other talks</span>
+      <span class="other-talk"><span class="other-talk__year">2026</span> IEEE World Technology Summit on Digital Twins &mdash; Rabat</span>
+      <span class="other-talk"><span class="other-talk__year">2024</span> World Police Summit &mdash; Dubai</span>
+      <span class="other-talk"><span class="other-talk__year">2024</span> EmTech Europe &mdash; Athens</span>
+      <span class="other-talk"><span class="other-talk__year">2023</span> MIT Forum of Future Cities &mdash; Boston</span>
+      <span class="other-talk"><span class="other-talk__year">2023</span> Foodture &mdash; Barcelona</span>
+      <span class="other-talk"><span class="other-talk__year">2023</span> BARI Conference &mdash; Boston</span>
+      <span class="other-talk"><span class="other-talk__year">2023</span> Northeastern University &mdash; London</span>
     </div>
 
     
