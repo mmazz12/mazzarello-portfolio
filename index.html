@@ -206,9 +206,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    sfocatura, cosi la foto passa attraverso e il testo resta leggibile.
    Il fondo pieno torna solo da scrollata in poi. */
 .nav.is-dark:not(.is-scrolled){
-  background:rgba(11,16,13,0.20);
-  -webkit-backdrop-filter:blur(16px) saturate(150%);
-  backdrop-filter:blur(16px) saturate(150%);
+  background:rgba(11,16,13,0.08);
+  -webkit-backdrop-filter:blur(8px) saturate(125%);
+  backdrop-filter:blur(8px) saturate(125%);
 }
 /* anche da scrollata la barra resta vetro, non un pannello pieno:
    su desktop le versioni traslucide vivevano solo nella media query
@@ -1064,17 +1064,21 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    con i progetti, che restano i punti principali. */
 .pub-dot{
   position:absolute; left:var(--nx); top:var(--ny); transform:translate(-50%,-50%);
-  width:5px; height:5px; border-radius:50%; z-index:1;
-  background:var(--dot-color,var(--ink-faint)); opacity:.34;
-  transition:opacity .2s ease, transform .2s ease;
+  width:6px; height:6px; border-radius:50%; z-index:1; cursor:pointer;
+  background:var(--dot-color,var(--ink-faint));
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-.pub-dot:hover, .pub-dot:focus-visible{opacity:.95; transform:translate(-50%,-50%) scale(1.8); outline:none;}
+.pub-dot:hover, .pub-dot:focus-visible{
+  transform:translate(-50%,-50%) scale(1.7);
+  box-shadow:0 0 0 4px rgba(134,184,214,.38);
+  outline:none;
+}
 .pub-dot[data-thread="behavior"]{--dot-color:var(--thread-behavior);}
 .pub-dot[data-thread="climate"]{--dot-color:var(--thread-climate);}
 .pub-dot[data-thread="data"]{--dot-color:var(--thread-data);}
 .pub-dot[data-thread="ai"]{--dot-color:var(--thread-ai);}
 .pub-dot[data-thread="design"]{--dot-color:var(--thread-design);}
-.pub.is-flash{background:var(--fluo-soft);}
+.pub.is-flash{background:rgba(134,184,214,0.26); transition:background .3s ease;}
 .threads-viz__final{
   position:absolute; left:var(--nx); top:var(--ny); transform:translate(-50%,-50%);
   width:14px; height:14px; border-radius:50%; background:var(--fluo);
@@ -1098,6 +1102,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    in cima: senza questo finirebbero sotto la barra fissa del menu */
 #where-this-leads, #publications{scroll-margin-top:100px;}
 
+.viz-legend{
+  display:flex; justify-content:center; flex-wrap:wrap; gap:10px 30px; margin-top:24px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--ink-faint);
+}
+.viz-legend__item{display:inline-flex; align-items:center; gap:9px;}
+.viz-legend__dot{border-radius:50%; background:var(--ink-soft); flex:none;}
+.viz-legend__dot--project{width:9px; height:9px;}
+.viz-legend__dot--pub{width:6px; height:6px;}
 .threads-viz__culmination{
   margin-top:56px; text-align:center; font-family:var(--display); font-size:clamp(20px,2.4vw,28px);
   font-weight:600; color:var(--ink); line-height:1.4;
@@ -2343,7 +2355,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         </div>
         <p class="threads-viz__scroll-hint">← Swipe to see the full trajectory →</p>
 
-        <p class="threads-viz__culmination">Making cities observable <span class="threads-viz__arrow">→</span> understanding urban experience <span class="threads-viz__arrow">→</span> helping cities act.</p>
+        <div class="viz-legend reveal">
+      <span class="viz-legend__item"><span class="viz-legend__dot viz-legend__dot--project"></span>Projects &mdash; open the card</span>
+      <span class="viz-legend__item"><span class="viz-legend__dot viz-legend__dot--pub"></span>Publications &mdash; jump to the paper</span>
+    </div>
+    <p class="threads-viz__culmination">Making cities observable <span class="threads-viz__arrow">→</span> understanding urban experience <span class="threads-viz__arrow">→</span> helping cities act.</p>
       </div>
     </div>
 
