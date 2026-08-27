@@ -1004,7 +1004,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
 .threads-viz{margin-top:46px;}
 .threads-viz__phases{display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; padding-bottom:8px;}
-.threads-viz__phase-num{font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint);}
+/* su mobile le tre fasi sono impilate e solo .is-active e visibile: il
+   numero dice a che punto sei mentre scorri, quindi e un'affordance,
+   non decorazione. Resta arancione. */
+.threads-viz__phase-num{font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--fluo);}
 .threads-viz__phase-title{margin-top:6px; font-family:var(--display); font-size:clamp(15px,1.5vw,18px); font-weight:600; color:var(--ink); line-height:1.3;}
 .threads-viz__phase{text-align:center; padding:0 16px;}
 .threads-viz__phase-q{margin:8px auto 0; font-size:12.5px; line-height:1.55; color:var(--ink-faint); max-width:32ch;}
@@ -1130,7 +1133,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   margin-top:56px; text-align:center; font-family:var(--display); font-size:clamp(20px,2.4vw,28px);
   font-weight:600; color:var(--ink); line-height:1.4;
 }
-.threads-viz__arrow{color:#EE4310; padding:0 4px;}
+.threads-viz__arrow{color:var(--fluo); padding:0 4px;}
 
 @media (max-width:900px){
   .threads-viz__phases{grid-template-columns:1fr; gap:20px;}
@@ -1577,14 +1580,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .nav__link-text{background-image:none;}
 .nav__links a:hover .nav__link-text{background-size:0 1px;}
 
-/* l'arancione come TESTO su carta chiara sta a 2.94:1. Dove sono parole
-   scende a #C63308 (4.79:1); dove sono forme — frecce, puntini, bordi —
-   resta #FF4D14, che li la soglia non si applica. */
+/* arancione pieno anche dove e testo: scelta voluta. Su carta chiara sta
+   a 2.94:1, sotto la soglia WCAG di 4.5:1 per il corpo piccolo. */
 .stat__label,
 .btn--quiet.about__more-btn,
 .btn--quiet.statement__more-btn,
 .work-trajectory-link,
-.research-statement__cta{color:#C63308;}
+.research-statement__cta{color:var(--fluo);}
 
 /* ------------------------------------------------------------
    GALLERIA TALK — su desktop la griglia reagisce al puntatore:
