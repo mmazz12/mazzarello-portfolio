@@ -1365,6 +1365,16 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* blocco teaching: la colonna anno ospita anche "2023 · 2024 · 2026" */
 .teaching{margin-top:58px;}
 .teaching__list .talk{grid-template-columns:150px 1fr;}
+/* talk, teaching e collage vivono ora nella sezione scura "Beyond the paper" */
+.section--dark .talks{border-top-color:var(--line-on-navy);}
+.section--dark .talk{border-bottom-color:var(--line-on-navy);}
+.section--dark .talk__year{color:var(--teal-on-navy);}
+.section--dark .talk__topic{color:var(--soft-on-navy);}
+.section--dark .speaking-collage span{color:var(--soft-on-navy); border-color:var(--line-on-navy);}
+.section--dark .speaking-dots span{background:var(--line-on-navy);}
+.beyond-label{margin-top:78px; margin-bottom:-18px;}
+.beyond-label .eyebrow{color:var(--accent-on-navy); margin-bottom:0;}
+@media (max-width:900px){ .beyond-label{margin-top:56px;} }
 @media (max-width:760px){ .teaching__list .talk{grid-template-columns:1fr;} }
 
 /* ============================================================
@@ -2370,8 +2380,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="reveal">
       <div class="eyebrow">Research → Experience</div>
       <h2 class="h2">Beyond the paper.</h2>
-      <p class="lead" style="margin-top:18px;">Turning research into exhibitions, installations, and public experiences that invite people to see, question, and engage with the work.</p>
+      <p class="lead" style="margin-top:18px;">Turning research into exhibitions, public talks, and teaching &mdash; the places where the work meets people who will never read the paper.</p>
     </div>
+    <div class="beyond-label reveal"><div class="eyebrow">Showcasing the work</div></div>
     <div class="exhibit-wall-wrap">
     <div class="exhibit-wall reveal">
       <figure class="exhibit" data-gallery>
@@ -2440,17 +2451,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     </div>
     <p class="exhibit-scroll-hint">← Swipe to explore →</p>
     </div>
-  </div>
-</section>
 
-<!-- ============================================================ 08 SPEAKING ============================================================ -->
-<section class="section" id="speaking">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">Talks and lectures</div>
-      <h2 class="h2">Ideas are meant to travel.</h2>
-      <p class="lead" style="margin-top:18px;">Talks and lectures worldwide on technology, design, data-driven urbanism, AI, sustainability, and new ways of living in cities.</p>
-    </div>
+    <div class="beyond-label reveal" id="speaking"><div class="eyebrow">Presenting the work</div></div>
     <div class="speaking-photos-wrap">
     <div class="speaking-photos reveal" id="speakingPhotos">
       <figure><img src="images/img-52.jpg" alt="Martina Mazzarello speaking on stage" loading="lazy"><figcaption>On stage</figcaption></figure>
@@ -2486,8 +2488,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="talk"><div class="talk__year">2023</div><div><div class="talk__event">Northeastern University London</div><div class="talk__topic">Data Ethics and Urban Trust</div></div></div>
     </div>
 
+    <div class="beyond-label reveal"><div class="eyebrow">Teaching</div></div>
     <div class="teaching reveal">
-      <div class="eyebrow">Teaching</div>
       <div class="talks teaching__list">
         <div class="talk">
           <div class="talk__year">2023 &middot; 2024</div>
@@ -2506,6 +2508,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     </div>
   </div>
 </section>
+
+
 
 
 
