@@ -1069,6 +1069,17 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   background:var(--dot-color,var(--ink-faint));
   transition:transform .2s ease, box-shadow .2s ease;
 }
+/* su touch non esiste l'hover: il primo tocco rivela il nome,
+   il secondo apre. Senza questo i pallini restano anonimi. */
+.dot-tip{
+  position:absolute; z-index:12; pointer-events:none;
+  transform:translate(-50%,-140%);
+  font-family:var(--mono); font-size:10.5px; line-height:1.35; letter-spacing:.02em;
+  background:var(--ink); color:var(--paper); padding:6px 9px; border-radius:3px;
+  max-width:210px; white-space:normal; text-align:center;
+  opacity:0; transition:opacity .16s ease;
+}
+.dot-tip.is-on{opacity:1;}
 .pub-dot::after{content:""; position:absolute; inset:-6px; border-radius:50%;}
 .pub-dot:hover, .pub-dot:focus-visible{
   transform:translate(-50%,-50%) scale(1.7);
@@ -1419,11 +1430,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   }
   .speaking-photos::-webkit-scrollbar{display:none;}
   .speaking-photos figure{flex:0 0 auto; width:78vw; scroll-snap-align:center;}
-  .speaking-dots{display:flex; justify-content:center; gap:7px; margin-top:14px;}
-  .speaking-dots span{width:6px; height:6px; border-radius:50%; background:var(--line); transition:background .25s ease, transform .25s ease;}
-  .speaking-dots span.is-active{background:var(--fluo); transform:scale(1.3);}
+  
+  
+  
 }
-@media (min-width:641px){ .speaking-dots{display:none;} }
 
 .talks{border-top:1px solid var(--line);}
 .talk{display:grid; grid-template-columns:120px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--line);}
@@ -1439,7 +1449,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .section--dark .talk{border-bottom-color:var(--line-on-navy);}
 .section--dark .talk__year{color:var(--teal-on-navy);}
 .section--dark .talk__topic{color:var(--soft-on-navy);}
-.section--dark .speaking-dots span{background:var(--line-on-navy);}
+
 /* i talk sono un elenco di riferimento: testo scorrevole, non righe
    marcate. Il blocco Teaching resta a righe perche apre la sezione. */
 .talks-inline{
@@ -1841,7 +1851,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="partners-grid">
       <div class="partner-group">
         <h4>Dubai / UAE</h4>
-        <ul><li>Dubai Future Foundation</li><li>Talabat</li><li>LYVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>Abu Dhabi DMT</li><li>XMap</li></ul>
+        <ul><li>Dubai Future Foundation</li><li>Abu Dhabi DMT</li><li>Talabat</li><li>LYVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>XMap</li></ul>
       </div>
       <div class="partner-group">
         <h4>Rio de Janeiro</h4>
@@ -1853,7 +1863,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
       <div class="partner-group">
         <h4>Additional collaborators</h4>
-        <ul><li>Sidara</li><li>A2A</li><li>SAMOO Architects &amp; Engineers</li><li>University of Pisa</li><li>KTH Royal Institute of Technology</li></ul>
+        <ul><li>Sidara</li><li>A2A</li><li>SAMOO Architects &amp; Engineers</li></ul>
       </div>
       </div>
 
@@ -2364,20 +2374,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="open-walks" style="--nx:83%; --ny:51.18%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
           <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open Location Reasoner"><span class="thread-node__dot"></span><span class="thread-node__label">Location Reasoner</span></button>
 
-                  <a class="pub-dot" data-thread="climate" href="#pub-01" style="--nx:79.7%; --ny:50.00%;" aria-label="Publication 1"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-03" style="--nx:4.3%; --ny:68.85%;" aria-label="Publication 3"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-06" style="--nx:9.7%; --ny:67.08%;" aria-label="Publication 6"></a>
-        <a class="pub-dot" data-thread="ai" href="#pub-08" style="--nx:85.7%; --ny:51.04%;" aria-label="Publication 8"></a>
-        <a class="pub-dot" data-thread="design" href="#pub-10" style="--nx:91.7%; --ny:51.17%;" aria-label="Publication 10"></a>
-        <a class="pub-dot" data-thread="data" href="#pub-02" style="--nx:30.7%; --ny:33.59%;" aria-label="Publication 2"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-04" style="--nx:50.3%; --ny:35.67%;" aria-label="Publication 4"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-05" style="--nx:55.7%; --ny:36.01%;" aria-label="Publication 5"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-13" style="--nx:39.7%; --ny:31.75%;" aria-label="Publication 13"></a>
-        <a class="pub-dot" data-thread="behavior" href="#pub-14" style="--nx:66.0%; --ny:40.60%;" aria-label="Publication 14"></a>
-        <a class="pub-dot" data-thread="design" href="#pub-07" style="--nx:73.7%; --ny:55.47%;" aria-label="Publication 7"></a>
-        <a class="pub-dot" data-thread="climate" href="#pub-09" style="--nx:47.7%; --ny:49.52%;" aria-label="Publication 9"></a>
-        <a class="pub-dot" data-thread="climate" href="#pub-12" style="--nx:63.7%; --ny:49.94%;" aria-label="Publication 12"></a>
-        <a class="pub-dot" data-thread="data" href="#pub-11" style="--nx:33.0%; --ny:34.19%;" aria-label="Publication 11"></a>
+                  <a class="pub-dot" data-thread="climate" href="#pub-01" data-title="Unsupervised mapping of urban tree diversity using s…" style="--nx:79.7%; --ny:50.00%;" aria-label="Unsupervised mapping of urban tree diversity using s…"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-03" data-title="Beijing's urbanization reflected in apartment layout…" style="--nx:4.3%; --ny:68.85%;" aria-label="Beijing's urbanization reflected in apartment layout…"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-06" data-title="A geography of indoors for analyzing global ways of …" style="--nx:9.7%; --ny:67.08%;" aria-label="A geography of indoors for analyzing global ways of …"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-08" data-title="Decoding human safety perception with eye-tracking s…" style="--nx:85.7%; --ny:51.04%;" aria-label="Decoding human safety perception with eye-tracking s…"></a>
+        <a class="pub-dot" data-thread="design" href="#pub-10" data-title="AI tools are rapidly changing how we imagine the urb…" style="--nx:91.7%; --ny:51.17%;" aria-label="AI tools are rapidly changing how we imagine the urb…"></a>
+        <a class="pub-dot" data-thread="data" href="#pub-02" data-title="Data Slots: trade-offs between privacy concerns and …" style="--nx:30.7%; --ny:33.59%;" aria-label="Data Slots: trade-offs between privacy concerns and …"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-04" data-title="Determinants of the localized behavior of individual…" style="--nx:50.3%; --ny:35.67%;" aria-label="Determinants of the localized behavior of individual…"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-05" data-title="Data-driven nutritional assessment of urban food lan…" style="--nx:55.7%; --ny:36.01%;" aria-label="Data-driven nutritional assessment of urban food lan…"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-13" data-title="The effect of co-location on human communication net…" style="--nx:39.7%; --ny:31.75%;" aria-label="The effect of co-location on human communication net…"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-14" data-title="Leveraging the use of digital technologies to activa…" style="--nx:66.0%; --ny:40.60%;" aria-label="Leveraging the use of digital technologies to activa…"></a>
+        <a class="pub-dot" data-thread="design" href="#pub-07" data-title="Walking smart in the heat: A dynamic shade-oriented …" style="--nx:73.7%; --ny:55.47%;" aria-label="Walking smart in the heat: A dynamic shade-oriented …"></a>
+        <a class="pub-dot" data-thread="climate" href="#pub-09" data-title="Boil water alerts and their impact on the unexcused …" style="--nx:47.7%; --ny:49.52%;" aria-label="Boil water alerts and their impact on the unexcused …"></a>
+        <a class="pub-dot" data-thread="climate" href="#pub-12" data-title="Optimization of photovoltaic provision in a three-di…" style="--nx:94.0%; --ny:50.00%;" aria-label="Optimization of photovoltaic provision in a three-di…"></a>
+        <a class="pub-dot" data-thread="data" href="#pub-11" data-title="Fostering Urban Digital Integrated System. The case …" style="--nx:33.0%; --ny:34.19%;" aria-label="Fostering Urban Digital Integrated System. The case …"></a>
         <a class="threads-viz__final" href="#where-this-leads" style="--nx:96.7%; --ny:50%;" aria-label="My next steps"><span class="threads-viz__final-label">My next steps</span></a>
         </div>
         </div>
@@ -2596,9 +2606,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <figure><img src="images/img-59.jpg" alt="CIID Bergamo — on data clouds" loading="lazy"><figcaption>CIID Bergamo — on data clouds</figcaption></figure>
       <figure><img src="images/img-63.jpg" alt="Opening of Senseable City Rio — with the mayor and municipality" loading="lazy"><figcaption>Opening of Senseable City Rio — with the mayor and municipality</figcaption></figure>
     </div>
-    <div class="speaking-dots">
-        <span class="is-active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
     </div>
     <p class="talks-inline reveal">
       <span class="talks-inline__item"><span class="talks-inline__year">2026</span> IEEE World Technology Summit on Digital Twins — Rabat</span>
@@ -2891,6 +2898,34 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
       trackFill.style.left = leftPct + '%';
     }
   }
+  // su touch: primo tocco rivela il nome, secondo tocco apre
+  (() => {
+    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const cv = document.querySelector('.threads-viz__canvas');
+    if (!cv) return;
+    const tip = document.createElement('span');
+    tip.className = 'dot-tip';
+    cv.appendChild(tip);
+    let armato = null;
+    const nascondi = () => { tip.classList.remove('is-on'); armato = null; };
+    cv.querySelectorAll('.thread-node, .pub-dot').forEach(el => {
+      el.addEventListener('click', (e) => {
+        if (armato === el) { nascondi(); return; }   // secondo tocco: lascia passare
+        e.preventDefault();
+        e.stopPropagation();
+        const nome = el.dataset.title
+          || el.querySelector('.thread-node__label')?.textContent
+          || el.getAttribute('aria-label') || '';
+        tip.textContent = nome;
+        tip.style.left = el.style.getPropertyValue('--nx');
+        tip.style.top = el.style.getPropertyValue('--ny');
+        tip.classList.add('is-on');
+        armato = el;
+      });
+    });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.thread-node, .pub-dot')) nascondi(); });
+  })();
+
   // i punti pubblicazione portano alla riga corrispondente e la evidenziano
   document.querySelectorAll('.pub-dot').forEach(d => {
     d.addEventListener('click', () => {
