@@ -3450,8 +3450,8 @@ document.querySelectorAll('.filter').forEach(btn => {
     if (b) apply(b.dataset.mode);
   });
 
-  let saved = 'photo';
-  try { saved = localStorage.getItem('hero-mode') || 'photo'; } catch (e) {}
+  let saved = 'plain';
+  try { saved = localStorage.getItem('hero-mode') || 'plain'; } catch (e) {}
   apply(saved);
 })();
 
