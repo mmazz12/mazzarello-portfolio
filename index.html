@@ -1059,6 +1059,22 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .threads-viz__canvas .thread-node:hover .thread-node__label,
 .threads-viz__canvas .thread-node:focus-visible .thread-node__label{opacity:1; transform:translateY(0);}
 
+/* pubblicazioni: punti minori, indice cliccabile verso la riga
+   corrispondente nell'elenco sotto. Sottotono per non competere
+   con i progetti, che restano i punti principali. */
+.pub-dot{
+  position:absolute; left:var(--nx); top:var(--ny); transform:translate(-50%,-50%);
+  width:5px; height:5px; border-radius:50%; z-index:1;
+  background:var(--dot-color,var(--ink-faint)); opacity:.34;
+  transition:opacity .2s ease, transform .2s ease;
+}
+.pub-dot:hover, .pub-dot:focus-visible{opacity:.95; transform:translate(-50%,-50%) scale(1.8); outline:none;}
+.pub-dot[data-thread="behavior"]{--dot-color:var(--thread-behavior);}
+.pub-dot[data-thread="climate"]{--dot-color:var(--thread-climate);}
+.pub-dot[data-thread="data"]{--dot-color:var(--thread-data);}
+.pub-dot[data-thread="ai"]{--dot-color:var(--thread-ai);}
+.pub-dot[data-thread="design"]{--dot-color:var(--thread-design);}
+.pub.is-flash{background:var(--fluo-soft);}
 .threads-viz__final{
   position:absolute; left:var(--nx); top:var(--ny); transform:translate(-50%,-50%);
   width:14px; height:14px; border-radius:50%; background:var(--fluo);
@@ -1808,7 +1824,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   <div class="wrap">
     <div class="work-head reveal">
       <div>
-        <div class="eyebrow">Selected Work</div>
+        <div class="eyebrow">Selected Projects</div>
         <h2 class="h2">Research through questions.</h2>
       </div>
       <p class="lead">A selection of projects spanning human behavior, urban health, climate, AI, and design. Each began with a question about how cities work — and developed new ways to observe urban conditions and translate them into evidence for design and planning.</p>
@@ -2248,7 +2264,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 <section class="section" id="research">
   <div class="wrap">
     <div class="research-teaser reveal">
-      <div class="eyebrow">Research Portfolio</div>
+      <div class="eyebrow">Research</div>
       <h2 class="h2">Connecting the dots.</h2>
       <p class="lead" style="margin-top:18px;">From human behavior and public space to AI, climate, and urban health — seven years of research forming an interconnected agenda around how cities can be observed, understood, and acted upon.</p>
       
@@ -2308,7 +2324,21 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="open-walks" style="--nx:83%; --ny:51.18%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
           <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open Location Reasoner"><span class="thread-node__dot"></span><span class="thread-node__label">Location Reasoner</span></button>
 
-          <a class="threads-viz__final" href="#where-this-leads" style="--nx:96.7%; --ny:50%;" aria-label="My next steps"><span class="threads-viz__final-label">My next steps</span></a>
+                  <a class="pub-dot" data-thread="ai" href="#pub-01" style="--nx:19.6%; --ny:66.22%;" aria-label="Publication 1"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-03" style="--nx:34.8%; --ny:60.05%;" aria-label="Publication 3"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-06" style="--nx:50.0%; --ny:55.98%;" aria-label="Publication 6"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-08" style="--nx:65.2%; --ny:54.03%;" aria-label="Publication 8"></a>
+        <a class="pub-dot" data-thread="ai" href="#pub-10" style="--nx:80.4%; --ny:51.20%;" aria-label="Publication 10"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-02" style="--nx:19.6%; --ny:14.04%;" aria-label="Publication 2"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-04" style="--nx:34.8%; --ny:27.07%;" aria-label="Publication 4"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-05" style="--nx:50.0%; --ny:35.65%;" aria-label="Publication 5"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-13" style="--nx:65.2%; --ny:40.04%;" aria-label="Publication 13"></a>
+        <a class="pub-dot" data-thread="behavior" href="#pub-14" style="--nx:80.4%; --ny:46.40%;" aria-label="Publication 14"></a>
+        <a class="pub-dot" data-thread="design" href="#pub-07" style="--nx:50.0%; --ny:64.34%;" aria-label="Publication 7"></a>
+        <a class="pub-dot" data-thread="climate" href="#pub-09" style="--nx:31.0%; --ny:49.52%;" aria-label="Publication 9"></a>
+        <a class="pub-dot" data-thread="climate" href="#pub-12" style="--nx:69.0%; --ny:50.00%;" aria-label="Publication 12"></a>
+        <a class="pub-dot" data-thread="data" href="#pub-11" style="--nx:50.0%; --ny:39.80%;" aria-label="Publication 11"></a>
+        <a class="threads-viz__final" href="#where-this-leads" style="--nx:96.7%; --ny:50%;" aria-label="My next steps"><span class="threads-viz__final-label">My next steps</span></a>
         </div>
         </div>
         <p class="threads-viz__scroll-hint">← Swipe to see the full trajectory →</p>
@@ -2341,33 +2371,33 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     </div>
 
     <div class="pub-list reveal" id="pub-archive">
-      <div class="pub pub--visual" data-theme="ai climate design"><div class="pub__year">2026</div><img class="pub__thumb" src="images/img-19.jpg" alt="Urban tree canopy visualization" loading="lazy"><div><div class="pub__title">Unsupervised mapping of urban tree diversity using spatially-aware visual clustering</div><div class="pub__venue">Scientific Reports · Abuhani, Seccaroni, Mazzarello, Zualkernan, Duarte, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20260228_Abuhani-etal_UnsupervisedMapping_ScientificReports.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-01" class="pub pub--visual" data-theme="ai climate design"><div class="pub__year">2026</div><img class="pub__thumb" src="images/img-19.jpg" alt="Urban tree canopy visualization" loading="lazy"><div><div class="pub__title">Unsupervised mapping of urban tree diversity using spatially-aware visual clustering</div><div class="pub__venue">Scientific Reports · Abuhani, Seccaroni, Mazzarello, Zualkernan, Duarte, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20260228_Abuhani-etal_UnsupervisedMapping_ScientificReports.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub pub--visual" data-theme="behavior data"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-20.jpg" alt="Data Slots — workshop card game, MIT Senseable City Lab" loading="lazy"><div><div class="pub__title">Data Slots: trade-offs between privacy concerns and benefits of data-driven solutions</div><div class="pub__venue">Humanities and Social Sciences Communications · Mazzarello, Duarte, Mora, Heine, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250411_Mazzarello-etal_Data_Slots_HSSC.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-02" class="pub pub--visual" data-theme="behavior data"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-20.jpg" alt="Data Slots — workshop card game, MIT Senseable City Lab" loading="lazy"><div><div class="pub__title">Data Slots: trade-offs between privacy concerns and benefits of data-driven solutions</div><div class="pub__venue">Humanities and Social Sciences Communications · Mazzarello, Duarte, Mora, Heine, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250411_Mazzarello-etal_Data_Slots_HSSC.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub pub--visual" data-theme="ai behavior data"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-21.jpg" alt="Beijing Inside Out — project visualization, MIT Senseable City Lab" loading="lazy"><div><div class="pub__title">Beijing's urbanization reflected in apartment layouts: a computer vision and isovist analysis (1970–2020)</div><div class="pub__venue">Humanities and Social Sciences Communications · Yao, Kumar, Mazzarello, Duarte, Shao, Song, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250320_Yao-etal_BeijingUrbanization_HSSC.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-03" class="pub pub--visual" data-theme="ai behavior data"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-21.jpg" alt="Beijing Inside Out — project visualization, MIT Senseable City Lab" loading="lazy"><div><div class="pub__title">Beijing's urbanization reflected in apartment layouts: a computer vision and isovist analysis (1970–2020)</div><div class="pub__venue">Humanities and Social Sciences Communications · Yao, Kumar, Mazzarello, Duarte, Shao, Song, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250320_Yao-etal_BeijingUrbanization_HSSC.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="behavior ai design"><div class="pub__year">2025</div><div><div class="pub__title">Determinants of the localized behavior of individual food delivery choices</div><div class="pub__venue">Transportation Research Part C · Su, Eshtiyagh, Santi, Hu, Duarte, Mazzarello, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250516_Su-etal_DeterminantsLocalized_TR-C.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-04" class="pub" data-theme="behavior ai design"><div class="pub__year">2025</div><div><div class="pub__title">Determinants of the localized behavior of individual food delivery choices</div><div class="pub__venue">Transportation Research Part C · Su, Eshtiyagh, Santi, Hu, Duarte, Mazzarello, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250516_Su-etal_DeterminantsLocalized_TR-C.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="behavior ai design"><div class="pub__year">2025</div><div><div class="pub__title">Data-driven nutritional assessment of urban food landscapes: insights from Boston, London, and Dubai</div><div class="pub__venue">Scientific Reports · Tufano, Duarte, Mazzarello, Eshtiyagh, Ratti, Camps</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250715_Tufano-etal_Data-driven-Nutritional_ScientificReports.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-05" class="pub" data-theme="behavior ai design"><div class="pub__year">2025</div><div><div class="pub__title">Data-driven nutritional assessment of urban food landscapes: insights from Boston, London, and Dubai</div><div class="pub__venue">Scientific Reports · Tufano, Duarte, Mazzarello, Eshtiyagh, Ratti, Camps</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250715_Tufano-etal_Data-driven-Nutritional_ScientificReports.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub pub--visual" data-theme="ai behavior"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-22.jpg" alt="Geography of Indoors global interior mosaic" loading="lazy"><div><div class="pub__title">A geography of indoors for analyzing global ways of living using computer vision</div><div class="pub__venue">Scientific Reports · Mazzarello, Klimenka, Sanatani, Eshtiyagh, Yao, Santi, Duarte, Florida, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250815_Mazzarello-etal_GeographyIndoors_ScientifcReports.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-06" class="pub pub--visual" data-theme="ai behavior"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-22.jpg" alt="Geography of Indoors global interior mosaic" loading="lazy"><div><div class="pub__title">A geography of indoors for analyzing global ways of living using computer vision</div><div class="pub__venue">Scientific Reports · Mazzarello, Klimenka, Sanatani, Eshtiyagh, Yao, Santi, Duarte, Florida, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250815_Mazzarello-etal_GeographyIndoors_ScientifcReports.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub pub--visual" data-theme="design climate ai"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-23.jpg" alt="Walking Smart shaded path visualization" loading="lazy"><div><div class="pub__title">Walking smart in the heat: A dynamic shade-oriented pathfinding approach to enhance pedestrian comfort in arid cities</div><div class="pub__venue">Computers, Environment and Urban Systems · Wen, Abuhani, Mazzarello, Duarte, Norford, Xu, Wong, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250911_Wen-etal_WalkingSmart_CEUS.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-07" class="pub pub--visual" data-theme="design climate ai"><div class="pub__year">2025</div><img class="pub__thumb" src="images/img-23.jpg" alt="Walking Smart shaded path visualization" loading="lazy"><div><div class="pub__title">Walking smart in the heat: A dynamic shade-oriented pathfinding approach to enhance pedestrian comfort in arid cities</div><div class="pub__venue">Computers, Environment and Urban Systems · Wen, Abuhani, Mazzarello, Duarte, Norford, Xu, Wong, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20250911_Wen-etal_WalkingSmart_CEUS.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="ai behavior"><div class="pub__year">2025</div><div><div class="pub__title">Decoding human safety perception with eye-tracking systems, street view images, and explainable AI</div><div class="pub__venue">Computers, Environment and Urban Systems · Kang, Chen, Liu, Sharma, Mazzarello, Mora, Duarte, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20251030_Kang-etal_SafetyEyetracking_CEUS.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-08" class="pub" data-theme="ai behavior"><div class="pub__year">2025</div><div><div class="pub__title">Decoding human safety perception with eye-tracking systems, street view images, and explainable AI</div><div class="pub__venue">Computers, Environment and Urban Systems · Kang, Chen, Liu, Sharma, Mazzarello, Mora, Duarte, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20251030_Kang-etal_SafetyEyetracking_CEUS.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub pub--visual" data-theme="climate behavior"><div class="pub__year">2023</div><img class="pub__thumb" src="images/img-04.jpg" alt="Jackson boil-water map visualization" loading="lazy"><div><div class="pub__title">Boil water alerts and their impact on the unexcused absence rate in public schools in Jackson, Mississippi</div><div class="pub__venue">Nature Water · Kim, De Vito, Duarte, Tieskens, Luna, Salazar-Miranda, Mazzarello, et al.</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/202300410_Walker-etal_BoilWater_NatureWater.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-09" class="pub pub--visual" data-theme="climate behavior"><div class="pub__year">2023</div><img class="pub__thumb" src="images/img-04.jpg" alt="Jackson boil-water map visualization" loading="lazy"><div><div class="pub__title">Boil water alerts and their impact on the unexcused absence rate in public schools in Jackson, Mississippi</div><div class="pub__venue">Nature Water · Kim, De Vito, Duarte, Tieskens, Luna, Salazar-Miranda, Mazzarello, et al.</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/202300410_Walker-etal_BoilWater_NatureWater.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="ai design"><div class="pub__year">2023</div><div><div class="pub__title">AI tools are rapidly changing how we imagine the urban environment</div><div class="pub__venue">Dezeen · Duarte, Fajardo, Mazzarello, Jang</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20230626_Duarte-etal_AItools_Dezeen.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-10" class="pub" data-theme="ai design"><div class="pub__year">2023</div><div><div class="pub__title">AI tools are rapidly changing how we imagine the urban environment</div><div class="pub__venue">Dezeen · Duarte, Fajardo, Mazzarello, Jang</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20230626_Duarte-etal_AItools_Dezeen.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="data design"><div class="pub__year">2022</div><div><div class="pub__title">Fostering Urban Digital Integrated System. The case of Carré Laval, Canada</div><div class="pub__venue">Landscape Architecture Frontiers · Mazzarello, Duarte, Mora, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220215_Mazzarello-etal_FosteringUrban_LAF.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-11" class="pub" data-theme="data design"><div class="pub__year">2022</div><div><div class="pub__title">Fostering Urban Digital Integrated System. The case of Carré Laval, Canada</div><div class="pub__venue">Landscape Architecture Frontiers · Mazzarello, Duarte, Mora, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220215_Mazzarello-etal_FosteringUrban_LAF.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="climate ai data"><div class="pub__year">2022</div><div><div class="pub__title">Optimization of photovoltaic provision in a three-dimensional city using real-time electricity demand</div><div class="pub__venue">Applied Energy · Zhu, Cheng, Santi, Chen, Zhang, Mazzarello, Wong, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220328_Zhu-etal_OptimizationPhotovoltaic_AppliedEnergy.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-12" class="pub" data-theme="climate ai data"><div class="pub__year">2022</div><div><div class="pub__title">Optimization of photovoltaic provision in a three-dimensional city using real-time electricity demand</div><div class="pub__venue">Applied Energy · Zhu, Cheng, Santi, Chen, Zhang, Mazzarello, Wong, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220328_Zhu-etal_OptimizationPhotovoltaic_AppliedEnergy.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub pub--visual" data-theme="behavior ai"><div class="pub__year">2022</div><img class="pub__thumb" src="images/img-24.jpg" alt="Proximate network visualization" loading="lazy"><div><div class="pub__title">The effect of co-location on human communication networks</div><div class="pub__venue">Nature Computational Science · Carmody, Mazzarello, Santi, Harris, Lehman, Abbiasov, Dunbar, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-13" class="pub pub--visual" data-theme="behavior ai"><div class="pub__year">2022</div><img class="pub__thumb" src="images/img-24.jpg" alt="Proximate network visualization" loading="lazy"><div><div class="pub__title">The effect of co-location on human communication networks</div><div class="pub__venue">Nature Computational Science · Carmody, Mazzarello, Santi, Harris, Lehman, Abbiasov, Dunbar, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div class="pub" data-theme="behavior data"><div class="pub__year">2020</div><div><div class="pub__title">Leveraging the use of digital technologies to activate public areas and foster creativity</div><div class="pub__venue">How Smart is your city? (Springer) · Mazzarello, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20201215_Mazzarello-Ratti_LeveragingDigital_Springer-chapter.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-14" class="pub" data-theme="behavior data"><div class="pub__year">2020</div><div><div class="pub__title">Leveraging the use of digital technologies to activate public areas and foster creativity</div><div class="pub__venue">How Smart is your city? (Springer) · Mazzarello, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20201215_Mazzarello-Ratti_LeveragingDigital_Springer-chapter.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 <div class="preprints-head reveal" style="margin-top:64px; padding-top:0;">
       <div class="eyebrow">Preprints &amp; Manuscripts</div>
       <p class="lead" style="margin-top:12px; max-width:62ch;">Selected ongoing research, including preprints and manuscripts under review or submission.</p>
@@ -2800,6 +2830,16 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
       trackFill.style.left = leftPct + '%';
     }
   }
+  // i punti pubblicazione portano alla riga corrispondente e la evidenziano
+  document.querySelectorAll('.pub-dot').forEach(d => {
+    d.addEventListener('click', () => {
+      const t = document.querySelector(d.getAttribute('href'));
+      if (!t) return;
+      document.querySelectorAll('.pub.is-flash').forEach(p => p.classList.remove('is-flash'));
+      t.classList.add('is-flash');
+      setTimeout(() => t.classList.remove('is-flash'), 1800);
+    });
+  });
   // filtri progetti: stesso vocabolario delle pubblicazioni.
   // 'thumbs' viene ricalcolata cosi il modale non naviga verso schede nascoste.
   document.querySelectorAll('[data-work-filter]').forEach(btn => {
