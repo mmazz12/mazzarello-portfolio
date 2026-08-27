@@ -1319,7 +1319,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .pub__year{font-family:var(--mono); font-size:13px; color:var(--ink-faint);}
 .pub__title{font-size:15.5px;}
 .pub__venue{font-family:var(--mono); font-size:12px; color:var(--teal); margin-top:4px;}
-.pub__link{font-family:var(--mono); font-size:12px; text-decoration:underline; text-underline-offset:3px; white-space:nowrap;}
+/* i "Read" delle pubblicazioni sono azioni: seguono l'arancione come
+   tutto il resto che si clicca. Ripetere lo stesso colore per la stessa
+   identica azione in un elenco non e dispersione, e una convenzione. */
+.pub__link{font-family:var(--mono); font-size:12px; color:var(--fluo); text-decoration:underline; text-underline-offset:3px; white-space:nowrap;}
 .pub__badge{
   display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
   color:var(--paper); background:var(--fluo); padding:3px 7px; margin-right:9px; vertical-align:middle; position:relative; top:-1px;
