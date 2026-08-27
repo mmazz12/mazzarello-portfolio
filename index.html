@@ -253,7 +253,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     color:var(--paper);
     border:1px solid rgba(255,255,255,0.14); border-radius:10px;
     padding:8px; margin:0;
-    box-shadow:0 20px 45px rgba(15,14,10,.28);
+    box-shadow:0 20px 45px rgba(16,19,23,.28);
     opacity:0; visibility:hidden; transform:translateY(-8px);
     transition:opacity .22s ease, transform .22s ease, visibility .22s;
   }
@@ -782,10 +782,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   transition:width .38s cubic-bezier(.22,.9,.32,1), transform .38s ease, box-shadow .38s ease;
 }
 .reel-thumb:hover, .reel-thumb.is-active{
-  width:min(62vw,290px); transform:translateY(-4px); box-shadow:0 16px 30px rgba(15,14,10,.18); z-index:2;
+  width:min(62vw,290px); transform:translateY(-4px); box-shadow:0 16px 30px rgba(16,19,23,.18); z-index:2;
 }
-.reel-thumb::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,14,10,.92) 0%, rgba(15,14,10,.15) 55%, rgba(15,14,10,0) 75%); pointer-events:none; transition:background .38s ease;}
-.reel-thumb:hover::after, .reel-thumb.is-active::after{background:linear-gradient(0deg, rgba(15,14,10,.94) 0%, rgba(15,14,10,.28) 50%, rgba(15,14,10,.08) 80%);}
+.reel-thumb::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(16,19,23,.92) 0%, rgba(16,19,23,.15) 55%, rgba(16,19,23,0) 75%); pointer-events:none; transition:background .38s ease;}
+.reel-thumb:hover::after, .reel-thumb.is-active::after{background:linear-gradient(0deg, rgba(16,19,23,.94) 0%, rgba(16,19,23,.28) 50%, rgba(16,19,23,.08) 80%);}
 .reel-thumb__meta{position:absolute; left:0; right:0; bottom:0; z-index:1; padding:24px; color:var(--paper-on-navy); text-align:left;}
 .reel-thumb__num{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; opacity:.75;}
 .reel-thumb__title{display:block; font-family:var(--display); font-size:22px; line-height:1.15; margin-top:8px;}
@@ -836,7 +836,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* click-to-expand side panel */
 .work-modal{position:fixed; inset:0; z-index:300; display:none;}
 .work-modal.is-open{display:block;}
-.work-modal__backdrop{position:absolute; inset:0; background:rgba(15,14,10,.72); backdrop-filter:blur(3px);}
+.work-modal__backdrop{position:absolute; inset:0; background:rgba(16,19,23,.72); backdrop-filter:blur(3px);}
 .work-modal__panel{
   position:absolute; top:0; right:0; bottom:0; width:min(680px,92vw);
   background:var(--paper); overflow-y:auto; box-shadow:-40px 0 70px rgba(0,0,0,.28);
@@ -929,7 +929,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .art-clouds{background:linear-gradient(160deg,#20242B,#121519); position:relative;}
 .art-clouds .field{position:absolute; inset:0; background-image:radial-gradient(rgba(184,180,155,0.45) 1px, transparent 1px); background-size:9px 9px; transform:skewY(-6deg) scale(1.2);}
 .card__art--photo{background-size:cover; background-position:center;}
-.card__art--photo::before{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,14,10,0.55), rgba(15,14,10,0.05) 55%);}
+.card__art--photo::before{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(16,19,23,0.55), rgba(16,19,23,0.05) 55%);}
 
 .art-octopus{background:linear-gradient(160deg,#272C35,#15181D); position:relative;}
 .art-octopus svg{position:absolute; inset:0; width:100%; height:100%;}
@@ -965,8 +965,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .book-feature__art{display:flex; justify-content:center;}
 .book-feature__cover{
   width:100%; max-width:260px; aspect-ratio:2/3; position:relative;
-  box-shadow:0 30px 60px rgba(15,14,10,.22), 0 4px 10px rgba(15,14,10,.1);
+  box-shadow:0 30px 60px rgba(16,19,23,.22), 0 4px 10px rgba(16,19,23,.1);
   background-size:cover; background-position:center; background-color:var(--paper-2);
+  /* la copertina e gia poco satura (sat 8) ma vira al caldo: tinta 95.
+     Il filtro la porta a 217, dentro la banda del sito (teal 210, navy 216),
+     salendo solo a sat 23 - meta della tinta delle foto dei talk. */
+  filter:grayscale(.75) sepia(.2) hue-rotate(174deg) saturate(1) contrast(1.03);
+  transition:filter .45s ease;
 }
 .book-feature__cover--pending{
   background:repeating-linear-gradient(135deg, var(--paper-2), var(--paper-2) 10px, var(--paper) 10px, var(--paper) 20px);
@@ -1205,11 +1210,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 }
 .timeline-dot--project{
   width:38px; height:38px; margin:-53px 0 0 -19px; border-radius:50%;
-  border:2px solid var(--paper); box-shadow:0 6px 14px rgba(15,14,10,.18);
+  border:2px solid var(--paper); box-shadow:0 6px 14px rgba(16,19,23,.18);
   z-index:2;
 }
 .timeline-dot--project:hover, .timeline-dot--project:focus-visible{
-  transform:scale(1.18); box-shadow:0 10px 22px rgba(15,14,10,.28); z-index:5; outline:none;
+  transform:scale(1.18); box-shadow:0 10px 22px rgba(16,19,23,.28); z-index:5; outline:none;
 }
 .timeline-dot--project::after{
   content:""; position:absolute; left:50%; bottom:-16px; width:1px; height:16px;
@@ -1426,7 +1431,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .speaking-photos figcaption{
   position:absolute; left:0; right:0; bottom:0; padding:18px 20px;
   font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#fff;
-  background:linear-gradient(0deg, rgba(20,19,13,0.75), transparent);
+  background:linear-gradient(0deg, rgba(16,19,23,0.78), transparent);
 }
 .speaking-photos-wrap{position:relative;}
 @media (max-width:640px){
@@ -1620,6 +1625,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .speaking-photos figure:hover img{filter:grayscale(.4) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02); transform:scale(1.06);}
   .speaking-photos figure:hover figcaption{opacity:1; transform:translateY(0);}
   .speaking-photos figure:hover figcaption::before{transform:scaleX(1);}
+  /* la copertina del libro: puntandola riaffiora quella vera */
+  .book-feature__cover:hover{filter:grayscale(.25) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02);}
   /* la stessa cosa da tastiera */
   .speaking-photos figure:focus-within{opacity:1;}
   .speaking-photos figure:focus-within img{filter:grayscale(.4) sepia(0) hue-rotate(0deg) saturate(1) contrast(1.02); transform:scale(1.06);}
@@ -1627,7 +1634,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 }
 @media (prefers-reduced-motion:reduce){
   .speaking-photos img, .speaking-photos figcaption,
-  .speaking-photos figcaption::before{transition:none;}
+  .speaking-photos figcaption::before, .book-feature__cover{transition:none;}
   .speaking-photos figure:hover img{transform:none;}
 }
 </style>
