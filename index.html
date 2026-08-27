@@ -984,9 +984,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    ============================================================ */
 :root{
   --thread-behavior:#0D453D;
-  --thread-environment:#6FA844;
+  --thread-climate:#6FA844;
+  --thread-data:#C2603A;
   --thread-ai:#9061CC;
-  --thread-decision:#2A6296;
+  --thread-design:#2A6296;
 }
 
 
@@ -1008,9 +1009,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   color:var(--dot-color,var(--ink-faint));
 }
 .thread-name[data-thread="behavior"]{--dot-color:var(--thread-behavior);}
-.thread-name[data-thread="environment"]{--dot-color:var(--thread-environment);}
+.thread-name[data-thread="climate"]{--dot-color:var(--thread-climate);}
 .thread-name[data-thread="ai"]{--dot-color:var(--thread-ai);}
-.thread-name[data-thread="decision"]{--dot-color:var(--thread-decision);}
+.thread-name[data-thread="data"]{--dot-color:var(--thread-data);}
+.thread-name[data-thread="design"]{--dot-color:var(--thread-design);}
 .threads-viz__divider{position:absolute; top:0; bottom:0; width:1px; background:var(--line); pointer-events:none;}
 .threads-viz__phase-tag{
   position:absolute; top:6px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--fluo);
@@ -1020,9 +1022,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .threads-viz__lines{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
 .thread-line{fill:none; stroke-width:2; opacity:.55; vector-effect:non-scaling-stroke;}
 .thread-line[data-thread="behavior"]{stroke:var(--thread-behavior);}
-.thread-line[data-thread="environment"]{stroke:var(--thread-environment);}
+.thread-line[data-thread="climate"]{stroke:var(--thread-climate);}
 .thread-line[data-thread="ai"]{stroke:var(--thread-ai);}
-.thread-line[data-thread="decision"]{stroke:var(--thread-decision);}
+.thread-line[data-thread="data"]{stroke:var(--thread-data);}
+.thread-line[data-thread="design"]{stroke:var(--thread-design);}
 
 .threads-viz__canvas .thread-node{
   position:absolute; left:var(--nx); top:var(--ny); transform:translate(-50%,-50%);
@@ -1038,9 +1041,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   box-shadow:0 0 0 4px var(--paper); transition:transform .2s ease;
 }
 .threads-viz__canvas .thread-node[data-thread="behavior"]{--dot-color:var(--thread-behavior);}
-.threads-viz__canvas .thread-node[data-thread="environment"]{--dot-color:var(--thread-environment);}
+.threads-viz__canvas .thread-node[data-thread="climate"]{--dot-color:var(--thread-climate);}
 .threads-viz__canvas .thread-node[data-thread="ai"]{--dot-color:var(--thread-ai);}
-.threads-viz__canvas .thread-node[data-thread="decision"]{--dot-color:var(--thread-decision);}
+.threads-viz__canvas .thread-node[data-thread="data"]{--dot-color:var(--thread-data);}
+.threads-viz__canvas .thread-node[data-thread="design"]{--dot-color:var(--thread-design);}
 .threads-viz__canvas .thread-node__label{
   white-space:nowrap; opacity:0; transform:translateY(-3px); transition:opacity .18s ease, transform .18s ease;
   background:var(--ink); color:var(--paper); padding:4px 8px;
@@ -2283,31 +2287,34 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <span class="threads-viz__phase-tag" style="left:2%;">01</span>
           <span class="threads-viz__phase-tag" style="left:34%;">02</span>
           <span class="threads-viz__phase-tag" style="left:70.5%;">03</span>
-                  <span class="thread-name" data-thread="behavior" style="top:9.5%;">Human Behavior</span>
-        <span class="thread-name" data-thread="environment" style="top:50.0%;">Environment &amp; Health</span>
+        
+        <span class="thread-name" data-thread="behavior" style="top:9.5%;">Human Behavior</span>
+        <span class="thread-name" data-thread="data" style="top:31.0%;">Urban Data &amp; Sensing</span>
+        <span class="thread-name" data-thread="climate" style="top:50.0%;">Environment &amp; Health</span>
         <span class="thread-name" data-thread="ai" style="top:69.0%;">Urban AI</span>
-        <span class="thread-name" data-thread="decision" style="top:90.5%;">Decision-Making</span>
+        <span class="thread-name" data-thread="design" style="top:90.5%;">Design &amp; Mobility</span>
         <svg class="threads-viz__lines" viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true">
             <path class="thread-line" data-thread="behavior" d="M20,40 C90.0,40 90.0,55 160,55 C390.0,55 390.0,150 620,150 C800.0,150 800.0,195 980,195 C1070.0,195 1070.0,210 1160,210"></path></path>
-            <path class="thread-line" data-thread="environment" d="M20,210 C90.0,210 90.0,208 160,208 C330.0,208 330.0,208 500,208 C550.0,208 550.0,208 600,208 C650.0,208 650.0,209 700,209 C750.0,209 750.0,210 800,210 C890.0,210 890.0,210 980,210 C1070.0,210 1070.0,210 1160,210"></path>
+            <path class="thread-line" data-thread="data" d="M20,130 C175.0,130 175.0,140 330,140 C445.0,140 445.0,165 560,165 C630.0,165 630.0,180 700,180 C840.0,180 840.0,200 980,200 C1070.0,200 1070.0,210 1160,210"/>
+        <path class="thread-line" data-thread="climate" d="M20,210 C90.0,210 90.0,208 160,208 C330.0,208 330.0,208 500,208 C550.0,208 550.0,208 600,208 C650.0,208 650.0,209 700,209 C750.0,209 750.0,210 800,210 C890.0,210 890.0,210 980,210 C1070.0,210 1070.0,210 1160,210"></path>
             <path class="thread-line" data-thread="ai" d="M20,290 C90.0,290 90.0,280 160,280 C390.0,280 390.0,235 620,235 C800.0,235 800.0,215 980,215 C1070.0,215 1070.0,210 1160,210"></path>
-            <path class="thread-line" data-thread="decision" d="M20,380 C90.0,380 90.0,360 160,360 C390.0,360 390.0,270 620,270 C830.0,270 830.0,220 1040,220 C1100.0,220 1100.0,210 1160,210"></path>
+            <path class="thread-line" data-thread="design" d="M20,380 C90.0,380 90.0,360 160,360 C390.0,360 390.0,270 620,270 C830.0,270 830.0,220 1040,220 C1100.0,220 1100.0,210 1160,210"></path>
           </svg>
 
-          <button type="button" class="thread-node timeline-dot--project" data-thread="behavior" data-name="proximate" style="--nx:37%; --ny:36.78%;" aria-label="Open Proximate"><span class="thread-node__dot"></span><span class="thread-node__label">Proximate</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="environment" data-name="jackson-boiling" style="--nx:45%; --ny:44.56%;" aria-label="Open Jackson Boiling"><span class="thread-node__dot"></span><span class="thread-node__label">Jackson Boiling</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="decision" data-name="data-slots" style="--nx:28%; --ny:59.62%;" aria-label="Open Data Slots"><span class="thread-node__dot"></span><span class="thread-node__label">Data Slots</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="indoors" style="--nx:7%; --ny:54.34%;" aria-label="Open A Geography of Indoors"><span class="thread-node__dot"></span><span class="thread-node__label">Geography of Indoors</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="behavior" data-name="proximate" style="--nx:37%; --ny:29.40%;" aria-label="Open Proximate"><span class="thread-node__dot"></span><span class="thread-node__label">Proximate</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="climate" data-name="jackson-boiling" style="--nx:45%; --ny:49.52%;" aria-label="Open Jackson Boiling"><span class="thread-node__dot"></span><span class="thread-node__label">Jackson Boiling</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="data" data-name="data-slots" style="--nx:28%; --ny:33.34%;" aria-label="Open Data Slots"><span class="thread-node__dot"></span><span class="thread-node__label">Data Slots</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="indoors" style="--nx:7%; --ny:68.06%;" aria-label="Open A Geography of Indoors"><span class="thread-node__dot"></span><span class="thread-node__label">Geography of Indoors</span></button>
 
-          <button type="button" class="thread-node timeline-dot--project" data-thread="environment" data-name="walking-smart" style="--nx:71%; --ny:53.55%;" aria-label="Open Cooling Path"><span class="thread-node__dot"></span><span class="thread-node__label">Cooling Path</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="behavior" data-name="traveling-tastes" style="--nx:53%; --ny:44.25%;" aria-label="Open Traveling Tastes"><span class="thread-node__dot"></span><span class="thread-node__label">Traveling Tastes</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="re-leaf" style="--nx:77%; --ny:50.68%;" aria-label="Open Re-Leaf"><span class="thread-node__dot"></span><span class="thread-node__label">Re-Leaf</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="environment" data-name="breathing-the-city" style="--nx:21%; --ny:32.04%;" aria-label="Open Breathing the City"><span class="thread-node__dot"></span><span class="thread-node__label">Breathing the City</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="environment" data-name="octopus" style="--nx:14%; --ny:49.52%;" aria-label="Open Octopus"><span class="thread-node__dot"></span><span class="thread-node__label">Octopus</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="environment" data-name="brisa-plus" style="--nx:61%; --ny:54.39%;" aria-label="Open Brisa+"><span class="thread-node__dot"></span><span class="thread-node__label">Brisa+</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="walking-smart" style="--nx:71%; --ny:57.10%;" aria-label="Open Cooling Path"><span class="thread-node__dot"></span><span class="thread-node__label">Cooling Path</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="behavior" data-name="traveling-tastes" style="--nx:53%; --ny:35.74%;" aria-label="Open Traveling Tastes"><span class="thread-node__dot"></span><span class="thread-node__label">Traveling Tastes</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="climate" data-name="re-leaf" style="--nx:77%; --ny:50.00%;" aria-label="Open Re-Leaf"><span class="thread-node__dot"></span><span class="thread-node__label">Re-Leaf</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="data" data-name="breathing-the-city" style="--nx:21%; --ny:33.08%;" aria-label="Open Breathing the City"><span class="thread-node__dot"></span><span class="thread-node__label">Breathing the City</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="data" data-name="octopus" style="--nx:14%; --ny:32.04%;" aria-label="Open Octopus"><span class="thread-node__dot"></span><span class="thread-node__label">Octopus</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="climate" data-name="brisa-plus" style="--nx:61%; --ny:49.81%;" aria-label="Open Brisa+"><span class="thread-node__dot"></span><span class="thread-node__label">Brisa+</span></button>
 
-          <button type="button" class="thread-node timeline-dot--project" data-thread="decision" data-name="open-walks" style="--nx:83%; --ny:51.87%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="location-reasoner" style="--nx:89%; --ny:51.39%;" aria-label="Open Location Reasoner"><span class="thread-node__dot"></span><span class="thread-node__label">Location Reasoner</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="open-walks" style="--nx:83%; --ny:51.18%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open Location Reasoner"><span class="thread-node__dot"></span><span class="thread-node__label">Location Reasoner</span></button>
 
           <a class="threads-viz__final" href="#where-this-leads" style="--nx:96.7%; --ny:50%;" aria-label="My next steps"><span class="threads-viz__final-label">My next steps</span></a>
         </div>
