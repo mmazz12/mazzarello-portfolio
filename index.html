@@ -257,6 +257,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     backdrop-filter:blur(18px) saturate(160%);
     color:var(--paper-on-navy);
   }
+@media (max-width:900px){
+  /* su schermo stretto il menu sta sopra la foto: la trasparenza
+     lo rendeva illeggibile, qui e quasi pieno */
+  .nav.is-dark{ background:rgba(11,16,13,0.95); }
+  .nav.is-scrolled{ background:rgba(238,241,234,0.96); }
+  .nav.is-dark.is-scrolled{ background:rgba(11,16,13,0.97); }
+}
 }
 
 /* ============================================================
@@ -362,15 +369,15 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   .hero{
     /* su mobile il testo occupa tutta la larghezza, quindi la figura sta
        nella fascia alta vuota: velo leggero sopra, denso sotto il titolo */
-    background-size:cover, auto 118%;
-    background-position:center, 70% 6%;
+    background-size:cover, auto 104%;
+    background-position:center, 58% 0%;
     background-image:
       linear-gradient(180deg,
-        rgba(11,16,13,0.42) 0%,
-        rgba(11,16,13,0.55) 20%,
-        rgba(11,16,13,0.88) 42%,
-        rgba(11,16,13,0.96) 62%,
-        rgba(11,16,13,0.97) 100%),
+        rgba(11,16,13,0.66) 0%,
+        rgba(11,16,13,0.74) 22%,
+        rgba(11,16,13,0.93) 44%,
+        rgba(11,16,13,0.975) 64%,
+        rgba(11,16,13,0.985) 100%),
       url('images/img-52.jpg');
   }
 }
@@ -1465,15 +1472,15 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
        rendered as part of the hero's dataviz field rather than a bolted-on menu -->
   <nav class="hero__nodes" id="heroNodes" aria-label="Section navigation">
     <svg class="hero__nodes-lines" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-      <path data-chain data-a="about" data-b="programs" d="M50,72 Q140,81 230,126"/>
-      <path data-chain data-a="programs" data-b="work" d="M230,126 Q340,80 450,78"/>
-      <path data-chain data-a="work" data-b="research" d="M450,78 Q530,95 610,144"/>
-      <path data-chain data-a="research" data-b="beyond" d="M610,144 Q700,147 790,186"/>
+      <path data-chain data-a="about" data-b="programs" d="M280,90 Q360,110 440,162"/>
+      <path data-chain data-a="programs" data-b="work" d="M440,162 Q520,116 600,102"/>
+      <path data-chain data-a="work" data-b="research" d="M600,102 Q680,125 760,180"/>
+      <path data-chain data-a="research" data-b="beyond" d="M760,180 Q850,132 940,120"/>
       <g class="pulses">
-        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="3.6s" repeatCount="indefinite" begin="0.0s" path="M50,72 Q140,81 230,126"/></ellipse>
-        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="4.1s" repeatCount="indefinite" begin="0.6s" path="M230,126 Q340,80 450,78"/></ellipse>
-        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="4.6s" repeatCount="indefinite" begin="1.2s" path="M450,78 Q530,95 610,144"/></ellipse>
-        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="5.1s" repeatCount="indefinite" begin="1.8s" path="M610,144 Q700,96 790,84"/></ellipse>
+        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="3.6s" repeatCount="indefinite" begin="0.0s" path="M280,90 Q360,110 440,162"/></ellipse>
+        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="4.1s" repeatCount="indefinite" begin="0.6s" path="M440,162 Q520,116 600,102"/></ellipse>
+        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="4.6s" repeatCount="indefinite" begin="1.2s" path="M600,102 Q680,125 760,180"/></ellipse>
+        <ellipse class="pulse" data-r="2.6" rx="2.6" ry="2.6"><animateMotion dur="5.1s" repeatCount="indefinite" begin="1.8s" path="M760,180 Q850,132 940,120"/></ellipse>
       </g>
       <g class="ambient">
         <ellipse class="ambient" cx="540" cy="60" data-r="2.2" rx="2.2" ry="2.2" style="animation-delay:0s"/><ellipse class="ambient" cx="700" cy="30" data-r="2.2" rx="2.2" ry="2.2" style="animation-delay:.4s"/>
@@ -1483,11 +1490,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <ellipse class="ambient" cx="520" cy="470" data-r="2.2" rx="2.2" ry="2.2" style="animation-delay:1.6s"/><ellipse class="ambient" cx="900" cy="230" data-r="2.2" rx="2.2" ry="2.2" style="animation-delay:.2s"/>
       </g>
     </svg>
-    <a href="#about" class="node node--left" data-node="about" style="--nx:5%; top:12%;"><span class="node__dot"></span><span class="node__label">My story<span class="node__sub">my path</span></span></a>
-    <a href="#programs" class="node node--left" data-node="programs" style="--nx:23%; top:21%;"><span class="node__dot"></span><span class="node__label">Global Programs<span class="node__sub">Dubai · Seoul · Amsterdam · Rio</span></span></a>
-    <a href="#work" class="node node--left" data-node="work" style="--nx:45%; top:13%;"><span class="node__dot"></span><span class="node__label">Projects<span class="node__sub">12 research projects</span></span></a>
-    <a href="#research" class="node node--left" data-node="research" style="--nx:61%; top:24%;"><span class="node__dot"></span><span class="node__label">Research<span class="node__sub">publications · research statement</span></span></a>
-    <a href="#exhibitions" class="node node--right" data-node="beyond" style="--nx:21%; top:31%;"><span class="node__dot"></span><span class="node__label">Beyond<span class="node__sub">exhibitions · talks · teaching</span></span></a>
+    <a href="#about" class="node node--left" data-node="about" style="--nx:28%; top:15%;"><span class="node__dot"></span><span class="node__label">My story<span class="node__sub">my path</span></span></a>
+    <a href="#programs" class="node node--left" data-node="programs" style="--nx:44%; top:27%;"><span class="node__dot"></span><span class="node__label">Global Programs<span class="node__sub">Dubai · Seoul · Amsterdam · Rio</span></span></a>
+    <a href="#work" class="node node--left" data-node="work" style="--nx:60%; top:17%;"><span class="node__dot"></span><span class="node__label">Projects<span class="node__sub">12 research projects</span></span></a>
+    <a href="#research" class="node node--left" data-node="research" style="--nx:76%; top:30%;"><span class="node__dot"></span><span class="node__label">Research<span class="node__sub">publications · research statement</span></span></a>
+    <a href="#exhibitions" class="node node--right" data-node="beyond" style="--nx:6%; top:20%;"><span class="node__dot"></span><span class="node__label">Beyond<span class="node__sub">exhibitions · talks · teaching</span></span></a>
   </nav>
   <svg class="hero__ambient-mobile" viewBox="0 0 400 780" preserveAspectRatio="none" aria-hidden="true">
     <circle r="4.5" class="pinball pinball--a">
