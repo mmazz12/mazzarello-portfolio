@@ -510,7 +510,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   border:1px solid var(--line);
   max-width:280px;
 }
-.about__portrait img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1);}
+/* il ritratto era bianco e nero puro (saturazione 0). Un velo freddo
+   leggero lo porta a tonalita 215, dentro la banda del sito (teal 210,
+   navy 216), salendo appena a saturazione 12 - come la copertina del
+   libro, che sta a 9. La luminosita non si muove: 59 -> 61. */
+.about__portrait img{width:100%; height:100%; object-fit:cover; display:block;
+  filter:grayscale(1) sepia(.16) hue-rotate(176deg) saturate(1.1) contrast(1.02);}
 .about p + p{margin-top:20px;}
 .about__body{color:var(--ink-soft); font-size:17px; line-height:1.7;}
 .about__extended{margin-top:44px; padding-top:44px; border-top:1px solid var(--line); display:none;}
