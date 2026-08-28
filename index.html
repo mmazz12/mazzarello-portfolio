@@ -1671,9 +1671,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 <nav class="nav" id="nav">
   <span class="nav__brand">
     <svg class="nav__mark" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-      <path d="M3.2 16.5 V5.1 L9 12.9 L14.8 5.1 V16.5" fill="none" stroke="currentColor"
-        stroke-width="1.85" stroke-linecap="butt" stroke-linejoin="miter"/>
-      <circle class="nav__mark-dot" cx="17.9" cy="15.3" r="1.5"/>
+      <g stroke="currentColor" stroke-width="1.6" stroke-linecap="butt">
+        <line x1="2.2" y1="12.2" x2="17.8" y2="12.2"/>
+        <line x1="7.4" y1="4.4" x2="7.4" y2="17.8"/>
+      </g>
+      <circle class="nav__mark-dot" cx="14.2" cy="12.2" r="2.05"/>
     </svg>
     <span class="nav__name">Martina Mazzarello</span>
   </span>
