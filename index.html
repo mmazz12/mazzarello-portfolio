@@ -228,8 +228,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 }
 .nav.is-dark .nav__links a:hover{color:var(--fluo);}
 .nav__brand{display:flex; align-items:center; gap:11px;}
-.nav__mark{display:grid; grid-template-columns:repeat(4,2px); grid-template-rows:repeat(4,2px); gap:1.5px; opacity:.9;}
-.nav__mark span{background:currentColor; border-radius:50%;}
+/* Il tratto eredita currentColor, quindi un solo segno serve la barra
+   chiara e quella scura. Il punto invece e mint: pieno sulle sezioni
+   scure, scurito sul chiaro dove #5DCAA5 sta a 1.9:1. */
+.nav__mark{width:21px; height:21px; flex:none; display:block; overflow:visible;}
+.nav__mark-dot{fill:#15795A;}
+.nav.is-dark .nav__mark-dot{fill:#5DCAA5;}
+.nav.is-dark.is-over-plain .nav__mark-dot{fill:#15795A;}
 .nav__name{font-family:var(--display); font-size:15px; letter-spacing:0.02em; text-transform:none; font-weight:560;}
 .nav__links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
 .nav__links a{display:flex; align-items:center; gap:9px; text-decoration:none; opacity:.86; transition:opacity .2s, color .2s;}
@@ -1665,7 +1670,13 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 <!-- ============================================================ NAV ============================================================ -->
 <nav class="nav" id="nav">
   <span class="nav__brand">
-    <span class="nav__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+    <svg class="nav__mark" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.4 17.2 V3.8 L10.2 12.6 L14.8 6.6 V17.2"/>
+        <path d="M5.2 18.5 L16.5 2.3"/>
+      </g>
+      <circle class="nav__mark-dot" cx="17.5" cy="15.4" r="1.5"/>
+    </svg>
     <span class="nav__name">Martina Mazzarello</span>
   </span>
   <ul class="nav__links">
@@ -2898,6 +2909,12 @@ function updateNavTheme(){
     return r.top <= navMid && r.bottom >= navMid;
   });
   nav.classList.toggle('is-dark', overDark);
+  // l'hero chiaro e l'unica sezione "scura" che chiede una barra chiara:
+  // la classe deve seguire lo scroll, non restare accesa per sempre
+  const hero = document.getElementById('hero');
+  const rh = hero ? hero.getBoundingClientRect() : null;
+  const sopraHero = !!rh && rh.top <= navMid && rh.bottom >= navMid;
+  nav.classList.toggle('is-over-plain', sopraHero && hero.classList.contains('is-plain'));
 }
 window.addEventListener('scroll', updateNavTheme, { passive: true });
 updateNavTheme();
@@ -3423,9 +3440,9 @@ document.querySelectorAll('.filter').forEach(btn => {
   const apply = (mode) => {
     const light = mode !== 'dark';
     hero.classList.toggle('is-plain', light);
-    // la barra sopra l'hero e sempre in modalita scura: solo la variante
-    // chiara ha bisogno di riportarla su fondo chiaro
-    if (nav) nav.classList.toggle('is-over-plain', light);
+    // il colore della barra lo decide updateNavTheme, che sa anche dove
+    // siamo nella pagina: qui basta chiedergli di rifare il conto
+    if (typeof updateNavTheme === 'function') updateNavTheme();
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
     try { localStorage.setItem('hero-mode', mode); } catch (e) {}
   };
