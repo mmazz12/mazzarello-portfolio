@@ -1750,9 +1750,6 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .closing__ctas{gap:28px;}
 .closing__cta{font-family:var(--mono); font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:#5DCAA5; text-decoration:none; border-bottom:1px solid #5DCAA5; padding-bottom:3px;}
 .closing__cta:hover{color:var(--paper-on-navy); border-color:var(--paper-on-navy);}
-/* contatti nella riga in fondo: email visibile e LinkedIn */
-.foot a{color:var(--paper-on-navy); text-decoration:none; border-bottom:1px solid var(--line-on-navy); padding-bottom:1px;}
-.foot a:hover{color:#5DCAA5; border-color:#5DCAA5;}
 /* partner a colonne bilanciate: Dubai occupa due colonne (4 + 4, allineate
    alla griglia), Rio una, e Seoul & Amsterdam sta sopra Additional nella
    quarta. Ogni colonna ha cosi quattro nomi invece di 8 / 4 / 2 / 2. */
@@ -1767,6 +1764,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   #programs .partners-grid--balanced{grid-template-columns:1fr 1fr; gap:26px 20px;}
   #programs .partner-group--wide ul{display:block; columns:2; column-gap:20px;}
   #programs .partner-group--wide li{break-inside:avoid; margin-bottom:7px;}
+}
+/* sotto i 760px la catena e in colonna: i contatti vanno sotto, non accanto */
+@media (max-width:760px){
+  .closing__row{flex-direction:column; align-items:flex-start; gap:30px;}
 }
 </style>
 </head>
@@ -3083,7 +3084,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     </circle>
   </svg>
   <div class="wrap">
-    <div class="eyebrow reveal">Get in Touch</div>
+    <div class="eyebrow reveal">Looking ahead</div>
     <h2 class="reveal">What if cities could<br>reason with us?</h2>
     <p class="lead reveal" style="margin-top:22px;">I imagine a new frontier of urban design where AI helps us see what cities often hide, reason across competing needs, and explore alternative futures, while keeping the choices about what cities should become fundamentally human.</p>
     <p class="lead closing__vision reveal">A place where urban designers, planners, computer scientists, and communities build new ways to observe, reason about, and collectively shape cities.</p>
@@ -3095,13 +3096,12 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <li class="chain__step"><span class="chain__dot"></span>Act together</li>
       </ol>
       <div class="closing__ctas">
-        <a class="closing__cta" href="#research">Explore my research</a>
-        <a class="closing__cta" href="mailto:mmazz@mit.edu">Get in touch</a>
+        <a class="closing__cta" href="mailto:mmazz@mit.edu">Email</a>
+        <a class="closing__cta" href="https://www.linkedin.com/in/martina-mazzarello/" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
     <div class="foot">
       <span>© 2026 Martina Mazzarello</span>
-      <span class="foot__contact"><a href="mailto:mmazz@mit.edu">mmazz@mit.edu</a> · <a href="https://www.linkedin.com/in/martina-mazzarello/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
       <span>Research · AI · Global Programs · Design</span>
     </div>
   </div>
