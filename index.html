@@ -2201,11 +2201,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="location-reasoner" data-theme="ai design" style="background-image:url('images/img-14.jpg');" aria-label="Open From urban data to urban decisions.">
+        <button class="reel-thumb" data-name="location-reasoner" data-theme="ai design" style="background-image:url('images/img-14.jpg');" aria-label="Open From urban data to grounded spatial reasoning.">
           <span class="reel-thumb__meta">
-            <span class="reel-thumb__num">12 / Location Reasoner</span>
-            <span class="reel-thumb__title">From urban data to urban decisions.</span>
-            <span class="reel-thumb__tags">Spatial AI · Urban Planning · Decision Support · AI Reasoning</span>
+            <span class="reel-thumb__num">12 / LocationReasoner</span>
+            <span class="reel-thumb__title">From urban data to grounded spatial reasoning.</span>
+            <span class="reel-thumb__tags">Spatial AI · LLM Agents · Constraint Reasoning</span>
           </span>
         </button>
       </div>
@@ -2461,35 +2461,40 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   </template>
 
   <template id="tmpl-location-reasoner">
-    <p class="story-slide__bridge">What if cities could reason across their data before deciding where to act?</p>
-    <div class="card__num">12 / Location Reasoner</div>
-    <h3 class="card__title">From urban data to urban decisions.</h3>
-    <div class="card__context">MIT Senseable City Lab × Abu Dhabi — ongoing</div>
-    <div class="card__tags"><span class="tag">Spatial AI</span><span class="tag">Urban Planning</span><span class="tag">Decision Support</span><span class="tag">AI Reasoning</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">3</span><span class="card__stat-label">Planning scenarios</span></div>
-      <div class="stat-item"><span class="card__stat-num">XX+</span><span class="card__stat-label">Spatial decision tasks</span></div>
-      <div class="stat-item"><span class="card__stat-num">6</span><span class="card__stat-label">Decision-making phases</span></div>
-    </div>
-    <p class="card__story">Location Reasoner explores how AI can support complex urban planning decisions by reasoning across spatial data, objectives, constraints, and competing priorities. Rather than producing a single answer, it decomposes planning questions into spatial tasks, evaluates alternatives, and makes the reasoning behind recommendations explicit.</p>
-    <p class="card__story">Grounded in real planning scenarios in Abu Dhabi, the project asks a broader question: how can AI move from describing cities to helping people reason about how they should change?</p>
-    <div class="card__insight-label">Key insight</div>
-    <p class="card__takeaway">The next frontier of urban AI is not only seeing the city — it is reasoning about what to do next.</p>
-    <div class="card__opened-label">What it opened up</div>
-    <p class="card__opened-statement">From urban evidence → to urban reasoning.</p>
-    <p class="card__opened-text">This opens the next phase of my research: designing human-centered AI systems that help planners reason across evidence, objectives, constraints, and trade-offs, while keeping planning judgment and accountability with people.</p>
+<p class="story-slide__bridge">What if cities could reason across their data before deciding where to act?</p>
+<div class="card__num">12 / LocationReasoner</div>
+<h3 class="card__title">From urban data to grounded spatial reasoning.</h3>
+<div class="card__context">MIT Senseable City Lab × Abu Dhabi — ongoing</div>
+<div class="card__tags"><span class="tag">Spatial AI</span><span class="tag">LLM Agents</span><span class="tag">Tool Use</span><span class="tag">Constraint Reasoning</span><span class="tag">Decision Support</span></div>
+<div class="card__stat card__stat--multi">
+<div class="stat-item"><span class="card__stat-num">300+</span><span class="card__stat-label">Real-world site-selection queries</span></div>
+<div class="stat-item"><span class="card__stat-num">4</span><span class="card__stat-label">LLM families evaluated</span></div>
+<div class="stat-item"><span class="card__stat-num">2</span><span class="card__stat-label">Agentic reasoning strategies</span></div>
+</div>
+<p class="card__story">LocationReasoner investigates whether LLMs and reasoning agents can solve real-world spatial decision problems involving multiple geographic, economic, infrastructural, and temporal constraints.</p>
+<p class="card__story">The project introduces a tool-grounded benchmark and sandbox environment in which models must translate natural-language planning questions into executable spatial operations: decomposing complex constraints, selecting and calling geospatial tools, applying Boolean and relational logic, and identifying feasible locations. Unlike benchmarks that depend on manual assessment, LocationReasoner generates deterministic, automatically verifiable solutions, enabling reasoning performance to be evaluated at scale.</p>
+<p class="card__story">The results expose an important limitation of current AI: more reasoning does not necessarily mean better spatial reasoning. Even OpenAI o4 fails roughly 30% of the benchmark&rsquo;s site-selection tasks, while reasoning-augmented models and agentic strategies such as ReAct and Reflexion provide limited gains, and can sometimes over-reason compared with direct code-generation approaches.</p>
+<div class="card__insight-label">Why it matters</div>
+<p class="card__opened-text">Urban planning increasingly requires reasoning across heterogeneous datasets, spatial relationships, multiple constraints, and competing objectives. LocationReasoner tests whether emerging reasoning models can reliably perform this kind of grounded, multi-step reasoning before they are incorporated into real planning workflows.</p>
+<div class="card__insight-label">Key insight</div>
+<p class="card__takeaway">The challenge is no longer simply giving AI access to urban data — it is making sure it can reason reliably across space, constraints, and competing requirements.</p>
+<div class="card__opened-label">Opened up</div>
+<p class="card__opened-statement">From urban evidence → to trustworthy urban reasoning.</p>
+<p class="card__opened-text">LocationReasoner opens the next phase of my research: developing human-centered, tool-grounded AI systems that can reason across spatial evidence, planning objectives, constraints, uncertainty, and trade-offs, while keeping judgment and accountability with planners.</p>
 
-    <div class="card__refs">
-      <div class="card__refs-label">Research foundations</div>
-      <ul class="card__refs-list">
-        <li><span class="card__refs-title">Zheng, Y. et al.</span> Spatial planning of urban communities via deep reinforcement learning. <em>Nature Computational Science</em> 3, 748–762 (2023). <a href="https://www.nature.com/articles/s43588-023-00503-5" target="_blank" rel="noopener">↗</a></li>
-        <li><span class="card__refs-title">Zheng, Y., Xu, F., Lin, Y. et al.</span> Urban planning in the era of large language models. <em>Nature Computational Science</em> 5, 727–736 (2025). <a href="https://www.nature.com/articles/s43588-025-00846-1" target="_blank" rel="noopener">↗</a></li>
-      </ul>
-    </div>
+<div class="card__refs">
+<div class="card__refs-label">Research foundations</div>
+<ul class="card__refs-list">
+<li><span class="card__refs-title">Xie, J. et al. — TravelPlanner.</span> <em>ICML</em> 2024. Establishes real-world planning as a benchmark for language agents: 1,225 planning intents in a tool-enabled sandbox, where GPT-4 achieves only 0.6% success. LocationReasoner extends this benchmark paradigm to spatially grounded site-selection reasoning and automated verification. <a href="https://arxiv.org/abs/2402.01622" target="_blank" rel="noopener">↗</a></li>
+<li><span class="card__refs-title">Manvi, R. et al. — GeoLLM.</span> <em>ICLR</em> 2024. Demonstrates that LLMs contain substantial latent geospatial knowledge and that grounding them with OpenStreetMap context can substantially improve geospatial prediction, an important precursor to tool-grounded spatial reasoning. <a href="https://arxiv.org/abs/2310.06213" target="_blank" rel="noopener">↗</a></li>
+<li><span class="card__refs-title">Zheng, Y. et al. — Urban Planning in the Era of Large Language Models.</span> <em>Nature Computational Science</em>, 2025. Frames LLMs and agents as potential collaborators in planning, capable of combining knowledge, reasoning, simulation, tool use, and natural-language interaction. <a href="https://www.nature.com/articles/s43588-025-00846-1" target="_blank" rel="noopener">↗</a></li>
+<li><span class="card__refs-title">Koda, M. et al. — LocationReasoner: Evaluating LLMs on Real-World Site Selection Reasoning.</span> arXiv, 2025 / ICLR 2026 workshop. Introduces the benchmark itself: 300+ site-selection queries, deterministic verification, tool-grounded execution, and evaluation across general and reasoning-augmented LLMs and agentic workflows. <a href="https://arxiv.org/abs/2506.13841" target="_blank" rel="noopener">↗</a></li>
+</ul>
+</div>
 
-    <div class="card__links"><span class="card__link-pending">Explore Location Reasoner — coming soon</span>
-              </div>
-  </template>
+<div class="card__links"><a href="https://arxiv.org/abs/2506.13841" target="_blank" rel="noopener">Read the paper ↗</a><span class="card__link-pending">Explore LocationReasoner — coming soon</span>
+</div>
+</template>
 
     <div class="work-modal" id="workModal" aria-hidden="true">
       <div class="work-modal__backdrop" id="workModalBackdrop"></div>
@@ -2567,7 +2572,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <button type="button" class="thread-node timeline-dot--project" data-thread="climate" data-name="brisa-plus" style="--nx:61%; --ny:49.81%;" aria-label="Open Brisa+"><span class="thread-node__dot"></span><span class="thread-node__label">Brisa+</span></button>
 
           <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="open-walks" style="--nx:83%; --ny:51.18%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open Location Reasoner"><span class="thread-node__dot"></span><span class="thread-node__label">Location Reasoner</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open LocationReasoner"><span class="thread-node__dot"></span><span class="thread-node__label">LocationReasoner</span></button>
 
                   <a class="pub-dot" data-thread="climate" href="#pub-01" data-title="Unsupervised mapping of urban tree diversity using s…" style="--nx:79.7%; --ny:50.00%;" aria-label="Unsupervised mapping of urban tree diversity using s…"></a>
         <a class="pub-dot" data-thread="ai" href="#pub-03" data-title="Beijing's urbanization reflected in apartment layout…" style="--nx:4.3%; --ny:68.85%;" aria-label="Beijing's urbanization reflected in apartment layout…"></a>
