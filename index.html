@@ -1314,6 +1314,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 }
 .pub.is-linked{background:rgba(79,110,140,0.10);}
 .pub.is-hidden{display:none;}
+.reel-item.is-hidden{display:none;}
 .pub__year{font-family:var(--mono); font-size:13px; color:var(--ink-faint);}
 .pub__title{font-size:15.5px;}
 .pub__venue{font-family:var(--mono); font-size:12px; color:var(--teal); margin-top:4px;}
@@ -2160,10 +2161,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="octopus" data-theme="climate data" style="background-image:url('images/img-09.jpg');" aria-label="Open We worked with communities to create the missing data.">
+        <button class="reel-thumb" data-name="octopus" data-theme="climate data" style="background-image:url('images/img-09.jpg');" aria-label="Open We built the missing data with favela residents.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">08 / Octopus</span>
-            <span class="reel-thumb__title">We worked with communities to create the missing data.</span>
+            <span class="reel-thumb__title">We built the missing data with favela residents.</span>
             <span class="reel-thumb__tags">Open-source Sensing · Environmental Justice · Community Research</span>
           </span>
         </button>
@@ -2258,7 +2259,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="card__stat"><span class="card__stat-num">+1–10%</span><span class="card__stat-label">Increase in unexcused school absences during boil-water alerts</span></div>
     <p class="card__story">In Jackson, Mississippi, we connected boil-water alerts with school attendance to measure how infrastructure failures propagate beyond the water system itself. Days affected by boil-water alerts were associated with a 1–10% increase in unexcused school absences, revealing how unreliable infrastructure can translate into unequal educational and everyday consequences.</p>
     <div class="card__insight-label">Key insight</div>
-    <p class="card__takeaway">Urban infrastructure is also social infrastructure.</p>
+    <p class="card__takeaway">Infrastructure failure is an environmental justice issue: when water systems break down, the costs reach classrooms.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">From urban systems → to human consequences.</p>
     <p class="card__opened-text">Measuring infrastructure revealed that urban conditions cannot be understood only through performance — their consequences are unevenly experienced across people and places.</p>
@@ -2362,7 +2363,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   <template id="tmpl-octopus">
     <p class="story-slide__bridge">What happens when the environmental data a city needs simply doesn't exist?</p>
     <div class="card__num">08 / Octopus</div>
-    <h3 class="card__title">We worked with communities to create the missing data.</h3>
+    <h3 class="card__title">We built the missing data with favela residents.</h3>
     <div class="card__context">MIT Senseable City Lab × Redes da Maré × City of Rio de Janeiro × FIRJAN × UFRJ/COPPE-LAMCE</div>
     <div class="card__tags"><span class="tag">Open-source Sensing</span><span class="tag">Environmental Justice</span><span class="tag">Community Research</span><span class="tag">Urban Health</span></div>
     <div class="card__stat card__stat--multi">
@@ -2370,11 +2371,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="stat-item"><span class="card__stat-num">4</span><span class="card__stat-label">Mobile routes across Maré</span></div>
       <div class="stat-item"><span class="card__stat-num">6 months</span><span class="card__stat-label">Of hyperlocal environmental monitoring</span></div>
     </div>
-    <p class="card__story">Conventional monitoring cannot capture street-by-street environmental conditions inside many informal settlements. In Maré, Rio de Janeiro, we developed an open-source sensing network with local communities to measure temperature, humidity, and particulate matter at the scale where people actually experience them.</p>
-    <p class="card__story">Rather than simply deploying technology, residents participated in assembling the sensors, selecting monitoring locations, defining field protocols, and operating fixed and mobile units, turning local environmental knowledge into systematic evidence.</p>
+    <p class="card__story">Conventional monitoring cannot capture street-by-street environmental conditions inside Rio&rsquo;s favelas. In Maré, one of the city&rsquo;s largest favela complexes, we developed an open-source sensing network together with residents and Redes da Maré to measure temperature, humidity, and particulate matter at the scale where people actually experience them.</p>
+    <p class="card__story">The sensors were built in a series of community workshops. Residents assembled the devices themselves, chose where to install them, defined the field protocols, and ran the fixed and mobile units across the neighborhood, turning local environmental knowledge into systematic evidence.</p>
     
     <div class="card__insight-label">Key insight</div>
-    <p class="card__takeaway">From missing data to community-produced environmental evidence.</p>
+    <p class="card__takeaway">The people most exposed can also be the ones who produce the evidence.</p>
     <div class="card__opened-label">Opened up</div>
     <p class="card__opened-statement">From using urban data → to co-producing it.</p>
     <p class="card__opened-text">When conventional datasets leave places invisible, producing evidence becomes part of the research itself, and raises questions of participation, ownership, and environmental justice.</p>
@@ -3137,6 +3138,7 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
   // and drive a thin scrub track (rather than boxed pagination) to read as native scrolling
   const allThumbs = Array.from(reel.querySelectorAll('.reel-thumb'));
   let thumbs = allThumbs;
+  let nav = allThumbs;   // la lista che Previous/Next percorrono
   let currentIndex = -1;
 
   const trackFill = document.getElementById('reelTrackFill');
@@ -3224,8 +3226,8 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
 
   function updateModalNav(){
     if (modalPrevBtn) modalPrevBtn.disabled = currentIndex <= 0;
-    if (modalNextBtn) modalNextBtn.disabled = currentIndex >= thumbs.length - 1;
-    if (counterEl) counterEl.textContent = String(currentIndex + 1).padStart(2, '0') + ' / ' + thumbs.length;
+    if (modalNextBtn) modalNextBtn.disabled = currentIndex >= nav.length - 1;
+    if (counterEl) counterEl.textContent = String(currentIndex + 1).padStart(2, '0') + ' / ' + nav.length;
   }
 
   function openProject(thumb, opts){
@@ -3242,7 +3244,10 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
       artEl.style.backgroundImage = thumb.dataset.heroImg ? `url('${thumb.dataset.heroImg}')` : thumb.style.backgroundImage;
       artEl.classList.remove('work-modal__art--pending');
     }
-    currentIndex = thumbs.indexOf(thumb);
+    // se la scheda e fuori dal filtro attivo (aperta dalla timeline o da un
+    // link delle mostre) si naviga fra tutte; altrimenti fra quelle filtrate
+    nav = thumbs.includes(thumb) ? thumbs : allThumbs;
+    currentIndex = nav.indexOf(thumb);
     updateModalNav();
     if (panelEl) panelEl.scrollTop = 0;
     lastFocused = thumb;
@@ -3253,8 +3258,8 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
   }
 
   function openProjectByIndex(i){
-    if (i < 0 || i >= thumbs.length) return;
-    openProject(thumbs[i], {focusClose:false});
+    if (i < 0 || i >= nav.length) return;
+    openProject(nav[i], {focusClose:false});
   }
 
   function closeModal(){
@@ -3281,22 +3286,20 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
   // "connecting the dots" timeline — project dots reuse the reel's thumbnails
   // and open the same side panel; publication dots just link out to the PDF
   document.querySelectorAll('.timeline-dot--project').forEach(dot => {
-    const match = thumbs.find(t => t.dataset.name === dot.dataset.name);
+    const match = allThumbs.find(t => t.dataset.name === dot.dataset.name);
     if (match && !dot.classList.contains('timeline-dot--pending')){
       dot.style.backgroundImage = match.style.backgroundImage;
     }
     dot.addEventListener('click', () => {
-      const idx = thumbs.indexOf(match);
-      if (idx !== -1) openProjectByIndex(idx);
+      if (match) openProject(match, {focusClose:false});
     });
   });
 
   // exhibit gallery "explore the project" links reuse the same reel thumbnails
   document.querySelectorAll('.exhibit__link[data-name]').forEach(link => {
     link.addEventListener('click', () => {
-      const match = thumbs.find(t => t.dataset.name === link.dataset.name);
-      const idx = thumbs.indexOf(match);
-      if (idx !== -1) openProjectByIndex(idx);
+      const match = allThumbs.find(t => t.dataset.name === link.dataset.name);
+      if (match) openProject(match, {focusClose:false});
     });
   });
 })();
@@ -3394,10 +3397,12 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
   updateExhibitNav();
 })();
 
-// publication filters
-document.querySelectorAll('.filter').forEach(btn => {
+// publication filters: solo i pulsanti con data-filter. Prima prendeva ogni
+// .filter, compresi quelli dei progetti, e filtrare i progetti svuotava
+// l'elenco delle pubblicazioni.
+document.querySelectorAll('.filter[data-filter]').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter').forEach(b => b.classList.remove('is-active'));
+    document.querySelectorAll('.filter[data-filter]').forEach(b => b.classList.remove('is-active'));
     btn.classList.add('is-active');
     const f = btn.dataset.filter;
     document.querySelectorAll('.pub').forEach(pub => {
