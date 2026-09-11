@@ -480,7 +480,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 @media (max-width:900px){ .stats{grid-template-columns:repeat(2,1fr);} }
 .stat{padding:44px 28px 0; min-width:0;}
 .stat__num.stat__num--wrap{font-size:clamp(22px,2vw,26px); white-space:normal;}
-.stat:first-child{padding-left:0;}
+/* in tre colonne aprono la riga la 1a e la 4a statistica: prima si
+   azzerava solo la 1a, e $3.7M+ restava 28px piu a destra di 7 */
+.stat:nth-child(3n+1){padding-left:0;}
 .stat__num{font-family:var(--display); font-size:clamp(32px,3.4vw,46px); font-weight:520; line-height:1; color:var(--ink-soft);}
 .stat__label{font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--fluo); margin-top:14px;}
 .stat__sub{font-size:14px; color:var(--ink-soft); margin-top:8px; line-height:1.45;}
@@ -1834,7 +1836,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="about__body" style="margin-top:28px;">
           <p>I work at the intersection of research, AI, design, and international program building.</p>
           <p>Over seven years at MIT Senseable City Lab, my role has evolved from researcher to Research Scientist and Global Labs Lead, building research programs, teams, partnerships, and international initiatives across multiple cities.</p>
-          <p>I especially enjoy the phase when research is still taking shape: working alongside municipalities, local associations, and citizens, and creating the conditions for all of them to talk to one another. A city official, a community organizer, and a data scientist rarely describe the same street in the same way &mdash; I like building the space where those perspectives meet and become a shared question.</p>
+          <p>I especially enjoy the phase when research is still taking shape: working alongside municipalities, local associations, and citizens, and creating the conditions for all of them to talk to one another. A city official, a community organizer, and a data scientist rarely describe the same street in the same way, and I like building the space where those perspectives meet and become a shared question.</p>
           <p>I am most interested in what happens when research leaves the paper: when a new way of seeing the city becomes a tool, a collaboration, an experiment, or a decision.</p>
         </div>
         <button class="btn btn--quiet about__more-btn" id="aboutMore">My path ↓</button>
@@ -1986,8 +1988,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
       <div class="lab-row__body">
         <p class="lab-row__statement">Informal settlements, researched with the people who live there.</p>
-        <p class="lab-row__text">A research program on Rio&rsquo;s informal settlements, built in direct collaboration with residents of Vidigal and Maré and local organizations such as Redes da Maré. Workshops and activities inside the communities helped us understand the urban problems residents face every day&mdash;air quality, humidity and heat, and mobility&mdash;and shaped the research around them, producing evidence where official data do not exist: LiDAR and AI 3D mapping, community-deployed environmental sensors, and mobility data.</p>
-        <p class="lab-row__footline">Vidigal &amp; Maré · community workshops · participatory research · LiDAR + AI · 6 months of community-deployed environmental monitoring</p>
+        <p class="lab-row__text">A research program on Rio&rsquo;s informal settlements, built with residents of Vidigal and Maré and with Redes da Maré. Community workshops shaped the research around the problems residents face every day: air quality, humidity and heat, and mobility.</p>
+        <p class="lab-row__footline">Vidigal &amp; Maré · community workshops · LiDAR + AI 3D mapping · community-deployed sensors · mobility data · 6 months of monitoring</p>
         <a href="https://senseablerio.mit.edu" target="_blank" rel="noopener" class="lab-row__link">Explore Rio Lab ↗</a>
       </div>
     </div>
@@ -2001,7 +2003,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
       <div class="lab-row__body">
         <p class="lab-row__statement">Understanding the social life of public space through AI.</p>
-        <p class="lab-row__text">A research program on loneliness and social mixing in a city undergoing profound demographic change. Using new tools, from visual AI to behavioral analysis, we study how urban design shapes the ways people meet, linger, and interact in public space, and which spatial elements make encounters more likely. The goal is to give future planners evidence for designing places that strengthen the possibility of social connection.</p>
+        <p class="lab-row__text">A research program on loneliness and social mixing amid profound demographic change, using new AI tools to study how urban design shapes encounters in public space and to show future planners which spatial elements help people interact.</p>
         <p class="lab-row__footline">Loneliness · social mixing · public space · visual AI · behavioral analysis · evidence for planners</p>
         <a href="https://senseableseoul.mit.edu" target="_blank" rel="noopener" class="lab-row__link">Explore Seoul Lab ↗</a>
       </div>
@@ -2263,7 +2265,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <p class="card__takeaway">Infrastructure failure is an environmental justice issue: when water systems break down, the costs reach classrooms.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">From urban systems → to human consequences.</p>
-    <p class="card__opened-text">Measuring infrastructure revealed that urban conditions cannot be understood only through performance — their consequences are unevenly experienced across people and places.</p>
+    <p class="card__opened-text">Measuring infrastructure revealed that urban conditions cannot be understood only through performance: their consequences are unevenly experienced across people and places.</p>
     <div class="card__cover"><img src="images/img-16.jpg" alt="Nature Water cover, April 2023, featuring a map visualization from the Jackson Boiling study" loading="lazy"><p class="card__cover-caption">Cover design by Martina Mazzarello, Apr 2023.</p></div>
     <div class="card__links"><a href="https://senseable.mit.edu/jacksonboiling/" target="_blank" rel="noopener">Explore more ↗</a><a href="https://senseable.mit.edu/papers/pdf/202300410_Walker-etal_BoilWater_NatureWater.pdf" target="_blank" rel="noopener">Read here ↗</a></div>
   </template>
@@ -2353,7 +2355,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <p class="card__opened-text">The project expanded the question from what cities provide to how availability, accessibility, and urban context influence everyday behavior, and ultimately health.</p>
     <div class="card__video">
       <video src="shish-taouk.mp4" poster="images/img-17.jpg" controls muted playsinline loop preload="metadata"></video>
-      <p class="card__video-caption">Shish taouk, tracked — a nutritional snapshot of one dish across the platform.</p>
+      <p class="card__video-caption">Shish taouk, tracked: a nutritional snapshot of one dish across the platform.</p>
     </div>
     <div class="card__links"><a href="https://senseable.mit.edu/traveling-tastes/" target="_blank" rel="noopener">Explore Traveling Tastes ↗</a>
               <a href="https://senseable.mit.edu/papers/pdf/20250715_Tufano-etal_Data-driven-Nutritional_ScientificReports.pdf" target="_blank" rel="noopener">Scientific Reports, 2025 ↗</a>
@@ -2478,7 +2480,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 <div class="card__insight-label">Why it matters</div>
 <p class="card__opened-text">Urban planning increasingly requires reasoning across heterogeneous datasets, spatial relationships, multiple constraints, and competing objectives. LocationReasoner tests whether emerging reasoning models can reliably perform this kind of grounded, multi-step reasoning before they are incorporated into real planning workflows.</p>
 <div class="card__insight-label">Key insight</div>
-<p class="card__takeaway">The challenge is no longer simply giving AI access to urban data — it is making sure it can reason reliably across space, constraints, and competing requirements.</p>
+<p class="card__takeaway">The challenge is no longer simply giving AI access to urban data, but making sure it can reason reliably across space, constraints, and competing requirements.</p>
 <div class="card__opened-label">Opened up</div>
 <p class="card__opened-statement">From urban evidence → to trustworthy urban reasoning.</p>
 <p class="card__opened-text">LocationReasoner opens the next phase of my research: developing human-centered, tool-grounded AI systems that can reason across spatial evidence, planning objectives, constraints, uncertainty, and trade-offs, while keeping judgment and accountability with planners.</p>
@@ -2617,7 +2619,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="statement__extended" id="statementExtended">
         <p class="research-statement__text">The next phase of this research advances urban AI from perception to reasoning. I am developing human-centered systems that can reason across spatial evidence, design objectives, constraints, uncertainty, and competing priorities; generate and compare alternative spatial interventions; and make the logic and trade-offs behind those alternatives explicit. Rather than optimizing toward a single answer, these systems can become a design and deliberation medium through which planners, designers, and communities explore possible urban futures while retaining human judgment and accountability.</p>
         <p class="research-statement__text">This shift also creates an opportunity to rethink who participates in producing urban knowledge and making spatial decisions. By combining computational evidence with community-generated data and lived experience, I aim to develop tools that expand local communities&rsquo; capacity to represent their environments, articulate priorities, interrogate proposed interventions, and participate in evaluating alternatives. In this sense, human-centered urban AI can contribute to spatial justice not simply by producing better evidence, but by making the processes through which urban choices are formulated more transparent, contestable, and collectively shaped.</p>
-        <p class="research-statement__text">My broader goal is to establish AI as a new medium for evidence-driven urban design: connecting observation to reasoning, reasoning to spatial alternatives, and alternatives to collective action. The question guiding this agenda is therefore not simply <em>what can AI tell us about cities?</em> &mdash; but <em>how can AI and design expand who has the capacity to reason about, imagine, and shape their transformation?</em></p>
+        <p class="research-statement__text">My broader goal is to establish AI as a new medium for evidence-driven urban design: connecting observation to reasoning, reasoning to spatial alternatives, and alternatives to collective action. The question guiding this agenda is therefore not simply <em>what can AI tell us about cities?</em> but <em>how can AI and design expand who has the capacity to reason about, imagine, and shape their transformation?</em></p>
       </div>
       <button class="btn btn--quiet statement__more-btn" id="statementMore">Read the full statement ↓</button>
       <a class="research-statement__cta" href="#publications">See the work behind it →</a>
