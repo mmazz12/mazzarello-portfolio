@@ -1694,6 +1694,16 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 .city-nav__item--coord{opacity:.72;}
 /* costellazione: quadrato pieno = lab tuo, quadrato vuoto = coordinato */
 .programs-node--coord .programs-node__dot{background:transparent; box-shadow:inset 0 0 0 1.5px var(--teal-on-navy);}
+
+/* catena del research statement: con le etichette nuove chiedeva 697px su
+   686 e andava a capo. Connettori da 54 a 28px per giunzione, cosi resta un
+   margine di una ventina di pixel e non va a capo per differenze di resa dei
+   font. Solo sopra i 760px: sotto la catena e in colonna e i connettori sono
+   nascosti. */
+@media (min-width:761px){
+  #where-this-leads .chain__step + .chain__step{margin-left:8px;}
+  #where-this-leads .chain__step + .chain__step::before{width:12px; margin-right:8px;}
+}
 </style>
 </head>
 <body>
@@ -2607,22 +2617,26 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="research-statement reveal" id="where-this-leads">
       <div class="eyebrow">Where this leads</div>
       <h3 class="research-statement__title">From Urban Perception to Urban Reasoning</h3>
-      <p class="research-statement__text">My research asks how AI can expand our capacity not only to observe and understand cities, but to reason about how they should change. My work has progressively moved from using computational methods to reveal spatial, environmental, and behavioral conditions that are difficult to measure, toward systems that connect this evidence to planning and design decisions.</p>
+      <p class="research-statement__text">My research develops computational methods to make urban conditions observable and turn that evidence into new forms of design and planning action. Across my work, I have used computer vision, vision-language models, urban sensing, geospatial analysis, and uncertainty-aware AI to reveal spatial, environmental, and behavioral conditions that are difficult to measure and connect them to questions of urban design.</p>
+      <p class="research-statement__text">This work provides the foundation for a new research frontier: human-centered urban AI systems that move beyond perceiving cities to reasoning about how they might change.</p>
 
-      <ol class="chain" aria-label="From observation to collective action">
-        <li class="chain__step"><span class="chain__dot"></span>Observation</li>
-        <li class="chain__step"><span class="chain__dot"></span>Reasoning</li>
-        <li class="chain__step"><span class="chain__dot"></span>Alternatives</li>
+      <ol class="chain" aria-label="From urban evidence to collective action">
+        <li class="chain__step"><span class="chain__dot"></span>Urban evidence</li>
+        <li class="chain__step"><span class="chain__dot"></span>Spatial reasoning</li>
+        <li class="chain__step"><span class="chain__dot"></span>Design alternatives</li>
         <li class="chain__step"><span class="chain__dot"></span>Collective action</li>
       </ol>
 
       <div class="statement__extended" id="statementExtended">
-        <p class="research-statement__text">The next phase of this research advances urban AI from perception to reasoning. I am developing human-centered systems that can reason across spatial evidence, design objectives, constraints, uncertainty, and competing priorities; generate and compare alternative spatial interventions; and make the logic and trade-offs behind those alternatives explicit. Rather than optimizing toward a single answer, these systems can become a design and deliberation medium through which planners, designers, and communities explore possible urban futures while retaining human judgment and accountability.</p>
-        <p class="research-statement__text">This shift also creates an opportunity to rethink who participates in producing urban knowledge and making spatial decisions. By combining computational evidence with community-generated data and lived experience, I aim to develop tools that expand local communities&rsquo; capacity to represent their environments, articulate priorities, interrogate proposed interventions, and participate in evaluating alternatives. In this sense, human-centered urban AI can contribute to spatial justice not simply by producing better evidence, but by making the processes through which urban choices are formulated more transparent, contestable, and collectively shaped.</p>
-        <p class="research-statement__text">My broader goal is to establish AI as a new medium for evidence-driven urban design: connecting observation to reasoning, reasoning to spatial alternatives, and alternatives to collective action. The question guiding this agenda is therefore not simply <em>what can AI tell us about cities?</em> but <em>how can AI and design expand who has the capacity to reason about, imagine, and shape their transformation?</em></p>
+        <p class="research-statement__text">This agenda builds on a research trajectory that has progressively expanded what computational methods can make visible and actionable about cities. My work has combined computer vision and street-level imagery to characterize urban environments; urban sensing and wearable measurements to quantify environmental exposure; geospatial analysis to connect urban form with health, accessibility, and human behavior; and, more recently, vision-language models (VLMs) and uncertainty calibration to examine whether multimodal foundation models can produce reliable evidence for planning. Across these projects, the recurring question has been not simply what AI can predict, but what forms of urban evidence can become sufficiently robust, interpretable, and actionable to inform design.</p>
+        <p class="research-statement__text">The next frontier of this work is to move urban AI from perception to reasoning. I am investigating how large language models, multimodal foundation models, and tool-augmented reasoning systems can operate across heterogeneous spatial evidence, from maps, imagery, environmental measurements, and mobility patterns to planning rules, community-generated data, and design objectives. Rather than asking AI to produce a single optimal solution, I am interested in systems that can decompose planning problems into spatial reasoning tasks, evaluate constraints and competing objectives, generate and compare alternative spatial interventions, and make uncertainty, assumptions, and trade-offs explicit.</p>
+        <p class="research-statement__text">I see this as an emerging frontier for urban design: not AI-generated design, but AI-mediated design. These systems can become a design and deliberation medium through which computational evidence, professional expertise, and situated knowledge are brought together to formulate problems, construct and interrogate alternatives, test assumptions, and explore possible urban futures. AI, in this formulation, does not replace the designer or planner; it expands the space of alternatives that people can examine and the evidence through which they can reason about them.</p>
+        <p class="research-statement__text">This shift also creates an opportunity to rethink who participates in producing urban knowledge and making spatial decisions. Building on my work with community-generated sensing and locally produced urban data, I want community knowledge and lived experience to enter the process not only after alternatives have been produced, but in defining what evidence matters, which objectives are prioritized, which constraints are considered, and how alternatives are evaluated. Human-centered urban AI can therefore contribute to spatial justice not simply by producing better evidence about communities, but by expanding communities&rsquo; capacity to represent their environments, articulate priorities, challenge assumptions, and participate in shaping the decisions that affect them.</p>
+        <p class="research-statement__text">My broader goal is to establish human-centered urban AI as a new medium for evidence-driven urban design, connecting urban evidence to spatial reasoning, reasoning to design alternatives, and alternatives to collective deliberation and action. The role of AI is not to determine what cities should become. Questions of value, justice, priority, and desirable urban futures remain fundamentally human and political. Instead, I see AI as expanding the capacity of planners, designers, and communities to understand complex evidence, make assumptions and trade-offs visible, explore alternatives, and deliberate over their consequences.</p>
+        <p class="research-statement__text">The future I am interested in is not one in which AI designs cities for people, but one in which AI expands people&rsquo;s capacity to design cities together.</p>
       </div>
       <button class="btn btn--quiet statement__more-btn" id="statementMore">Read the full statement ↓</button>
-      <a class="research-statement__cta" href="#publications">See the work behind it →</a>
+      <a class="research-statement__cta" href="#publications">Explore the research behind this agenda →</a>
     </div>
 
     <div class="pub-section-head reveal" id="publications">
