@@ -1753,6 +1753,21 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* contatti nella riga in fondo: email visibile e LinkedIn */
 .foot a{color:var(--paper-on-navy); text-decoration:none; border-bottom:1px solid var(--line-on-navy); padding-bottom:1px;}
 .foot a:hover{color:#5DCAA5; border-color:#5DCAA5;}
+/* partner a colonne bilanciate: Dubai occupa due colonne (4 + 4, allineate
+   alla griglia), Rio una, e Seoul & Amsterdam sta sopra Additional nella
+   quarta. Ogni colonna ha cosi quattro nomi invece di 8 / 4 / 2 / 2. */
+/* #programs serve a battere ".section--dark .partner-group ul{gap:7px}",
+   che azzerava lo spazio tra le due sottocolonne di Dubai */
+.partner-group--wide{grid-column:span 2;}
+#programs .partner-group--wide ul{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(4,auto); grid-auto-flow:column; gap:7px 40px;}
+.partner-stack{display:flex; flex-direction:column; gap:18px;}
+/* su telefono resta la stessa logica: Dubai 4 + 4, poi Rio accanto a
+   Seoul & Amsterdam / Additional, invece di una colonna unica lunga */
+@media (max-width:520px){
+  #programs .partners-grid--balanced{grid-template-columns:1fr 1fr; gap:26px 20px;}
+  #programs .partner-group--wide ul{display:block; columns:2; column-gap:20px;}
+  #programs .partner-group--wide li{break-inside:avoid; margin-bottom:7px;}
+}
 </style>
 </head>
 <body>
@@ -2106,8 +2121,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     
       <div class="partners reveal">
         <div class="eyebrow eyebrow--center">Partners &amp; collaborators</div>
-        <div class="partners-grid">
-      <div class="partner-group">
+        <div class="partners-grid partners-grid--balanced">
+      <div class="partner-group partner-group--wide">
         <h4>Dubai / UAE</h4>
         <ul><li>Dubai Future Foundation</li><li>Abu Dhabi DMT</li><li>Talabat</li><li>LYVE Global</li><li>Consulate General of Italy</li><li>American University of Sharjah</li><li>NYU Abu Dhabi</li><li>XMap</li></ul>
       </div>
@@ -2115,6 +2130,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <h4>Rio de Janeiro</h4>
         <ul><li>Municipality of Rio de Janeiro</li><li>Redes da Maré</li><li>Maré community</li><li>Vidigal community</li></ul>
       </div>
+      <div class="partner-stack">
       <div class="partner-group">
         <h4>Seoul &amp; Amsterdam</h4>
         <ul><li>Seoul AI Foundation</li><li>AMS Institute</li></ul>
@@ -2122,6 +2138,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="partner-group">
         <h4>Additional collaborators</h4>
         <ul><li>Sidara</li><li>Politecnico di Milano</li></ul>
+      </div>
       </div>
       </div>
 
@@ -3085,7 +3102,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="foot">
       <span>© 2026 Martina Mazzarello</span>
       <span class="foot__contact"><a href="mailto:mmazz@mit.edu">mmazz@mit.edu</a> · <a href="https://www.linkedin.com/in/martina-mazzarello/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
-      <span>Research · Technology · Global Programs · Design</span>
+      <span>Research · AI · Global Programs · Design</span>
     </div>
   </div>
 </footer>
