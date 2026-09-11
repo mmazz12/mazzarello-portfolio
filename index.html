@@ -1701,34 +1701,41 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    font. Solo sopra i 760px: sotto la catena e in colonna e i connettori sono
    nascosti. */
 @media (min-width:761px){
-  #where-this-leads .chain__step + .chain__step{margin-left:8px;}
-  #where-this-leads .chain__step + .chain__step::before{width:12px; margin-right:8px;}
+  #where-this-leads .chain__step + .chain__step,
+  #how-i-teach .chain__step + .chain__step{margin-left:8px;}
+  #where-this-leads .chain__step + .chain__step::before,
+  #how-i-teach .chain__step + .chain__step::before{width:12px; margin-right:8px;}
 }
-/* Teaching in evidenza rispetto a mostre e talk: pannello su fondo navy-2 con
-   filo menta in alto, titolo in Fraunces e righe piu grandi. La riga 2016-2019
-   si apre al click (tutta la riga) e mostra gli studi selezionati. */
-#exhibitions .teaching{margin-top:64px; background:var(--navy-2); border:1px solid var(--line-on-navy); border-top:2px solid #5DCAA5; padding:40px clamp(20px,4vw,48px) 8px;}
-.teaching__head{margin-bottom:30px;}
-.teaching__head .eyebrow{margin-bottom:16px;}
-.teaching__title{font-size:clamp(26px,2.8vw,34px); line-height:1.1; color:var(--paper-on-navy);}
-.teaching__meta{font-size:14px; color:var(--soft-on-navy); margin:10px 0 0;}
+/* Teaching: sezione propria tra Research e Beyond, impaginata come
+   "Where this leads": corsi in alto, poi "How I teach" con catena e statement
+   espandibile. Fondo chiaro, quindi il verde scuro della catena (#15795A). */
 .teaching__list .talk{padding:24px 0;}
 .teaching__list .talk:last-child{border-bottom:none;}
-.teach__role{font-size:16.5px; font-weight:500; line-height:1.4; color:var(--paper-on-navy);}
-.teach__inst{font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:#5DCAA5; margin-top:7px;}
+.teach__role{font-size:16.5px; font-weight:500; line-height:1.4; color:var(--ink);}
+.teach__inst{font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:#15795A; margin-top:7px;}
 .teaching__list .talk__topic{margin-top:9px; max-width:680px; line-height:1.55;}
 .teach--expand{cursor:pointer;}
-.teach--expand:hover .teach__role{color:#fff;}
-.teach__toggle{margin-top:14px; padding:4px 0; background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#5DCAA5;}
-.teach__toggle:hover, .teach--expand:hover .teach__toggle{color:var(--paper-on-navy);}
+.teach__toggle{margin-top:14px; padding:4px 0; background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#15795A;}
+.teach__toggle:hover, .teach--expand:hover .teach__toggle{color:var(--ink);}
 .teach__studios{list-style:none; margin:12px 0 0; padding:0; max-width:680px; cursor:default;}
-.teach__studios li{display:grid; grid-template-columns:1fr auto; gap:16px; padding:11px 0; border-top:1px solid var(--line-on-navy); font-size:14px;}
-.teach__studio{color:var(--paper-on-navy);}
-.teach__prof{color:var(--soft-on-navy); text-align:right;}
+.teach__studios li{display:grid; grid-template-columns:1fr auto; gap:16px; padding:11px 0; border-top:1px solid var(--line); font-size:14px;}
+.teach__studio{color:var(--ink);}
+.teach__prof{color:var(--ink-faint); text-align:right;}
+.statement__subhead{margin:38px 0 0; font-family:var(--display); font-size:19px; font-weight:600; line-height:1.3; color:var(--ink);}
+.statement__subhead + .research-statement__text{margin-top:10px;}
+.statement__questions{margin:18px 0 0; padding-left:18px; border-left:2px solid #15795A; font-size:16px; line-height:1.75; font-style:italic; color:var(--ink);}
 @media (max-width:760px){
   .teach__studios li{grid-template-columns:1fr; gap:2px;}
   .teach__prof{text-align:left;}
 }
+/* con la voce Teaching il menu ha 8 link: tra 901 e 1100px, a gap pieno,
+   "My story" e "Global Programs" andavano a capo. Gap ridotto solo li. */
+@media (min-width:901px) and (max-width:1100px){
+  .nav__links{gap:16px;}
+}
+/* sottotitolo di Teaching: le due istituzioni stanno su una riga, a 640px
+   "Milano" finiva da sola sulla seconda */
+#teaching .lead{max-width:none;}
 </style>
 </head>
 <body>
@@ -1750,6 +1757,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <li><a href="#programs"><span class="nav__link-mark"></span><span class="nav__link-text">Global Programs</span></a></li>
       <li><a href="#work"><span class="nav__link-mark"></span><span class="nav__link-text">Projects</span></a></li>
       <li><a href="#research"><span class="nav__link-mark"></span><span class="nav__link-text">Research</span></a></li>
+      <li><a href="#teaching"><span class="nav__link-mark"></span><span class="nav__link-text">Teaching</span></a></li>
       <li><a href="#exhibitions"><span class="nav__link-mark"></span><span class="nav__link-text">Beyond</span></a></li>
       <li><a href="#book"><span class="nav__link-mark"></span><span class="nav__link-text">Book</span></a></li>
       <li><a href="#contact"><span class="nav__link-mark"></span><span class="nav__link-text">Contact</span></a></li>
@@ -1800,7 +1808,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <a href="#programs" class="node node--left" data-node="programs" style="--nx:44%; top:27%;"><span class="node__dot"></span><span class="node__label">Global Programs<span class="node__sub">Dubai · Rio · Seoul · Amsterdam</span></span></a>
     <a href="#work" class="node node--left" data-node="work" style="--nx:60%; top:17%;"><span class="node__dot"></span><span class="node__label">Projects<span class="node__sub">12 research projects</span></span></a>
     <a href="#research" class="node node--left" data-node="research" style="--nx:76%; top:30%;"><span class="node__dot"></span><span class="node__label">Research<span class="node__sub">publications · research statement</span></span></a>
-    <a href="#exhibitions" class="node node--right" data-node="beyond" style="--nx:6%; top:20%;"><span class="node__dot"></span><span class="node__label">Beyond<span class="node__sub">teaching · exhibitions · talks</span></span></a>
+    <a href="#exhibitions" class="node node--right" data-node="beyond" style="--nx:6%; top:20%;"><span class="node__dot"></span><span class="node__label">Beyond<span class="node__sub">exhibitions · talks</span></span></a>
   </nav>
   <svg class="hero__ambient-mobile" viewBox="0 0 400 780" preserveAspectRatio="none" aria-hidden="true">
     <circle r="4.5" class="pinball pinball--a">
@@ -2734,22 +2742,15 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
 
 
-<!-- ============================================================ 06 RESEARCH → EXPERIENCE / EXHIBITIONS ============================================================ -->
-<!-- TODO: exhibit-venice.jpg carries an "andrea avezzu'" credit in its EXIF data —
-     confirm photographer credit / usage rights before this goes live publicly. -->
-<section class="section section--dark" id="exhibitions">
+<!-- ============================================================ 05b TEACHING ============================================================ -->
+<section class="section" id="teaching">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">Research → Experience</div>
-      <h2 class="h2">Beyond the paper.</h2>
-      <p class="lead" style="margin-top:18px;">Turning research into teaching, exhibitions, and public talks, where the work opens up to students, communities, and broader publics.</p>
+      <div class="eyebrow">Teaching</div>
+      <h2 class="h2">Teaching since 2016.</h2>
+      <p class="lead" style="margin-top:18px;">MIT Department of Urban Studies and Planning &middot; Politecnico di Milano</p>
     </div>
-    <div class="teaching reveal" id="teaching">
-      <div class="teaching__head">
-        <div class="eyebrow">Teaching</div>
-        <h3 class="teaching__title">Teaching since 2016.</h3>
-        <p class="teaching__meta">MIT Department of Urban Studies and Planning &middot; Politecnico di Milano</p>
-      </div>
+    <div class="teaching reveal">
       <div class="talks teaching__list">
         <div class="talk teach">
           <div class="talk__year">2023 &middot; 2024 &middot; 2026</div>
@@ -2785,6 +2786,64 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
     </div>
 
+    <div class="research-statement reveal" id="how-i-teach">
+      <div class="eyebrow">How I teach</div>
+      <h3 class="research-statement__title">Teaching Cities as a Way of Seeing, Reasoning, and Designing</h3>
+      <p class="research-statement__text">I teach urban design as both a way of understanding cities and a practice for imagining how they might change. Students need to learn how to observe places closely, read spatial and social conditions, represent complexity, formulate design questions, and develop alternatives through iteration and critique.</p>
+      <p class="research-statement__text">My teaching brings these foundational practices into conversation with emerging computational methods. Urban data, sensing, computer vision, and AI can expand what students are able to observe and reason about, but they should strengthen, rather than replace, field observation, design judgment, creativity, and engagement with people.</p>
+
+      <ol class="chain" aria-label="From observation to deliberation">
+        <li class="chain__step"><span class="chain__dot"></span>Observe</li>
+        <li class="chain__step"><span class="chain__dot"></span>Interpret</li>
+        <li class="chain__step"><span class="chain__dot"></span>Design</li>
+        <li class="chain__step"><span class="chain__dot"></span>Deliberate</li>
+      </ol>
+
+      <div class="statement__extended" id="teachStatementExtended">
+        <p class="research-statement__text">I approach teaching urban design as both a discipline of spatial inquiry and a practice of collective transformation. Before students can intervene in a city, they need to learn how to see it: to observe how space is used, read relationships among buildings, public space, infrastructure, landscape, and everyday life, and understand how environmental and social conditions are expressed spatially. Drawing, mapping, field observation, precedent analysis, and spatial representation are therefore not simply techniques to master; they are ways of asking questions about cities.</p>
+        <h4 class="statement__subhead">Learning through making</h4>
+        <p class="research-statement__text">I believe that urban design is learned through iteration, experimentation, and critique. The studio is particularly important because students move repeatedly between observation and proposition: documenting existing conditions, framing a problem, constructing alternatives, testing them, receiving critique, and returning to the design.</p>
+        <p class="research-statement__text">My role as an educator is not to direct students toward a predetermined solution, but to help them develop the ability to formulate stronger questions, make spatial arguments, explain their choices, and understand the consequences of different design decisions. Critique becomes a form of reasoning rather than simply evaluation.</p>
+        <p class="research-statement__text">This philosophy has developed through teaching across design studios, seminars, and computational urban-design courses. Working with students from different design disciplines has reinforced my belief that the most productive learning environments combine rigorous analysis with experimentation and allow different forms of knowledge to challenge one another.</p>
+        <h4 class="statement__subhead">Expanding the instruments of urban design</h4>
+        <p class="research-statement__text">The instruments available to designers are changing. Alongside drawings, models, maps, fieldwork, and interviews, students can now work with urban sensing, geospatial data, computer vision, vision-language models, and increasingly capable AI reasoning systems.</p>
+        <p class="research-statement__text">I see these methods as an expansion of the urban designer&rsquo;s toolkit rather than a replacement for established forms of design knowledge.</p>
+        <p class="research-statement__text">Students should understand enough about these technologies to use them creatively, but also enough to question their assumptions, uncertainty, biases, and limitations. A model may identify patterns invisible to individual observation or reason across thousands of spatial relationships, but it cannot determine what constitutes a desirable neighborhood, whose experience should matter most, or which trade-offs a community should accept.</p>
+        <p class="research-statement__text">For this reason, I see AI literacy increasingly becoming part of urban design literacy.</p>
+        <h4 class="statement__subhead">From analyzing cities to constructing alternatives</h4>
+        <p class="research-statement__text">The pedagogical opportunity I find most exciting is to move beyond using computation only to analyze existing conditions.</p>
+        <p class="research-statement__text">I want students to explore how evidence can become part of the design process itself: how environmental measurements, spatial data, imagery, mobility patterns, planning rules, and qualitative observations can be brought together to formulate problems and construct alternative interventions.</p>
+        <p class="research-statement__text">AI can make it possible to reason across these heterogeneous forms of evidence, expose conflicts among objectives, test assumptions, and compare alternatives. The objective, however, is not to ask a model to produce the &ldquo;best&rdquo; design. It is to create a richer environment in which students can ask:</p>
+        <p class="statement__questions">What changes if we optimize for shade rather than speed? Accessibility rather than capacity? One population rather than another? What assumptions produced this alternative? Who benefits, who does not, and what evidence is missing?</p>
+        <p class="research-statement__text">In this sense, I am interested not in AI-generated urban design, but AI-mediated urban design: using computation to expand the space of possibilities that designers can construct, interrogate, and debate.</p>
+        <h4 class="statement__subhead">Designing with, rather than only for, people</h4>
+        <p class="research-statement__text">This also changes how I think about participation in design education.</p>
+        <p class="research-statement__text">Community engagement should not happen only after students have produced proposals. Situated and community knowledge can enter much earlier in the process: determining what should be observed, revealing conditions that conventional datasets overlook, defining priorities and constraints, and evaluating the consequences of different alternatives.</p>
+        <p class="research-statement__text">Students can therefore learn to work across multiple forms of evidence, from quantitative urban data to lived experience, without assuming that one is inherently more authoritative than another.</p>
+        <p class="research-statement__text">This is especially important as AI becomes part of planning and design. Students should learn that questions of value, justice, priority, and desirable urban futures cannot be delegated to an algorithm. Technology can help make alternatives and their consequences more legible; choosing among them remains a human and collective responsibility.</p>
+        <h4 class="statement__subhead">The designer I want to educate</h4>
+        <p class="research-statement__text">Ultimately, I want students to leave my classroom able to move comfortably between observation and imagination, evidence and design, computation and human experience.</p>
+        <p class="research-statement__text">They should be able to walk through a neighborhood and notice what a dataset misses; examine a dataset and discover what individual observation cannot reveal; use computational tools to explore possibilities beyond what they could generate alone; and then have the critical judgment to question those possibilities.</p>
+        <p class="research-statement__text">The goal is therefore not to train students simply to use the newest tools. Tools will change. The more durable skill is learning how to formulate questions, construct evidence, reason through alternatives, make spatial arguments, and engage others in deciding what should happen next.</p>
+        <p class="research-statement__text">I want to educate designers who can use new forms of intelligence without surrendering their own, and who understand urban design as a process of seeing more clearly, imagining alternatives, and enabling people to shape cities together.</p>
+      </div>
+      <button class="btn btn--quiet statement__more-btn" id="teachStatementMore" aria-expanded="false" aria-controls="teachStatementExtended">Read the full statement ↓</button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================ 06 RESEARCH → EXPERIENCE / EXHIBITIONS ============================================================ -->
+<!-- TODO: exhibit-venice.jpg carries an "andrea avezzu'" credit in its EXIF data —
+     confirm photographer credit / usage rights before this goes live publicly. -->
+<section class="section section--dark" id="exhibitions">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Research → Experience</div>
+      <h2 class="h2">Beyond the paper.</h2>
+      <p class="lead" style="margin-top:18px;">Turning research into exhibitions and public talks, where the work opens up to communities and broader publics.</p>
+    </div>
     <div class="beyond-label reveal"><div class="eyebrow">Showcasing the work</div></div>
     <div class="exhibit-wall-wrap">
     <div class="exhibit-wall reveal">
@@ -3167,6 +3226,12 @@ document.getElementById('statementMore')?.addEventListener('click', (e) => {
   const ext = document.getElementById('statementExtended');
   ext.classList.toggle('is-open');
   e.target.textContent = ext.classList.contains('is-open') ? 'Show less ↑' : 'Read the full statement ↓';
+});
+document.getElementById('teachStatementMore')?.addEventListener('click', (e) => {
+  const ext = document.getElementById('teachStatementExtended');
+  const open = ext.classList.toggle('is-open');
+  e.target.setAttribute('aria-expanded', String(open));
+  e.target.textContent = open ? 'Show less ↑' : 'Read the full statement ↓';
 });
 document.getElementById('aboutMore').addEventListener('click', (e) => {
   const ext = document.getElementById('aboutExtended');
