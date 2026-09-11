@@ -1667,6 +1667,30 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* sopra l'hero il JS mette la barra in modalita scura: qui va rimessa chiara */
 .nav.is-dark.is-over-plain{background:rgba(236,240,244,0.30); color:#20242A;}
 .nav.is-dark.is-over-plain.is-scrolled{background:rgba(236,240,244,0.55); color:#20242A;}
+
+/* ------------------------------------------------------------
+   GLOBAL PROGRAMS — due gruppi. Prima i lab costruiti e guidati
+   dall'inizio, poi coordinamento e collaborazioni. L'etichetta del
+   primo gruppo e mint (struttura, cio che e tuo), quella del secondo
+   neutra; nel secondo gruppo anche i numeri perdono il mint.
+   ------------------------------------------------------------ */
+.lab-group{
+  margin-top:64px; padding-top:22px; border-top:1px solid var(--line-on-navy);
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 18px;
+}
+.city-nav-wrap + .lab-group{margin-top:12px; padding-top:10px; border-top:none;}
+.lab-group__label{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#5DCAA5;}
+.lab-group--secondary .lab-group__label{color:var(--soft-on-navy);}
+.lab-group__note{font-size:13px; color:var(--ink-faint);}
+/* la regola .city-nav-wrap + .lab-row non vale piu: ora a precedere il
+   primo lab di ogni gruppo e l'intestazione */
+.lab-group + .lab-row{border-top:none;}
+.lab-group--secondary ~ .lab-row .lab-row__city{font-size:clamp(19px,1.8vw,23px);}
+.lab-group--secondary ~ .lab-row .lab-row__mini-num{color:var(--paper-on-navy);}
+.city-nav__sep{width:1px; align-self:stretch; background:var(--line-on-navy); margin:3px 6px;}
+.city-nav__item--coord{opacity:.72;}
+/* costellazione: quadrato pieno = lab tuo, quadrato vuoto = coordinato */
+.programs-node--coord .programs-node__dot{background:transparent; box-shadow:inset 0 0 0 1.5px var(--teal-on-navy);}
 </style>
 </head>
 <body>
@@ -1735,7 +1759,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </g>
     </svg>
     <a href="#about" class="node node--left" data-node="about" style="--nx:28%; top:15%;"><span class="node__dot"></span><span class="node__label">My story<span class="node__sub">my path</span></span></a>
-    <a href="#programs" class="node node--left" data-node="programs" style="--nx:44%; top:27%;"><span class="node__dot"></span><span class="node__label">Global Programs<span class="node__sub">Dubai · Seoul · Amsterdam · Rio</span></span></a>
+    <a href="#programs" class="node node--left" data-node="programs" style="--nx:44%; top:27%;"><span class="node__dot"></span><span class="node__label">Global Programs<span class="node__sub">Dubai · Rio · Seoul · Amsterdam</span></span></a>
     <a href="#work" class="node node--left" data-node="work" style="--nx:60%; top:17%;"><span class="node__dot"></span><span class="node__label">Projects<span class="node__sub">12 research projects</span></span></a>
     <a href="#research" class="node node--left" data-node="research" style="--nx:76%; top:30%;"><span class="node__dot"></span><span class="node__label">Research<span class="node__sub">publications · research statement</span></span></a>
     <a href="#exhibitions" class="node node--right" data-node="beyond" style="--nx:6%; top:20%;"><span class="node__dot"></span><span class="node__label">Beyond<span class="node__sub">exhibitions · talks · teaching</span></span></a>
@@ -1767,7 +1791,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="stat reveal">
         <div class="stat__num">4</div>
         <div class="stat__label">Global research labs</div>
-        <div class="stat__sub">Research programs across Dubai, Seoul, Amsterdam &amp; Rio de Janeiro</div>
+        <div class="stat__sub">Built &amp; led in Dubai, Rio de Janeiro &amp; Seoul; coordinated in Amsterdam</div>
       </div>
       <div class="stat reveal">
         <div class="stat__num">40+</div>
@@ -1901,7 +1925,8 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="eyebrow">Global Programs</div>
         <h2 class="h2">Cities as partners<br>in producing knowledge.</h2>
         <div class="programs-intro reveal">
-          <p class="lead">I build international research programs around real urban challenges—bringing together researchers, cities, universities, data, resources, and local knowledge to produce new evidence and translate it into urban action.</p>
+          <p class="lead">I build research programs with cities, not only about them—working directly with municipalities, government agencies, universities, industry, and community organizations to turn shared urban challenges into evidence they can act on.</p>
+          <p class="lead">Building labs in Dubai, Rio de Janeiro, and Seoul taught me that every city needs its own way in: different institutions, priorities, and expectations of what research is for. Finding the right way to dialogue with each context—and keeping very different partners working toward the same question—is what I have learned to do best.</p>
         </div>
       </div>
       <div class="programs-constellation" aria-label="Jump to a research program">
@@ -1913,11 +1938,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <path d="M60,160 Q120,240 200,280"></path>
         </svg>
         <div class="programs-node programs-node--hub" style="--nx:12.5%; --ny:50%;" tabindex="0" data-preview="MIT DUSP Department"><span class="programs-node__dot"></span><span class="programs-node__label">MIT</span></div>
-        <a href="#lab-amsterdam" class="programs-node" style="--nx:45.8%; --ny:12.5%;" data-year="2023" data-type="Global Research Lab"><span class="programs-node__dot"></span><span class="programs-node__label">Amsterdam</span></a>
-        <a href="#lab-seoul" class="programs-node" style="--nx:91.7%; --ny:21.9%;" data-year="2026" data-type="Global Research Lab"><span class="programs-node__dot"></span><span class="programs-node__label">Seoul</span></a>
-        <a href="#lab-dubai" class="programs-node" style="--nx:79.2%; --ny:50%;" data-year="2023" data-type="Global Research Lab"><span class="programs-node__dot"></span><span class="programs-node__label">Dubai</span></a>
-        <a href="#lab-abudhabi" class="programs-node" style="--nx:83.3%; --ny:75%;" data-year="2025" data-type="Strategic Collaboration"><span class="programs-node__dot"></span><span class="programs-node__label">Abu Dhabi</span></a>
-        <a href="#lab-rio" class="programs-node" style="--nx:41.7%; --ny:87.5%;" data-year="2024" data-type="Global Research Lab"><span class="programs-node__dot"></span><span class="programs-node__label">Rio de Janeiro</span></a>
+        <a href="#lab-amsterdam" class="programs-node programs-node--coord" style="--nx:45.8%; --ny:12.5%;" data-year="2023" data-type="Global Research Lab · coordinated"><span class="programs-node__dot"></span><span class="programs-node__label">Amsterdam</span></a>
+        <a href="#lab-seoul" class="programs-node" style="--nx:91.7%; --ny:21.9%;" data-year="2026" data-type="Global Research Lab · built &amp; led"><span class="programs-node__dot"></span><span class="programs-node__label">Seoul</span></a>
+        <a href="#lab-dubai" class="programs-node" style="--nx:79.2%; --ny:50%;" data-year="2023" data-type="Global Research Lab · built &amp; led"><span class="programs-node__dot"></span><span class="programs-node__label">Dubai</span></a>
+        <a href="#lab-abudhabi" class="programs-node programs-node--coord" style="--nx:83.3%; --ny:75%;" data-year="2025" data-type="Strategic Collaboration"><span class="programs-node__dot"></span><span class="programs-node__label">Abu Dhabi</span></a>
+        <a href="#lab-rio" class="programs-node" style="--nx:41.7%; --ny:87.5%;" data-year="2024" data-type="Global Research Lab · built &amp; led"><span class="programs-node__dot"></span><span class="programs-node__label">Rio de Janeiro</span></a>
         <p class="city-nav__preview" id="constellationPreview">&nbsp;</p>
       </div>
     </div>
@@ -1925,24 +1950,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="city-nav-wrap reveal">
       <div class="city-nav__label">Jump to a program</div>
       <nav class="city-nav" aria-label="Jump to a research program">
-        <a href="#lab-amsterdam" class="city-nav__item" data-year="2023" data-type="Global Research Lab">Amsterdam</a><a href="#lab-dubai" class="city-nav__item" data-year="2023" data-type="Global Research Lab">Dubai</a><a href="#lab-rio" class="city-nav__item" data-year="2024" data-type="Global Research Lab">Rio de Janeiro</a><a href="#lab-seoul" class="city-nav__item" data-year="2026" data-type="Global Research Lab">Seoul</a><a href="#lab-abudhabi" class="city-nav__item" data-year="2025" data-type="Strategic Collaboration">Abu Dhabi</a>
+        <a href="#lab-dubai" class="city-nav__item" data-year="2023" data-type="Global Research Lab · built &amp; led">Dubai</a><a href="#lab-rio" class="city-nav__item" data-year="2024" data-type="Global Research Lab · built &amp; led">Rio de Janeiro</a><a href="#lab-seoul" class="city-nav__item" data-year="2026" data-type="Global Research Lab · built &amp; led">Seoul</a><span class="city-nav__sep" aria-hidden="true"></span><a href="#lab-amsterdam" class="city-nav__item city-nav__item--coord" data-year="2023" data-type="Global Research Lab · coordinated">Amsterdam</a><a href="#lab-abudhabi" class="city-nav__item city-nav__item--coord" data-year="2025" data-type="Strategic Collaboration">Abu Dhabi</a>
       </nav>
       <p class="city-nav__preview" id="cityNavPreview">&nbsp;</p>
     </div>
 
-    <!-- ============================ AMSTERDAM ============================ -->
-    <div class="lab-row reveal" id="lab-amsterdam">
-      <div class="lab-row__head">
-        <h3 class="lab-row__city">Amsterdam</h3>
-        <div class="lab-row__tag">Global research lab · coordinated since 2023</div>
-        <div class="lab-row__mini-stats"><div class="lab-row__mini-stat"><span class="lab-row__mini-num">12+</span><span class="lab-row__mini-label">Research projects</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">15+</span><span class="lab-row__mini-label">Scientific outputs</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">3</span><span class="lab-row__mini-label">MIT summer schools</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">60+</span><span class="lab-row__mini-label">Participants</span></div></div>
-      </div>
-      <div class="lab-row__body">
-        <p class="lab-row__statement">Urban intelligence at the soft edges of the city.</p>
-        <p class="lab-row__text">A research program connecting urban sensing, AI and field experimentation to biodiversity, climate, energy, circularity and mobility with city, academic and industry partners.</p>
-        <p class="lab-row__footline">30+ researchers &amp; collaborators · 30+ talks, workshops &amp; public engagements · 8+ research &amp; strategic partnerships</p>
-        <a href="https://senseableamsterdam.mit.edu" target="_blank" rel="noopener" class="lab-row__link">Explore Amsterdam Lab ↗</a>
-      </div>
+    <div class="lab-group reveal">
+      <span class="lab-group__label">Labs I built and lead</span>
+      <span class="lab-group__note">From inception: partnerships, teams, and research agenda</span>
     </div>
 
     <!-- ============================ DUBAI ============================ -->
@@ -1968,9 +1983,9 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="lab-row__mini-stats"><div class="lab-row__mini-stat"><span class="lab-row__mini-num">9+</span><span class="lab-row__mini-label">Projects &amp; outcomes</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">2</span><span class="lab-row__mini-label">Communities mapped in 3D</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">12</span><span class="lab-row__mini-label">Community-deployed sensors</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">1</span><span class="lab-row__mini-label">International exhibition</span></div></div>
       </div>
       <div class="lab-row__body">
-        <p class="lab-row__statement">Making the invisible city measurable — with communities.</p>
-        <p class="lab-row__text">A research program developing new forms of urban evidence where conventional data are incomplete or unavailable, combining LiDAR, AI, environmental sensing, mobility data, and community-based research.</p>
-        <p class="lab-row__footline">6 months environmental monitoring · LiDAR + AI · community sensing · mobility data · participatory research</p>
+        <p class="lab-row__statement">Informal settlements, researched with the people who live there.</p>
+        <p class="lab-row__text">A research program on Rio&rsquo;s informal settlements, built in direct collaboration with residents of Vidigal and Maré and local organizations such as Redes da Maré. Workshops and activities inside the communities helped us understand the urban problems residents face every day, and shaped the research around them&mdash;producing evidence where official data do not exist, from LiDAR and AI 3D mapping to community-deployed environmental sensors.</p>
+        <p class="lab-row__footline">Vidigal &amp; Maré · community workshops · participatory research · LiDAR + AI · 6 months of community-deployed environmental monitoring</p>
         <a href="https://senseablerio.mit.edu" target="_blank" rel="noopener" class="lab-row__link">Explore Rio Lab ↗</a>
       </div>
     </div>
@@ -1985,7 +2000,26 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="lab-row__body">
         <p class="lab-row__statement">Understanding the social life of public space through AI.</p>
         <p class="lab-row__text">A research program using visual AI and behavioral analysis to investigate how urban design shapes social interaction, attention, and opportunities for encounter amid profound demographic change.</p>
-        <a href="https://senseable.mit.edu/japan-uniqueness/" target="_blank" rel="noopener" class="lab-row__link">Explore Seoul Lab ↗</a>
+        <a href="https://senseableseoul.mit.edu" target="_blank" rel="noopener" class="lab-row__link">Explore Seoul Lab ↗</a>
+      </div>
+    </div>
+
+    <div class="lab-group lab-group--secondary reveal">
+      <span class="lab-group__label">Coordination &amp; strategic collaborations</span>
+    </div>
+
+    <!-- ============================ AMSTERDAM ============================ -->
+    <div class="lab-row reveal" id="lab-amsterdam">
+      <div class="lab-row__head">
+        <h3 class="lab-row__city">Amsterdam</h3>
+        <div class="lab-row__tag">Global research lab · coordinated since 2023</div>
+        <div class="lab-row__mini-stats"><div class="lab-row__mini-stat"><span class="lab-row__mini-num">12+</span><span class="lab-row__mini-label">Research projects</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">15+</span><span class="lab-row__mini-label">Scientific outputs</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">3</span><span class="lab-row__mini-label">MIT summer schools</span></div><div class="lab-row__mini-stat"><span class="lab-row__mini-num">60+</span><span class="lab-row__mini-label">Participants</span></div></div>
+      </div>
+      <div class="lab-row__body">
+        <p class="lab-row__statement">Urban intelligence at the soft edges of the city.</p>
+        <p class="lab-row__text">A research program connecting urban sensing, AI and field experimentation to biodiversity, climate, energy, circularity and mobility with city, academic and industry partners.</p>
+        <p class="lab-row__footline">30+ researchers &amp; collaborators · 30+ talks, workshops &amp; public engagements · 8+ research &amp; strategic partnerships</p>
+        <a href="https://senseableamsterdam.mit.edu" target="_blank" rel="noopener" class="lab-row__link">Explore Amsterdam Lab ↗</a>
       </div>
     </div>
 
