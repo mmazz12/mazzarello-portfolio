@@ -1736,6 +1736,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* sottotitolo di Teaching: le due istituzioni stanno su una riga, a 640px
    "Milano" finiva da sola sulla seconda */
 #teaching .lead{max-width:none;}
+/* chiusura: catena al posto di "Boston · Global" e due CTA piccoli nello
+   stile di "Explore the research behind this agenda". Fondo scuro, quindi
+   la catena passa dal verde scuro al menta e la linea a quella su navy. */
+.closing h2{max-width:none; line-height:1.06;}
+.closing__vision{margin-top:14px; color:var(--paper-on-navy) !important;}
+.closing__row{align-items:center;}
+.closing .chain{margin:0;}
+.closing .chain__step{color:var(--accent-on-navy);}
+.closing .chain__dot{background:#5DCAA5;}
+.closing .chain__step:nth-child(4) .chain__dot{box-shadow:0 0 0 4px rgba(93,202,165,0.24);}
+.closing .chain__step + .chain__step::before{background:var(--line-on-navy);}
+.closing__ctas{gap:28px;}
+.closing__cta{font-family:var(--mono); font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:#5DCAA5; text-decoration:none; border-bottom:1px solid #5DCAA5; padding-bottom:3px;}
+.closing__cta:hover{color:var(--paper-on-navy); border-color:var(--paper-on-navy);}
 </style>
 </head>
 <body>
@@ -3042,21 +3056,27 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <circle r="5" fill="#ECF0F4" style="filter:drop-shadow(0 0 4px rgba(236,240,244,.5));">
       <animateMotion dur="13s" repeatCount="indefinite"
         path="M80,80 L520,140 L140,260 L500,360 L100,440 L460,120 L80,80 Z"/>
-    </ellipse>
+    </circle>
     <circle r="4.5" fill="#8FC9BB" style="filter:drop-shadow(0 0 4px rgba(143,201,187,.6));">
       <animateMotion dur="16s" repeatCount="indefinite" begin="-4s"
         path="M540,60 L120,180 L480,300 L90,400 L470,440 L200,120 L540,60 Z"/>
-    </ellipse>
+    </circle>
   </svg>
   <div class="wrap">
     <div class="eyebrow reveal">Get in Touch</div>
-    <h2 class="reveal">Let's build what comes next.</h2>
-    <p class="lead reveal" style="margin-top:22px;">I'm interested in building ambitious programs at the intersection of research, technology, design, and real-world impact.</p>
+    <h2 class="reveal">What if cities could<br>reason with us?</h2>
+    <p class="lead reveal" style="margin-top:22px;">I imagine a new frontier of urban design where AI helps us see what cities often hide, reason across competing needs, and explore alternative futures, while keeping the choices about what cities should become fundamentally human.</p>
+    <p class="lead closing__vision reveal">A place where urban designers, planners, computer scientists, and communities build new ways to observe, reason about, and collectively shape cities.</p>
     <div class="closing__row reveal">
-      <div style="font-family:var(--mono); font-size:13px; letter-spacing:.04em; color:var(--soft-on-navy);">Boston · Global</div>
+      <ol class="chain" aria-label="From observing to acting together">
+        <li class="chain__step"><span class="chain__dot"></span>Observe</li>
+        <li class="chain__step"><span class="chain__dot"></span>Reason</li>
+        <li class="chain__step"><span class="chain__dot"></span>Imagine</li>
+        <li class="chain__step"><span class="chain__dot"></span>Act together</li>
+      </ol>
       <div class="closing__ctas">
-        <a class="btn" href="https://www.linkedin.com/in/martina-mazzarello/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:mmazz@mit.edu">Get in touch</a>
+        <a class="closing__cta" href="#research">Explore my research</a>
+        <a class="closing__cta" href="mailto:mmazz@mit.edu">Get in touch</a>
       </div>
     </div>
     <div class="foot">
