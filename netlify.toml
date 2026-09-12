@@ -1,0 +1,17 @@
+# Il sito vive su martinamazzarello.com. L'indirizzo netlify.app resta sempre
+# attivo (Netlify non lo spegne), quindi lo stesso sito risponderebbe a due
+# indirizzi diversi. Qui lo mandiamo sul dominio, mantenendo la pagina chiesta.
+# Le anteprime dei deploy hanno un altro indirizzo (deploy-preview-N--...) e
+# non vengono toccate.
+
+[[redirects]]
+  from = "https://mazzarello-portfolio.netlify.app/*"
+  to = "https://martinamazzarello.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://mazzarello-portfolio.netlify.app/*"
+  to = "https://martinamazzarello.com/:splat"
+  status = 301
+  force = true
