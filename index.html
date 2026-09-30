@@ -3498,6 +3498,17 @@ document.querySelectorAll('.timeline__toggle').forEach(btn => {
       if (match) openProject(match, {focusClose:false});
     });
   });
+
+  // link diretto a una scheda: /#p-location-reasoner apre quel progetto.
+  // Serve per saltarci sopra da una presentazione senza cercarlo a mano.
+  function openFromHash(){
+    const m = (location.hash || '').match(/^#p-([a-z0-9-]+)$/i);
+    if (!m) return;
+    const match = allThumbs.find(t => t.dataset.name === m[1].toLowerCase());
+    if (match) openProject(match, {focusClose:false});
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
 })();
 
 
