@@ -1776,6 +1776,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 @media (min-width:900px) and (max-width:1100px){
   .node[data-node="research"] .node__br{display:inline;}
 }
+/* keynote di Seoul: unico talk con il link all'evento, nello stile dei link
+   delle mostre ma piu piccolo */
+.speak__link{display:inline-block; margin-top:9px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#5DCAA5; text-decoration:none; border-bottom:1px solid rgba(93,202,165,.5); padding-bottom:2px;}
+.speak__link:hover{color:var(--paper-on-navy); border-color:var(--paper-on-navy);}
 </style>
 </head>
 <body>
@@ -2961,6 +2965,15 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="beyond-label reveal" id="speaking"><div class="eyebrow">Presenting the work</div></div>
     <div class="speak-wrap">
     <div class="speak-rail reveal" id="speakRail">
+      <figure class="speak">
+        <div class="speak__photo" style="background-image:url('images/img-64.jpg');" role="img" aria-label="Martina Mazzarello delivering the Open Walks keynote at Smart Life Week, Seoul"></div>
+        <figcaption class="speak__caption">
+          <div class="speak__year">2026</div>
+          <div class="speak__event">Smart Life Week &mdash; Seoul</div>
+          <div class="speak__topic">Keynote &middot; &ldquo;Open Walks: From Mapping Sidewalk Accessibility to Urban Action&rdquo;</div>
+          <a class="speak__link" href="https://www.slw.kr" target="_blank" rel="noopener">Event ↗</a>
+        </figcaption>
+      </figure>
       <figure class="speak">
         <div class="speak__photo" style="background-image:url('images/img-58.jpg');" role="img" aria-label="EmTech Caribbean, MIT Technology Review"></div>
         <figcaption class="speak__caption">
