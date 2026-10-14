@@ -563,7 +563,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 /* ============================================================
    GLOBAL PROGRAMS
    ============================================================ */
-.programs-head{display:flex; justify-content:space-between; align-items:center; gap:40px; flex-wrap:wrap;}
+.programs-head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;}
 .programs-head__side{display:flex; align-items:center; gap:28px; flex:1 1 620px; flex-wrap:wrap;}
 .programs-head__side .lead{flex:1 1 260px; margin:0;}
 
@@ -1780,6 +1780,61 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
    delle mostre ma piu piccolo */
 .speak__link{display:inline-block; margin-top:9px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#5DCAA5; text-decoration:none; border-bottom:1px solid rgba(93,202,165,.5); padding-bottom:2px;}
 .speak__link:hover{color:var(--paper-on-navy); border-color:var(--paper-on-navy);}
+/* riga "Role" delle schede progetto: sotto il contesto, stesso peso dei
+   metadati ma in corsivo, cosi non compete con il titolo */
+.card__role{margin-top:7px; font-size:13.5px; font-style:italic; line-height:1.5; color:var(--ink-faint);}
+.card__role::first-letter{text-transform:uppercase;}
+/* hero: riga di mestiere sopra il ruolo, piu piccola e in mono come le
+   etichette del sito */
+.hero__tagline{margin-top:26px; font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; color:var(--ink-soft);}
+.hero__tagline + .hero__role{margin-top:8px;}
+/* schermate di interfaccia dentro una scheda: a 140px come le foto verticali
+   non si leggerebbero, quindi larghezza piena della colonna */
+.card__photo--wide img{width:100%;}
+.card__photo--wide + .card__photo--wide{margin-top:18px;}
+/* "Where it is going": tre direzioni sotto la catena del research statement */
+.statement__where{margin-top:32px; font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint);}
+.statement__directions{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:12px; max-width:68ch;}
+.statement__directions li{font-size:16px; line-height:1.65; color:var(--ink-soft); padding-left:16px; border-left:2px solid var(--line);}
+.statement__directions strong{color:var(--ink); font-weight:600;}
+.research-statement__close{margin-top:28px; font-family:var(--display); font-size:clamp(17px,1.9vw,20px); line-height:1.45; color:var(--ink); max-width:62ch;}
+/* catena del teaching: ogni passo porta una riga di spiegazione, quindi va in
+   colonna e senza connettori */
+.chain--noted{flex-direction:column; align-items:flex-start; gap:16px; margin-top:30px;}
+.chain--noted .chain__step{flex-wrap:wrap; white-space:normal; margin-left:0;}
+.chain--noted .chain__step + .chain__step::before{display:none;}
+.chain__note{flex-basis:100%; margin-top:5px; padding-left:16px; font-family:var(--body); font-size:15px; letter-spacing:0; text-transform:none; line-height:1.55; color:var(--ink-soft);}
+/* mappa dei programmi: planisfero trasparente con i pin alle citta. Ogni pin
+   porta alla scheda del lab; Abu Dhabi e una collaborazione, non un lab, e MIT
+   e la base, quindi hanno simboli diversi come nel portfolio. */
+.globe{margin:0; flex:1 1 440px; min-width:0;}
+.programs-head > div:first-child{flex:1 1 460px; min-width:0;}
+.globe__map{position:relative; width:100%; aspect-ratio:1488/716;}
+.globe__map img{width:100%; height:100%; object-fit:contain; display:block; opacity:.38;}
+.globe__pin{position:absolute; left:var(--x); top:var(--y); width:0; height:0; text-decoration:none;}
+.globe__pin::before{content:""; position:absolute; left:0; top:0; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%; background:#5DCAA5; box-shadow:0 0 0 4px rgba(93,202,165,.22);}
+.globe__pin--collab::before{background:transparent; border:1.5px solid var(--teal-on-navy); box-shadow:none; width:11px; height:11px; margin:-5.5px 0 0 -5.5px;}
+.globe__pin--mit::before{border-radius:0; background:var(--paper-on-navy); box-shadow:none; width:8px; height:8px; margin:-4px 0 0 -4px; transform:rotate(45deg);}
+.globe__pin > span{position:absolute; left:13px; top:-7px; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; color:var(--paper-on-navy);}
+.globe__pin--flip > span{left:auto; right:13px;}
+.globe__pin--collab > span, .globe__pin--mit > span{color:var(--teal-on-navy);}
+.globe__pin--mit > span{color:var(--soft-on-navy);}
+a.globe__pin:hover > span{color:#5DCAA5;}
+a.globe__pin:focus-visible{outline:2px solid #5DCAA5; outline-offset:6px;}
+.globe__legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; color:var(--soft-on-navy);}
+.globe__key{display:flex; align-items:center; gap:7px;}
+.globe__key::before{content:""; width:9px; height:9px; border-radius:50%; background:#5DCAA5; flex:none;}
+.globe__key--collab::before{background:transparent; border:1.5px solid var(--teal-on-navy);}
+.globe__key--mit::before{border-radius:0; background:var(--paper-on-navy); width:7px; height:7px; transform:rotate(45deg);}
+@media (max-width:700px){
+  .globe__pin > span{font-size:9px; letter-spacing:.04em;}
+  .globe__legend{font-size:9.5px;}
+}
+/* le tre aree: al posto del numero 01/02/03, che faceva pensare a una
+   sequenza, un trattino arancione. Tiene la stessa altezza di riga, cosi
+   l'impaginazione resta quella di prima, su desktop e su telefono. */
+.threads-viz__phase-mark{width:22px; height:1px; background:var(--fluo); margin:5px auto 9px;}
+.threads-viz__phase-title{margin-top:0;}
 </style>
 </head>
 <body>
@@ -1815,6 +1870,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
   <div class="wrap hero__inner">
     <div class="hero__eyebrow"><span class="thread"><span class="dot"></span><span class="rule"></span></span> Urban Research + Design</div>
     <h1>Building research<br>into real-world impact.</h1>
+    <p class="hero__tagline">Urban designer, researcher, and educator</p>
     <p class="hero__role"><strong>Research Scientist &amp; Global Labs Lead</strong><br>MIT Senseable City Lab</p>
     <a href="#impact" class="hero__cta">Explore <span class="arrow">↓</span></a>
 
@@ -1899,14 +1955,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="stat__sub">Across urban science, planning, design &amp; computation</div>
       </div>
       <div class="stat reveal">
-        <div class="stat__num">5</div>
-        <div class="stat__label">Courses taught</div>
+        <div class="stat__num">2016</div>
+        <div class="stat__label">Teaching since</div>
         <div class="stat__sub">Across design, urban science &amp; computational methods</div>
         <div class="stat__note">MIT + Politecnico di Milano</div>
       </div>
     </div>
     <div class="eyebrow eyebrow--center reveal" style="margin-top:88px; padding-top:32px; border-top:1px solid var(--line);">In one sentence</div>
-    <p class="stats__manifesto reveal" style="margin-top:14px;">I explore how AI and urban design can expand who has the capacity to reason about, imagine, and shape the transformation of cities.</p>
+    <p class="stats__manifesto reveal" style="margin-top:14px;">I explore how AI and urban design can expand who can reason about, imagine, and shape urban transformation.</p>
   </div>
 </section>
 
@@ -2016,26 +2072,25 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="eyebrow">Global Programs</div>
         <h2 class="h2">Cities as partners<br>in producing knowledge.</h2>
         <div class="programs-intro reveal">
-          <p class="lead">I build research programs with cities, not only about them, working directly with municipalities, universities, industry, and community organizations to turn shared urban challenges into evidence they can act on.</p>
-          <p class="lead">Building labs in Dubai, Rio de Janeiro, and Seoul taught me that every city needs its own way in. Finding the right dialogue with each context, and keeping very different partners on the same question, is what I have learned to do best.</p>
+          <p class="lead">I build research programs with cities, not only about them, working with municipalities, universities, industry, and community organizations to turn shared urban challenges into evidence they can act on. Dubai, Rio de Janeiro, and Seoul each taught me a different way in, and how to keep very different partners working on the same question.</p>
         </div>
       </div>
-      <div class="programs-constellation" aria-label="Jump to a research program">
-        <svg class="programs-constellation__lines" viewBox="0 0 480 320" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M60,160 Q140,60 220,40"></path>
-          <path d="M60,160 Q250,20 440,70"></path>
-          <path d="M60,160 Q220,120 380,160"></path>
-          <path d="M60,160 Q200,220 400,240"></path>
-          <path d="M60,160 Q120,240 200,280"></path>
-        </svg>
-        <div class="programs-node programs-node--hub" style="--nx:12.5%; --ny:50%;" tabindex="0" data-preview="MIT DUSP Department"><span class="programs-node__dot"></span><span class="programs-node__label">MIT</span></div>
-        <a href="#lab-amsterdam" class="programs-node programs-node--coord" style="--nx:45.8%; --ny:12.5%;" data-year="2024" data-type="Global Research Lab · coordinated"><span class="programs-node__dot"></span><span class="programs-node__label">Amsterdam</span></a>
-        <a href="#lab-seoul" class="programs-node" style="--nx:91.7%; --ny:21.9%;" data-year="2026" data-type="Global Research Lab · built &amp; led"><span class="programs-node__dot"></span><span class="programs-node__label">Seoul</span></a>
-        <a href="#lab-dubai" class="programs-node" style="--nx:79.2%; --ny:50%;" data-year="2023" data-type="Global Research Lab · built &amp; led"><span class="programs-node__dot"></span><span class="programs-node__label">Dubai</span></a>
-        <a href="#lab-abudhabi" class="programs-node programs-node--coord" style="--nx:83.3%; --ny:75%;" data-year="2025" data-type="Strategic Collaboration"><span class="programs-node__dot"></span><span class="programs-node__label">Abu Dhabi</span></a>
-        <a href="#lab-rio" class="programs-node" style="--nx:41.7%; --ny:87.5%;" data-year="2024" data-type="Global Research Lab · built &amp; led"><span class="programs-node__dot"></span><span class="programs-node__label">Rio de Janeiro</span></a>
-        <p class="city-nav__preview" id="constellationPreview">&nbsp;</p>
-      </div>
+      <figure class="globe">
+        <div class="globe__map">
+          <img src="images/img-67.png" alt="World map with the cities where the research programs are based" loading="lazy">
+          <a class="globe__pin globe__pin--lab" href="#lab-amsterdam" style="--x:47.6%; --y:16%"><span>Amsterdam</span></a>
+          <a class="globe__pin globe__pin--lab" href="#lab-dubai" style="--x:63.2%; --y:37.9%"><span>Dubai</span></a>
+          <a class="globe__pin globe__pin--collab globe__pin--flip" href="#lab-abudhabi" style="--x:62.4%; --y:40.5%"><span>Abu Dhabi</span></a>
+          <a class="globe__pin globe__pin--lab" href="#lab-seoul" style="--x:85.3%; --y:28.6%"><span>Seoul</span></a>
+          <a class="globe__pin globe__pin--lab" href="#lab-rio" style="--x:32.7%; --y:71.4%"><span>Rio de Janeiro</span></a>
+          <span class="globe__pin globe__pin--mit globe__pin--flip"  style="--x:25.2%; --y:24.7%"><span>MIT · Boston</span></span>
+        </div>
+        <figcaption class="globe__legend">
+          <span class="globe__key globe__key--lab">Global Lab</span>
+          <span class="globe__key globe__key--collab">Research collaboration</span>
+          <span class="globe__key globe__key--mit">MIT Senseable City Lab</span>
+        </figcaption>
+      </figure>
     </div>
 
     <div class="city-nav-wrap reveal">
@@ -2167,7 +2222,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="eyebrow">Selected Projects</div>
         <h2 class="h2">Research through questions.</h2>
       </div>
-      <p class="lead">A selection of projects investigating how people experience cities, how urban environments shape health and everyday life, and how cities can respond. Across these questions, I develop and apply computational methods to make urban conditions observable, interpretable, and actionable for design and planning.</p>
+      <p class="lead">Projects on how people experience cities, how cities shape health and everyday life, and how evidence can turn into design and planning decisions.</p>
     </div>
 
     <a href="#research" class="work-trajectory-link">Follow the trajectory ↓</a>
@@ -2193,10 +2248,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="data-slots" data-theme="data behavior" style="background-image:url('images/img-03.jpg');" aria-label="Open What should cities be allowed to know?">
+        <button class="reel-thumb" data-name="data-slots" data-theme="data behavior" style="background-image:url('images/img-03.jpg');" aria-label="Open People decide what cities should know about them.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">02 / Data Slots</span>
-            <span class="reel-thumb__title">Who decides what cities should know about us?</span>
+            <span class="reel-thumb__title">People decide what cities should know about them.</span>
             <span class="reel-thumb__tags">Data Governance · Public Participation · Urban Technology</span>
           </span>
         </button>
@@ -2223,10 +2278,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="walking-smart" data-theme="climate design" style="background-image:url('images/img-06.jpg');" aria-label="Open The shortest walk is not always the best walk.">
+        <button class="reel-thumb" data-name="walking-smart" data-theme="climate design" style="background-image:url('images/img-06.jpg');" aria-label="Open The shortest route isn't the best one.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">05 / Cooling Path</span>
-            <span class="reel-thumb__title">What if the best route isn't the shortest one?</span>
+            <span class="reel-thumb__title">The shortest route isn't the best one.</span>
             <span class="reel-thumb__tags">Climate Adaptation · Heat · Walkability · Urban Navigation</span>
           </span>
         </button>
@@ -2243,10 +2298,10 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="traveling-tastes" data-theme="behavior climate ai" style="background-image:url('images/img-08.jpg');" aria-label="Open What does a city make us choose?">
+        <button class="reel-thumb" data-name="traveling-tastes" data-theme="behavior climate ai" style="background-image:url('images/img-08.jpg');" aria-label="Open Cities shape what we choose.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">07 / Traveling Tastes</span>
-            <span class="reel-thumb__title">What does a city make us choose?</span>
+            <span class="reel-thumb__title">Cities shape what we choose.</span>
             <span class="reel-thumb__tags">Urban Health · Food Landscapes · Human Behavior · Explainable AI</span>
           </span>
         </button>
@@ -2255,7 +2310,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="reel-item">
         <button class="reel-thumb" data-name="octopus" data-theme="climate data" style="background-image:url('images/img-09.jpg');" aria-label="Open We built the missing data with favela residents.">
           <span class="reel-thumb__meta">
-            <span class="reel-thumb__num">08 / Octopus</span>
+            <span class="reel-thumb__num">08 / Octopus Maré</span>
             <span class="reel-thumb__title">We built the missing data with favela residents.</span>
             <span class="reel-thumb__tags">Open-source Sensing · Environmental Justice · Community Research</span>
           </span>
@@ -2263,20 +2318,20 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="brisa-plus" data-theme="climate design" style="background-image:url('images/img-10.jpg');" aria-label="Open Where should cities intervene?">
+        <button class="reel-thumb" data-name="brisa-plus" data-theme="climate design" style="background-image:url('images/img-10.jpg');" aria-label="Open Urban form shapes environmental health.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">09 / Brisa+</span>
-            <span class="reel-thumb__title">Where should cities intervene?</span>
+            <span class="reel-thumb__title">Urban form shapes environmental health.</span>
             <span class="reel-thumb__tags">Urban Form · Environmental Health · Informal Settlements</span>
           </span>
         </button>
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="breathing-the-city" data-theme="climate data" style="background-image:url('images/img-11.jpg');" aria-label="Open What does a person actually breathe?">
+        <button class="reel-thumb" data-name="breathing-the-city" data-theme="climate data" style="background-image:url('images/img-11.jpg');" aria-label="Open Exposure is personal, not citywide.">
           <span class="reel-thumb__meta">
             <span class="reel-thumb__num">10 / Breathing the City</span>
-            <span class="reel-thumb__title">What does a person actually breathe?</span>
+            <span class="reel-thumb__title">Exposure is personal, not citywide.</span>
             <span class="reel-thumb__tags">Urban Health · Wearable Sensing · Mobility</span>
           </span>
         </button>
@@ -2293,11 +2348,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </div>
 
       <div class="reel-item">
-        <button class="reel-thumb" data-name="location-reasoner" data-theme="ai design" style="background-image:url('images/img-14.jpg');" aria-label="Open From urban data to grounded spatial reasoning.">
+        <button class="reel-thumb" data-name="common-reason" data-theme="ai design" style="background-image:url('images/img-14.jpg?v=2');" aria-label="Open Agentic AI as a design partner for cities.">
           <span class="reel-thumb__meta">
-            <span class="reel-thumb__num">12 / LocationReasoner</span>
-            <span class="reel-thumb__title">From urban data to grounded spatial reasoning.</span>
-            <span class="reel-thumb__tags">Spatial AI · LLM Agents · Constraint Reasoning</span>
+            <span class="reel-thumb__num">12 / Common Reason</span>
+            <span class="reel-thumb__title">Agentic AI as a design partner for cities.</span>
+            <span class="reel-thumb__tags">Agentic AI · Urban Design · Planning Tools</span>
           </span>
         </button>
       </div>
@@ -2313,130 +2368,117 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <p class="story-slide__bridge">What happens to human relationships when people stop sharing physical space?</p>
     <div class="card__num">01 / Proximate</div>
     <h3 class="card__title">Space shapes connection.</h3>
-    <div class="card__context">Nature Computational Science · 2022</div>
+    <div class="card__context">Nature Computational Science · 2022 · 2020–2022</div>
+<div class="card__role">Role: co-first author and co-lead; journal cover design</div>
     <div class="card__tags"><span class="tag">Human Behavior</span><span class="tag">Networks</span><span class="tag">Urban Interaction</span><span class="tag">Computational Analysis</span></div>
-    <div class="card__stat"><span class="card__stat-num">4,800+</span><span class="card__stat-label">Weak ties disappeared after physical co-location was lost</span></div>
-    <p class="card__story">Using the pandemic as a natural experiment, Proximate analyzed digital communication traces to examine what happened to social networks when physical co-location suddenly disappeared. We found that thousands of weak social ties vanished with it, revealing that proximity does more than enable interaction: it helps sustain the social networks that connect people beyond their closest relationships.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">4,800+</span><span class="card__stat-label">Weak ties lost in 18 months</span></div><div class="stat-item"><span class="card__stat-num">2,834</span><span class="card__stat-label">MIT faculty &amp; postdocs</span></div><div class="stat-item"><span class="card__stat-num">−38.7%</span><span class="card__stat-label">New weak ties forming</span></div></div>
+<p class="card__story">Using the COVID-19 campus closure as a natural experiment, Proximate followed 18 months of email among 2,834 MIT faculty and postdocs, from in-person work to remote work in March 2020. More than 4,800 weak ties were lost, about 1.8 per person, and 38.7% fewer new weak ties formed; reintroducing co-location led to partial regeneration. The model separated co-location effects by office distance, research unit and past communication.</p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">Physical space is social infrastructure.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">From observing human behavior → to making it measurable.</p>
     <p class="card__opened-text">If spatial conditions shape how people connect, how can these relationships become observable at the scale of cities?</p>
     <div class="card__cover"><img src="images/img-15.jpg" alt="Nature Computational Science cover, August 2022, featuring a visualization from Proximate" loading="lazy"><p class="card__cover-caption">Cover design by Martina Mazzarello, Aug 2022.</p></div>
-    <div class="card__links"><a href="https://senseable.mit.edu/proximate/" target="_blank" rel="noopener">Explore more ↗</a><a href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Read here ↗</a></div>
+    <div class="card__links"><a href="https://senseable.mit.edu/proximate/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Paper ↗</a></div>
   </template>
 
   <template id="tmpl-data-slots">
     <p class="story-slide__bridge">What are people willing to share when data can improve urban life?</p>
     <div class="card__num">02 / Data Slots</div>
     <h3 class="card__title">People decide what cities should know about them.</h3>
-    <div class="card__context">Humanities & Social Sciences Communications · 2025</div>
+    <div class="card__context">Humanities &amp; Social Sciences Communications · 2025 · 2022–2025</div>
+<div class="card__role">Role: first author; designed the game, led the workshops</div>
     <div class="card__tags"><span class="tag">Data Governance</span><span class="tag">Public Participation</span><span class="tag">Urban Technology</span></div>
-    <div class="card__stat"><span class="card__stat-num">80+</span><span class="card__stat-label">Countries represented</span><span class="card__stat-note">23 cities · online + in-person participation</span></div>
-    <p class="card__story">Data Slots investigates the trade-off between the perceived benefits of data-driven urban services and concerns around privacy, moving from 80+ countries of online participation to 23 cities of in-person workshops. Technology alone cannot determine what a smart city should measure. Citizens must be part of that decision.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">80+</span><span class="card__stat-label">Countries represented online</span></div><div class="stat-item"><span class="card__stat-num">23</span><span class="card__stat-label">Cities of in-person workshops</span></div></div>
+<p class="card__story">Data Slots investigates the trade-off between the perceived benefits of data-driven urban services and concerns around privacy. Technology alone cannot determine what a smart city should measure: citizens must be part of that decision.</p>
+    <p class="card__story">The game pairs a type of data with an urban scenario, so people can weigh the trade-off themselves: online in 80+ countries, in person in 23 cities. What they accept to share, and for which benefits, becomes material for data governance.</p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">Data-driven planning requires social legitimacy, not only technical capability.</p>
     <div class="card__opened-label">What it opened up</div>
     <p class="card__opened-statement">From collecting data → to questioning who defines it.</p>
     <p class="card__opened-text">Making cities observable also raises a question of agency: who decides what should be measured, shared, and considered valuable urban evidence?</p>
-    <div class="card__links"><a href="https://senseable.mit.edu/data-slots/" target="_blank" rel="noopener">Play Data Slots ↗</a><a href="https://senseable.mit.edu/papers/pdf/20250411_Mazzarello-etal_Data_Slots_HSSC.pdf" target="_blank" rel="noopener">Read here ↗</a></div>
+    <div class="card__links"><a href="https://senseable.mit.edu/data-slots/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/20250411_Mazzarello-etal_Data_Slots_HSSC.pdf" target="_blank" rel="noopener">Paper ↗</a></div>
   </template>
 
   <template id="tmpl-jackson-boiling">
     <p class="story-slide__bridge">What happens when a basic urban service repeatedly fails?</p>
     <div class="card__num">03 / Jackson Boiling</div>
     <h3 class="card__title">Infrastructure failures become social inequalities.</h3>
-    <div class="card__context">Nature Water · 2023</div>
+    <div class="card__context">Nature Water · 2023 · 2022–2023</div>
+<div class="card__role">Role: co-author; Nature Water cover design</div>
     <div class="card__tags"><span class="tag">Infrastructure</span><span class="tag">Environmental Justice</span><span class="tag">Education</span></div>
-    <div class="card__stat"><span class="card__stat-num">+1–10%</span><span class="card__stat-label">Increase in unexcused school absences during boil-water alerts</span></div>
-    <p class="card__story">In Jackson, Mississippi, we connected boil-water alerts with school attendance to measure how infrastructure failures propagate beyond the water system itself. Days affected by boil-water alerts were associated with a 1–10% increase in unexcused school absences, revealing how unreliable infrastructure can translate into unequal educational and everyday consequences.</p>
+    <div class="card__stat"><span class="card__stat-num">+1–10%</span><span class="card__stat-label">More unexcused absences on boil-water-alert days, across the study&rsquo;s estimates</span></div>
+<p class="card__story">In Jackson, Mississippi, we linked the city&rsquo;s boil-water alerts with daily school attendance to trace how an infrastructure failure travels beyond the pipes. Alert days were associated with a 1&ndash;10% rise in unexcused absences. <strong>For planning, infrastructure reliability becomes a spatial justice question: which neighborhoods, and which schools, absorb the cost when systems fail.</strong></p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">Infrastructure failure is an environmental justice issue: when water systems break down, the costs reach classrooms.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">From urban systems → to human consequences.</p>
     <p class="card__opened-text">Measuring infrastructure revealed that urban conditions cannot be understood only through performance: their consequences are unevenly experienced across people and places.</p>
     <div class="card__cover"><img src="images/img-16.jpg" alt="Nature Water cover, April 2023, featuring a map visualization from the Jackson Boiling study" loading="lazy"><p class="card__cover-caption">Cover design by Martina Mazzarello, Apr 2023.</p></div>
-    <div class="card__links"><a href="https://senseable.mit.edu/jacksonboiling/" target="_blank" rel="noopener">Explore more ↗</a><a href="https://senseable.mit.edu/papers/pdf/202300410_Walker-etal_BoilWater_NatureWater.pdf" target="_blank" rel="noopener">Read here ↗</a></div>
+    <div class="card__links"><a href="https://senseable.mit.edu/jacksonboiling/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/202300410_Walker-etal_BoilWater_NatureWater.pdf" target="_blank" rel="noopener">Paper ↗</a></div>
   </template>
 
   <template id="tmpl-indoors">
     <p class="story-slide__bridge">Can we understand cities through the spaces where people spend most of their lives?</p>
     <div class="card__num">04 / A Geography of Indoors</div>
     <h3 class="card__title">Making the private city measurable.</h3>
-    <div class="card__context">Scientific Reports · 2025 — first author</div>
+    <div class="card__context">Scientific Reports · 2025 · 2023–2025</div>
+<div class="card__role">Role: first author</div>
     <div class="card__tags"><span class="tag">Computer Vision</span><span class="tag">Human Behavior</span><span class="tag">Global Interiors</span><span class="tag">Spatial Patterns</span></div>
     <div class="card__stat"><span class="card__stat-num">400,000+</span><span class="card__stat-label">Interior images across 80 cities</span></div>
-    <p class="card__story">Urban research traditionally understands cities through streets, buildings, mobility, and census data, yet much of human life happens inside. Using computer vision across 400,000+ interior images from 80 cities, we made indoor environments computationally observable, revealing systematic geographic and cultural differences in how domestic space is organized and inhabited.</p>
+<p class="card__story"><strong>The spaces where people spend most of their lives are an overlooked dimension of urban form and inequality.</strong> Using computer vision across 400,000+ interior images from 80 cities, we made indoor environments observable at scale: layouts, objects, their relations and the activities they host, revealing systematic geographic and cultural differences in how homes are organized and inhabited.</p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">AI can reveal dimensions of urban life that conventional planning data cannot see.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">AI as an urban observational instrument.</p>
     <p class="card__opened-text">Visual AI showed how previously inaccessible dimensions of urban life can become observable at scale, extending what planners can measure beyond conventional datasets.</p>
-    <div class="card__links"><a href="https://senseable.mit.edu/global-interiors/" target="_blank" rel="noopener">Explore Global Interiors ↗</a>
-              <a href="https://senseable.mit.edu/papers/pdf/20250815_Mazzarello-etal_GeographyIndoors_ScientifcReports.pdf" target="_blank" rel="noopener">Scientific Reports, 2025 ↗</a>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/global-interiors/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/20250815_Mazzarello-etal_GeographyIndoors_ScientifcReports.pdf" target="_blank" rel="noopener">Paper ↗</a></div>
   </template>
 
   <template id="tmpl-walking-smart">
     <p class="story-slide__bridge">Can urban navigation optimize for human comfort rather than distance alone?</p>
     <div class="card__num">05 / Cooling Path</div>
     <h3 class="card__title">The shortest route isn't the best one.</h3>
-    <div class="card__context">Computers, Environment and Urban Systems, 2025</div>
+    <div class="card__context">Computers, Environment and Urban Systems · 2025 · Dubai · 2024–2025</div>
+<div class="card__role">Role: concept, question and method; research supervision, design management</div>
     <div class="card__tags"><span class="tag">Climate Adaptation</span><span class="tag">Heat</span><span class="tag">Walkability</span><span class="tag">Urban Navigation</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">+1.3%</span><span class="card__stat-label">Distance</span></div>
-      <div class="stat-item"><span class="card__stat-num">+8.9%</span><span class="card__stat-label">Building shade</span></div>
-      <div class="stat-item"><span class="card__stat-num">−8.8%</span><span class="card__stat-label">Sun exposure</span></div>
-    </div>
-    <p class="card__story">Walking Smart combines urban morphology, visual AI, and pathfinding to rethink pedestrian navigation under extreme heat. With only 1.3% additional walking distance, optimized routes increased building shade by 8.9% and reduced sun exposure by 8.8%, showing that pedestrian routing can optimize for thermal comfort rather than distance alone.</p>
-    <p class="card__story">Beyond navigation, the same model becomes a planning tool, revealing where pedestrian networks fail to provide thermal comfort and where targeted interventions could improve climate resilience.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">+1.3%</span><span class="card__stat-label">Distance vs shortest route</span></div><div class="stat-item"><span class="card__stat-num">+8.9%</span><span class="card__stat-label">Building shade vs shortest</span></div><div class="stat-item"><span class="card__stat-num">−8.8%</span><span class="card__stat-label">Solar exposure vs shortest</span></div></div>
+<p class="card__story">Cooling Path combines urban morphology, visual AI on street imagery and pathfinding to route pedestrians through shade from buildings, trees and connected indoor passages in Dubai. Compared with the shortest route, the cooling path adds only 1.3% distance. <strong>The model reveals not only how pedestrians can adapt, but where cities should add shade, crossings, trees, and connected indoor passages.</strong></p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">Computation can turn environmental conditions into actionable urban decisions.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">From measuring conditions → to changing individual choices.</p>
     <p class="card__opened-text">Once environmental conditions can be mapped, computation can help people navigate them, turning urban data into actionable decisions.</p>
-    <div class="card__links"><a href="https://senseable.mit.edu/cooling-path/" target="_blank" rel="noopener">Explore Cooling Path ↗</a>
-              <a href="https://senseable.mit.edu/papers/pdf/20250911_Wen-etal_WalkingSmart_CEUS.pdf" target="_blank" rel="noopener">CEUS, 2025 ↗</a>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/cooling-path/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/20250911_Wen-etal_WalkingSmart_CEUS.pdf" target="_blank" rel="noopener">Paper ↗</a></div>
   </template>
 
   <template id="tmpl-re-leaf">
     <p class="story-slide__bridge">Can cities change the environment itself, instead of only helping people navigate around it?</p>
     <div class="card__num">06 / Re-Leaf</div>
     <h3 class="card__title">Trees as climate infrastructure.</h3>
-    <div class="card__context">Scientific Reports · 2026</div>
+    <div class="card__context">Scientific Reports · 2026 · 2025–2026</div>
+<div class="card__role">Role: co-author; design concept and coordination of the exhibitions</div>
     <div class="card__tags"><span class="tag">AI</span><span class="tag">Computer Vision</span><span class="tag">Urban Biodiversity</span><span class="tag">Nature-based Solutions</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">8</span><span class="card__stat-label">North American cities</span></div>
-      <div class="stat-item"><span class="card__stat-num">1.76M+</span><span class="card__stat-label">Urban trees</span></div>
-      <div class="stat-item"><span class="card__stat-num">202</span><span class="card__stat-label">Genera at maximum city richness</span></div>
-    </div>
-    <p class="card__story">Re-Leaf uses street-level imagery and spatially aware visual AI to map urban tree diversity without requiring labeled inventories. Tested across eight North American cities and more than 1.7 million trees, the framework recovers local biodiversity patterns while preserving their spatial organization.</p>
-    <p class="card__story">By turning widely available urban imagery into ecological intelligence, the project creates a scalable way to identify dominance hotspots, monoculture risks, and spatial inequalities, helping cities move from simply planting trees to planning more resilient urban forests.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">8</span><span class="card__stat-label">North American cities</span></div><div class="stat-item"><span class="card__stat-num">1.76M+</span><span class="card__stat-label">Urban trees</span></div><div class="stat-item"><span class="card__stat-num">202</span><span class="card__stat-label">Genera at maximum richness</span></div></div>
+<p class="card__story">Re-Leaf uses street-level imagery and spatially aware visual AI to map urban tree diversity without labeled inventories, across eight North American cities and more than 1.7 million trees. It helps cities find monoculture risks and spatial inequalities, and move from planting trees to planning resilient urban forests.</p>
+    <p class="card__story">The work also became installations in Venice, Dubai and Rome.</p>
     <div class="card__insight-label">Key insight</div>
-    <p class="card__takeaway">Urban greenery is not only infrastructure to expand. Its diversity can be measured, and planned for.</p>
+    <p class="card__takeaway">Urban forestry is not only about planting more trees. Diversity can be measured, mapped, and incorporated into planning.</p>
     <div class="card__opened-label">What it opened</div>
     <p class="card__opened-statement">From individual adaptation → to urban intervention.</p>
     <p class="card__opened-text">But adaptation cannot only help people navigate existing conditions. The next question is how cities can change the environments themselves.</p>
-    <div class="card__links"><a href="https://senseable.mit.edu/re-leaf/" target="_blank" rel="noopener">Explore Re-Leaf ↗</a>
-              <a href="https://senseable.mit.edu/papers/pdf/20260228_Abuhani-etal_UnsupervisedMapping_ScientificReports.pdf" target="_blank" rel="noopener">Scientific Reports, 2026 ↗</a>
-              <a href="https://senseable.mit.edu/re-leaf-biennale/" target="_blank" rel="noopener">Biennale ↗</a>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/re-leaf/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/20260228_Abuhani-etal_UnsupervisedMapping_ScientificReports.pdf" target="_blank" rel="noopener">Paper ↗</a><a href="https://senseable.mit.edu/re-leaf-biennale/" target="_blank" rel="noopener">Biennale ↗</a></div>
   </template>
 
   <template id="tmpl-traveling-tastes">
     <p class="story-slide__bridge">How does what a city makes available shape the choices people make?</p>
     <div class="card__num">07 / Traveling Tastes</div>
     <h3 class="card__title">Cities shape what we choose.</h3>
-    <div class="card__context">Scientific Reports · 2025 · Transportation Research Part C · 2025</div>
+    <div class="card__context">Scientific Reports · 2025 · Transportation Research Part C · 2025 · 2023–2025</div>
+<div class="card__role">Role: co-author of both studies</div>
     <div class="card__tags"><span class="tag">Urban Health</span><span class="tag">Food Landscapes</span><span class="tag">Human Behavior</span><span class="tag">Explainable AI</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">3.4×</span><span class="card__stat-label">Farther than the nearest equivalent food option</span></div>
-      <div class="stat-item"><span class="card__stat-num">5.06%</span><span class="card__stat-label">Orders from the nearest available restaurant</span></div>
-      <div class="stat-item"><span class="card__stat-num">3 cities</span><span class="card__stat-label">Nutritional food landscapes mapped</span></div>
-    </div>
-    <p class="card__story">Traveling Tastes uses digital food platforms as a lens into the urban food environment, connecting what food is available, what people choose, and what those choices may mean for health and sustainability.</p>
-    <p class="card__story">Across Boston, London, and Dubai, millions of menu items reveal how nutritional quality varies across neighborhoods and relates to socioeconomic conditions and obesity. In Dubai, 2.78 million individual orders show a second layer: people frequently bypass nearby equivalent options, revealing how cuisine, cost, wait time, availability, and neighborhood context shape food-ordering behavior.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">3.4×</span><span class="card__stat-label">Farther than the nearest equivalent restaurant</span></div><div class="stat-item"><span class="card__stat-num">5.06%</span><span class="card__stat-label">Dubai orders from the nearest equivalent</span></div><div class="stat-item"><span class="card__stat-num">3 cities</span><span class="card__stat-label">Boston, London, Dubai</span></div></div>
+<p class="card__story"><strong>Food platforms reveal how neighborhood structure and digital availability shape everyday health choices.</strong> Menus from Boston, London and Dubai map the nutritional quality of each neighborhood; 2.78 million Dubai orders show that people rarely pick the closest equivalent option.</p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">The food environment doesn't just reflect a city. It shapes the choices available within it.</p>
     <div class="card__opened-label">What it opened</div>
@@ -2446,25 +2488,19 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <video src="shish-taouk.mp4" poster="images/img-17.jpg" controls muted playsinline loop preload="metadata"></video>
       <p class="card__video-caption">Shish taouk, tracked: a nutritional snapshot of one dish across the platform.</p>
     </div>
-    <div class="card__links"><a href="https://senseable.mit.edu/traveling-tastes/" target="_blank" rel="noopener">Explore Traveling Tastes ↗</a>
-              <a href="https://senseable.mit.edu/papers/pdf/20250715_Tufano-etal_Data-driven-Nutritional_ScientificReports.pdf" target="_blank" rel="noopener">Scientific Reports, 2025 ↗</a>
-              <a href="https://senseable.mit.edu/papers/pdf/20250516_Su-etal_DeterminantsLocalized_TR-C.pdf" target="_blank" rel="noopener">Transportation Research Part C, 2025 ↗</a>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/traveling-tastes/" target="_blank" rel="noopener">Project ↗</a><a href="https://senseable.mit.edu/papers/pdf/20250715_Tufano-etal_Data-driven-Nutritional_ScientificReports.pdf" target="_blank" rel="noopener">Paper 1 ↗</a><a href="https://senseable.mit.edu/papers/pdf/20250516_Su-etal_DeterminantsLocalized_TR-C.pdf" target="_blank" rel="noopener">Paper 2 ↗</a></div>
   </template>
 
   <template id="tmpl-octopus">
     <p class="story-slide__bridge">What happens when the environmental data a city needs simply doesn't exist?</p>
-    <div class="card__num">08 / Octopus</div>
+    <div class="card__num">08 / Octopus Maré</div>
     <h3 class="card__title">We built the missing data with favela residents.</h3>
-    <div class="card__context">MIT Senseable City Lab × Redes da Maré × City of Rio de Janeiro × FIRJAN × UFRJ/COPPE-LAMCE</div>
+    <div class="card__context">MIT Senseable City Lab × Redes da Maré × City of Rio de Janeiro × FIRJAN × UFRJ/COPPE · 2025–present</div>
+<div class="card__role">Role: participatory methodology, workshops, community partnership, supervision</div>
     <div class="card__tags"><span class="tag">Open-source Sensing</span><span class="tag">Environmental Justice</span><span class="tag">Community Research</span><span class="tag">Urban Health</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">16</span><span class="card__stat-label">Open-source sensors built</span></div>
-      <div class="stat-item"><span class="card__stat-num">4</span><span class="card__stat-label">Mobile routes across Maré</span></div>
-      <div class="stat-item"><span class="card__stat-num">6 months</span><span class="card__stat-label">Of hyperlocal environmental monitoring</span></div>
-    </div>
-    <p class="card__story">Conventional monitoring cannot capture street-by-street environmental conditions inside Rio&rsquo;s favelas. In Maré, one of the city&rsquo;s largest favela complexes, we developed an open-source sensing network together with residents and Redes da Maré to measure temperature, humidity, and particulate matter at the scale where people actually experience them.</p>
-    <p class="card__story">The sensors were built in a series of community workshops. Residents assembled the devices themselves, chose where to install them, defined the field protocols, and ran the fixed and mobile units across the neighborhood, turning local environmental knowledge into systematic evidence.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">16</span><span class="card__stat-label">Open-source sensors built</span></div><div class="stat-item"><span class="card__stat-num">4</span><span class="card__stat-label">Mobile routes</span></div><div class="stat-item"><span class="card__stat-num">6 months</span><span class="card__stat-label">Of hyperlocal monitoring</span></div></div>
+<p class="card__story">Conventional monitoring cannot capture street-by-street conditions inside Rio&rsquo;s favelas. In Mar&eacute;, one of the city&rsquo;s largest favela complexes, the evidence was built with the people who live there, together with Redes da Mar&eacute;.</p>
+    <p class="card__story">Residents assembled the sensors, chose where to install them, collected and interpreted the evidence, and used it to set priorities: temperature, humidity and particulate matter measured at the scale where people actually experience them.</p>
     
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">The people most exposed can also be the ones who produce the evidence.</p>
@@ -2472,47 +2508,36 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <p class="card__opened-statement">From using urban data → to co-producing it.</p>
     <p class="card__opened-text">When conventional datasets leave places invisible, producing evidence becomes part of the research itself, and raises questions of participation, ownership, and environmental justice.</p>
     <div class="card__photo"><img src="images/img-18.jpg" alt="Installing an open-source Octopus sensor on a rooftop in Maré, Rio de Janeiro" loading="lazy"><p class="card__photo-caption">Installing an Octopus sensor on a rooftop in Maré.</p></div>
-    <div class="card__links"><a href="https://senseable.mit.edu/octopus/" target="_blank" rel="noopener">Explore Octopus ↗</a>
-              <a href="https://www.youtube.com/watch?v=66XIdTVCkk4" target="_blank" rel="noopener">Watch the project ↗</a>
-              <a href="https://docs.google.com/document/d/1lLAC3-IgUxSGN1hHy5jwYGwCUWQIrYk_/edit?usp=sharing&ouid=110342369344718725248&rtpof=true&sd=true" target="_blank" rel="noopener">Open-source manual ↗</a>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/octopus/" target="_blank" rel="noopener">Project ↗</a><a href="https://www.youtube.com/watch?v=66XIdTVCkk4" target="_blank" rel="noopener">Video ↗</a><a href="https://docs.google.com/document/d/1lLAC3-IgUxSGN1hHy5jwYGwCUWQIrYk_/edit?usp=sharing&amp;ouid=110342369344718725248&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Manual ↗</a></div>
   </template>
 
   <template id="tmpl-brisa-plus">
     <p class="story-slide__bridge">Can we identify where urban form constrains environmental conditions?</p>
     <div class="card__num">09 / Brisa+</div>
     <h3 class="card__title">Urban form shapes environmental health.</h3>
-    <div class="card__context">MIT Senseable City Lab × City of Rio de Janeiro — ongoing</div>
+    <div class="card__context">MIT Senseable City Lab × City of Rio de Janeiro · 2025–present · submitted to The Lancet Planetary Health</div>
+<div class="card__role">Role: research supervision</div>
     <div class="card__tags"><span class="tag">Urban Form</span><span class="tag">Environmental Health</span><span class="tag">Informal Settlements</span><span class="tag">Computational Urbanism</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">5</span><span class="card__stat-label">Favelas mapped</span></div>
-      <div class="stat-item"><span class="card__stat-num">46%</span><span class="card__stat-label">Below 2h of winter sun</span></div>
-      <div class="stat-item"><span class="card__stat-num">39.6%</span><span class="card__stat-label">Compound sunlight + ventilation deficit</span></div>
-    </div>
-    <p class="card__story">Brisa+ asks whether urban form itself can reveal where environmental conditions are structurally constrained. Across five favelas in Rio de Janeiro, we combine 3D urban models, solar simulation, morphometric analysis, and computational fluid dynamics to map pedestrian-scale access to sunlight and outdoor ventilation.</p>
-    <p class="card__story">Rather than predicting individual health outcomes, the project identifies spatially coherent areas where settlement geometry limits these protective conditions, revealing where in-situ upgrading could be prioritized.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">56,631</span><span class="card__stat-label">Built 10 m cells analyzed in 5 favelas</span></div><div class="stat-item"><span class="card__stat-num">46%</span><span class="card__stat-label">Get under 2 h of direct winter sun</span></div><div class="stat-item"><span class="card__stat-num">39.6%</span><span class="card__stat-label">Fall below both the sun and the ventilation floor</span></div></div>
+<p class="card__story">In Vidigal, Rocinha, Complexo do Alem&atilde;o, Mar&eacute; and Rio das Pedras, Brisa+ builds 3D models from airborne LiDAR, simulates winter-solstice sun and street ventilation, and classifies every built cell against both floors. <strong>It identifies where settlement geometry limits these protective conditions, and therefore where in-situ upgrading can act without demolishing or relocating communities.</strong></p>
+    <p class="card__story">In-situ options: selective alley widening, height adjustment, openings and courtyards.</p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">Environmental health is spatial, and urban form can reveal where intervention matters most.</p>
     <div class="card__opened-label">What it opened up</div>
     <p class="card__opened-statement">From measuring conditions → to identifying where cities can act.</p>
     <p class="card__opened-text">Once environmental disadvantage becomes visible, urban form can help distinguish where those conditions are structurally constrained, and therefore potentially actionable through planning.</p>
-    <div class="card__links"><a href="https://senseable.mit.edu/wip/brisa-plus/" target="_blank" rel="noopener">Explore Brisa+ ↗</a>
-              <span class="card__link-pending">Paper — forthcoming</span>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/wip/brisa-plus/" target="_blank" rel="noopener">Project ↗</a></div>
   </template>
 
   <template id="tmpl-breathing-the-city">
     <p class="story-slide__bridge">Does a citywide average tell us what one person actually breathes?</p>
     <div class="card__num">10 / Breathing the City</div>
     <h3 class="card__title">Exposure is personal, not citywide.</h3>
-    <div class="card__context">Boston/Cambridge & Milan — wearable air-quality research</div>
+    <div class="card__context">Environment International · conditionally accepted · 2025–present</div>
+<div class="card__role">Role: research supervision</div>
     <div class="card__tags"><span class="tag">Urban Health</span><span class="tag">Wearable Sensing</span><span class="tag">Mobility</span><span class="tag">Personal Exposure</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">3.1×</span><span class="card__stat-label">Higher PM₂.₅ exposure</span><span class="card__stat-sub">Walking vs car · Milan</span></div>
-      <div class="stat-item"><span class="card__stat-num">4.7×</span><span class="card__stat-label">Higher inhaled dose</span><span class="card__stat-sub">Walking vs car · Milan</span></div>
-    </div>
-    <p class="card__story">Wearable sensing followed people through their actual movements across Boston/Cambridge and Milan, combining personal PM₂.₅ measurements with mobility and physiological data to reveal how exposure changes across routes and travel modes.</p>
-    <p class="card__story">In Milan, walking produced 3.1× higher PM₂.₅ exposure than traveling by car, and an estimated 4.7× higher inhaled dose once ventilation was considered, showing why concentration alone does not capture what a person actually inhales.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">3.1×</span><span class="card__stat-label">Higher PM&#8322;.&#8325; exposure · walking vs car</span></div><div class="stat-item"><span class="card__stat-num">4.7×</span><span class="card__stat-label">Higher inhaled dose · walking vs car, Milan</span></div></div>
+<p class="card__story">Wearable sensors followed people along their real trajectories, pairing measured PM&#8322;.&#8325; with mobility and ventilation data to estimate what each person actually inhales. In Milan, walking meant 3.1&times; the exposure of driving and 4.7&times; the inhaled dose. <strong>The project can inform route design, modal policy, and the placement of low-exposure infrastructure.</strong></p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">Environmental exposure is experienced at the scale of people, not averages.</p>
     <div class="card__opened-label">What it opened up</div>
@@ -2525,14 +2550,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <p class="story-slide__bridge">Can what people already see become evidence cities can act on?</p>
     <div class="card__num">11 / Open Walks</div>
     <h3 class="card__title">Cities can't improve what they can't see.</h3>
-    <div class="card__context">MIT Senseable City Lab — ongoing</div>
+    <div class="card__context">MIT Senseable City Lab · arXiv 2026, submitted · 2026–present</div>
+<div class="card__role">Role: research supervision; tool design; Smart Life Week keynote</div>
     <div class="card__tags"><span class="tag">Crowdsourced Mapping</span><span class="tag">Vision Language Models</span><span class="tag">Explainable AI</span><span class="tag">Urban Accessibility</span></div>
-    <div class="card__stat card__stat--multi">
-      <div class="stat-item"><span class="card__stat-num">105 km</span><span class="card__stat-label">Sidewalks mapped</span></div>
-      <div class="stat-item"><span class="card__stat-num">6 cities</span><span class="card__stat-label">Boston · Milan · Seoul</span><span class="card__stat-sub">Rio · Dubai · Amsterdam</span></div>
-    </div>
-    <p class="card__story">Open Walks turns everyday smartphone walks into geolocated, AI-analyzed sidewalk accessibility data. Citizens record the city from the pedestrian perspective, while visual AI extracts accessibility conditions, creating a scalable alternative to manual audits.</p>
-    <p class="card__story">Across two complementary studies, the project examines both how this approach can scale across cities and when AI-generated accessibility assessments can be trusted to support urban decision-making.</p>
+    <div class="card__stat card__stat--multi"><div class="stat-item"><span class="card__stat-num">105 km</span><span class="card__stat-label">Of sidewalks mapped</span></div><div class="stat-item"><span class="card__stat-num">6 cities</span><span class="card__stat-label">Boston, Milan, Seoul, Rio, Dubai, Amsterdam</span></div></div>
+<p class="card__story">Citizens contribute the walks; visual AI turns them into scalable, geolocated sidewalk evidence; conformal prediction measures how uncertain each assessment is. <strong>AI prioritizes where inspection is needed. It does not replace it.</strong></p>
     <div class="card__insight-label">Key insight</div>
     <p class="card__takeaway">AI should not replace inspection. It should reveal where inspection matters most.</p>
     <div class="card__opened-label">What it opened up</div>
@@ -2547,47 +2569,26 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       </ul>
     </div>
 
-    <div class="card__links"><a href="https://senseable.mit.edu/wip/open-walks/" target="_blank" rel="noopener">Explore Open Walks ↗</a>
-              <a href="https://openwalks.netlify.app/" target="_blank" rel="noopener">Contribute to the map ↗</a>
-              </div>
+    <div class="card__links"><a href="https://senseable.mit.edu/wip/open-walks/" target="_blank" rel="noopener">Project ↗</a><a href="https://arxiv.org/abs/2609.17882" target="_blank" rel="noopener">Paper ↗</a><a href="https://openwalks.netlify.app/" target="_blank" rel="noopener">App ↗</a></div>
   </template>
 
-  <template id="tmpl-location-reasoner">
-<p class="story-slide__bridge">What if cities could reason across their data before deciding where to act?</p>
-<div class="card__num">12 / LocationReasoner</div>
-<h3 class="card__title">From urban data to grounded spatial reasoning.</h3>
-<div class="card__context">MIT Senseable City Lab × Abu Dhabi × Boston — ongoing</div>
-<div class="card__tags"><span class="tag">Spatial AI</span><span class="tag">LLM Agents</span><span class="tag">Tool Use</span><span class="tag">Constraint Reasoning</span><span class="tag">Decision Support</span></div>
-<div class="card__stat card__stat--multi">
-<div class="stat-item"><span class="card__stat-num">300+</span><span class="card__stat-label">Real-world site-selection queries</span></div>
-<div class="stat-item"><span class="card__stat-num">4</span><span class="card__stat-label">LLM families evaluated</span></div>
-<div class="stat-item"><span class="card__stat-num">2</span><span class="card__stat-label">Agentic reasoning strategies</span></div>
-</div>
-<p class="card__story">LocationReasoner investigates whether LLMs and reasoning agents can solve real-world spatial decision problems involving multiple geographic, economic, infrastructural, and temporal constraints.</p>
-<p class="card__story">The project introduces a tool-grounded benchmark and sandbox environment in which models must translate natural-language planning questions into executable spatial operations: decomposing complex constraints, selecting and calling geospatial tools, applying Boolean and relational logic, and identifying feasible locations. Unlike benchmarks that depend on manual assessment, LocationReasoner generates deterministic, automatically verifiable solutions, enabling reasoning performance to be evaluated at scale.</p>
-<p class="card__story">The results expose an important limitation of current AI: more reasoning does not necessarily mean better spatial reasoning. Even OpenAI o4 fails roughly 30% of the benchmark&rsquo;s site-selection tasks, while reasoning-augmented models and agentic strategies such as ReAct and Reflexion provide limited gains, and can sometimes over-reason compared with direct code-generation approaches.</p>
-<p class="card__story">The work is now being developed across Abu Dhabi and Boston, with the aim of scaling it to other urban contexts.</p>
-<div class="card__insight-label">Why it matters</div>
-<p class="card__opened-text">Urban planning increasingly requires reasoning across heterogeneous datasets, spatial relationships, multiple constraints, and competing objectives. LocationReasoner tests whether emerging reasoning models can reliably perform this kind of grounded, multi-step reasoning before they are incorporated into real planning workflows.</p>
-<div class="card__insight-label">Key insight</div>
-<p class="card__takeaway">The challenge is no longer simply giving AI access to urban data, but making sure it can reason reliably across space, constraints, and competing requirements.</p>
-<div class="card__opened-label">Opened up</div>
-<p class="card__opened-statement">From urban evidence → to trustworthy urban reasoning.</p>
-<p class="card__opened-text">LocationReasoner opens the next phase of my research: developing human-centered, tool-grounded AI systems that can reason across spatial evidence, planning objectives, constraints, uncertainty, and trade-offs, while keeping judgment and accountability with planners.</p>
-
-<div class="card__refs">
-<div class="card__refs-label">Research foundations</div>
-<ul class="card__refs-list">
-<li><span class="card__refs-title">Xie, J. et al. — TravelPlanner.</span> <em>ICML</em> 2024. Establishes real-world planning as a benchmark for language agents: 1,225 planning intents in a tool-enabled sandbox, where GPT-4 achieves only 0.6% success. LocationReasoner extends this benchmark paradigm to spatially grounded site-selection reasoning and automated verification. <a href="https://arxiv.org/abs/2402.01622" target="_blank" rel="noopener">↗</a></li>
-<li><span class="card__refs-title">Manvi, R. et al. — GeoLLM.</span> <em>ICLR</em> 2024. Demonstrates that LLMs contain substantial latent geospatial knowledge and that grounding them with OpenStreetMap context can substantially improve geospatial prediction, an important precursor to tool-grounded spatial reasoning. <a href="https://arxiv.org/abs/2310.06213" target="_blank" rel="noopener">↗</a></li>
-<li><span class="card__refs-title">Zheng, Y. et al. — Urban Planning in the Era of Large Language Models.</span> <em>Nature Computational Science</em>, 2025. Frames LLMs and agents as potential collaborators in planning, capable of combining knowledge, reasoning, simulation, tool use, and natural-language interaction. <a href="https://www.nature.com/articles/s43588-025-00846-1" target="_blank" rel="noopener">↗</a></li>
-<li><span class="card__refs-title">Koda, M. et al. — LocationReasoner: Evaluating LLMs on Real-World Site Selection Reasoning.</span> arXiv, 2025 / ICLR 2026 workshop. Introduces the benchmark itself: 300+ site-selection queries, deterministic verification, tool-grounded execution, and evaluation across general and reasoning-augmented LLMs and agentic workflows. <a href="https://arxiv.org/abs/2506.13841" target="_blank" rel="noopener">↗</a></li>
-</ul>
-</div>
-
-<div class="card__links"><a href="https://arxiv.org/abs/2506.13841" target="_blank" rel="noopener">Read the paper ↗</a><span class="card__link-pending">Explore LocationReasoner — coming soon</span>
-</div>
-</template>
+  <template id="tmpl-common-reason">
+    <p class="story-slide__bridge">What if cities could reason across their data before deciding where to act?</p>
+    <div class="card__num">12 / Common Reason</div>
+    <h3 class="card__title">Agentic AI as a design partner for cities.</h3>
+    <div class="card__context">Agentic urban intelligence · Dubai · 2026&ndash;present</div>
+<div class="card__role">Role: founding team · urban design and community engagement</div>
+    <div class="card__tags"><span class="tag">Agentic AI</span><span class="tag">Urban Design</span><span class="tag">Planning Tools</span></div>
+    <p class="card__story">Common Reason develops AI systems that reason across urban evidence, analytical tools and design alternatives for complex urban decisions. My role is the urban design layer: turning planning questions into spatial constraints, generating and comparing design alternatives, and keeping the reasoning legible to planners and residents.</p>
+    <p class="card__story"><strong>Resiliency and AI:</strong> where heat suppresses walking, and how shade, trees and routes restore comfort within real budgets.</p>
+    <p class="card__story"><strong>Living and AI:</strong> resident-generated evidence on public space, accessibility and greenery, turned into design decisions.</p>
+    <div class="card__photo card__photo--wide"><img src="images/img-65.jpg" alt="Mobility Copilot comparing three routes around a closed street in Dubai, with travel times and traffic" loading="lazy"><p class="card__photo-caption">Three routes compared around a road closure, with travel times and traffic.</p></div>
+    <div class="card__photo card__photo--wide"><img src="images/img-66.jpg" alt="The chosen route followed at street level in a 3D view of Dubai" loading="lazy"><p class="card__photo-caption">The chosen route, followed at street level.</p></div>
+    <div class="card__insight-label">Key insight</div>
+    <p class="card__takeaway">AI becomes useful to cities when it reasons like a design process: from evidence, to alternatives, to shared decisions.</p>
+    <div class="card__opened-label">Opened up</div>
+    <p class="card__opened-statement">From urban evidence &rarr; to design alternatives people can discuss.</p>
+  </template>
 
     <div class="work-modal" id="workModal" aria-hidden="true">
       <div class="work-modal__backdrop" id="workModalBackdrop"></div>
@@ -2597,7 +2598,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <div class="work-modal__body" id="workModalBody"></div>
         <div class="work-modal__nav">
           <button type="button" id="modalPrev">← <span>Previous</span></button>
-          <span class="work-modal__counter" id="modalCounter">01 / 10</span>
+          <span class="work-modal__counter" id="modalCounter">01 / 12</span>
           <button type="button" id="modalNext"><span>Next</span> →</button>
         </div>
       </div>
@@ -2618,19 +2619,19 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="threads-viz">
         <div class="threads-viz__phases" id="threadsPhases">
           <div class="threads-viz__phase is-active" data-phase="0">
-            <div class="threads-viz__phase-num">01</div>
-            <div class="threads-viz__phase-title">Urban observability</div>
-            <p class="threads-viz__phase-q">Sensors on rooftops, wearables on people, street imagery read by machines: producing measurements where a city had none.</p>
+            <div class="threads-viz__phase-mark" aria-hidden="true"></div>
+            <div class="threads-viz__phase-title">Urban Design</div>
+            <p class="threads-viz__phase-q">Streets, public space, campuses and neighborhoods, from studio teaching to built installations.</p>
           </div>
           <div class="threads-viz__phase" data-phase="1">
-            <div class="threads-viz__phase-num">02</div>
-            <div class="threads-viz__phase-title">Exposure and behavior</div>
-            <p class="threads-viz__phase-q">What a measurable city does to the people inside it: the air they carry home, the routes they take, the food within reach.</p>
+            <div class="threads-viz__phase-mark" aria-hidden="true"></div>
+            <div class="threads-viz__phase-title">Environmental Planning</div>
+            <p class="threads-viz__phase-q">Heat, air quality, greenery and exposure, measured at the scale where people live.</p>
           </div>
           <div class="threads-viz__phase" data-phase="2">
-            <div class="threads-viz__phase-num">03</div>
-            <div class="threads-viz__phase-title">Evidence for decisions</div>
-            <p class="threads-viz__phase-q">Turning those findings into something a city can act on: where to plant, where to inspect, where to intervene first.</p>
+            <div class="threads-viz__phase-mark" aria-hidden="true"></div>
+            <div class="threads-viz__phase-title">Urban AI</div>
+            <p class="threads-viz__phase-q">Visual and reasoning AI as instruments to observe cities and support planning decisions.</p>
           </div>
         </div>
 
@@ -2661,11 +2662,11 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
           <button type="button" class="thread-node timeline-dot--project" data-thread="behavior" data-name="traveling-tastes" style="--nx:53%; --ny:35.74%;" aria-label="Open Traveling Tastes"><span class="thread-node__dot"></span><span class="thread-node__label">Traveling Tastes</span></button>
           <button type="button" class="thread-node timeline-dot--project" data-thread="climate" data-name="re-leaf" style="--nx:77%; --ny:50.00%;" aria-label="Open Re-Leaf"><span class="thread-node__dot"></span><span class="thread-node__label">Re-Leaf</span></button>
           <button type="button" class="thread-node timeline-dot--project" data-thread="data" data-name="breathing-the-city" style="--nx:21%; --ny:33.08%;" aria-label="Open Breathing the City"><span class="thread-node__dot"></span><span class="thread-node__label">Breathing the City</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="data" data-name="octopus" style="--nx:14%; --ny:32.04%;" aria-label="Open Octopus"><span class="thread-node__dot"></span><span class="thread-node__label">Octopus</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="data" data-name="octopus" style="--nx:14%; --ny:32.04%;" aria-label="Open Octopus Maré"><span class="thread-node__dot"></span><span class="thread-node__label">Octopus Maré</span></button>
           <button type="button" class="thread-node timeline-dot--project" data-thread="climate" data-name="brisa-plus" style="--nx:61%; --ny:49.81%;" aria-label="Open Brisa+"><span class="thread-node__dot"></span><span class="thread-node__label">Brisa+</span></button>
 
           <button type="button" class="thread-node timeline-dot--project" data-thread="ai" data-name="open-walks" style="--nx:83%; --ny:51.18%;" aria-label="Open Open Walks"><span class="thread-node__dot"></span><span class="thread-node__label">Open Walks</span></button>
-          <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="location-reasoner" style="--nx:89%; --ny:52.16%;" aria-label="Open LocationReasoner"><span class="thread-node__dot"></span><span class="thread-node__label">LocationReasoner</span></button>
+          <button type="button" class="thread-node timeline-dot--project" data-thread="design" data-name="common-reason" style="--nx:89%; --ny:52.16%;" aria-label="Open Common Reason"><span class="thread-node__dot"></span><span class="thread-node__label">Common Reason</span></button>
 
                   <a class="pub-dot" data-thread="climate" href="#pub-01" data-title="Unsupervised mapping of urban tree diversity using s…" style="--nx:79.7%; --ny:50.00%;" aria-label="Unsupervised mapping of urban tree diversity using s…"></a>
         <a class="pub-dot" data-thread="ai" href="#pub-03" data-title="Beijing's urbanization reflected in apartment layout…" style="--nx:4.3%; --ny:68.85%;" aria-label="Beijing's urbanization reflected in apartment layout…"></a>
@@ -2690,15 +2691,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <span class="viz-legend__item"><span class="viz-legend__dot viz-legend__dot--project"></span>Projects &mdash; open the card</span>
       <span class="viz-legend__item"><span class="viz-legend__dot viz-legend__dot--pub"></span>Publications &mdash; jump to the paper</span>
     </div>
-    <p class="threads-viz__culmination">Making cities observable <span class="threads-viz__arrow">→</span> understanding urban experience <span class="threads-viz__arrow">→</span> helping cities act.</p>
+    <p class="threads-viz__culmination">Urban perception <span class="threads-viz__arrow">→</span> urban reasoning <span class="threads-viz__arrow">→</span> collective action.</p>
       </div>
     </div>
 
     <div class="research-statement reveal" id="where-this-leads">
       <div class="eyebrow">Where this leads</div>
-      <h3 class="research-statement__title">From Urban Perception to Urban Reasoning</h3>
-      <p class="research-statement__text">My research develops computational methods to make urban conditions observable and turn that evidence into new forms of design and planning action. Across my work, I have used computer vision, vision-language models, urban sensing, geospatial analysis, and uncertainty-aware AI to reveal spatial, environmental, and behavioral conditions that are difficult to measure and connect them to questions of urban design.</p>
-      <p class="research-statement__text">This work provides the foundation for a new research frontier: human-centered urban AI systems that move beyond perceiving cities to reasoning about how they might change.</p>
+      <h3 class="research-statement__title">From Urban Perception to Urban Reasoning and Collective Action</h3>
+      <p class="research-statement__text">My research spans urban design and environmental planning. Images, sensors, and spatial models reveal patterns, but changing a place takes design judgment, local knowledge, and institutions able to act. I develop human-centered urban AI that connects evidence with spatial reasoning, design alternatives, and collective action.</p>
 
       <ol class="chain" aria-label="From urban evidence to collective action">
         <li class="chain__step"><span class="chain__dot"></span>Urban evidence</li>
@@ -2707,15 +2707,14 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
         <li class="chain__step"><span class="chain__dot"></span>Collective action</li>
       </ol>
 
-      <div class="statement__extended" id="statementExtended">
-        <p class="research-statement__text">This agenda builds on a research trajectory that has progressively expanded what computational methods can make visible and actionable about cities. My work has combined computer vision and street-level imagery to characterize urban environments; urban sensing and wearable measurements to quantify environmental exposure; geospatial analysis to connect urban form with health, accessibility, and human behavior; and, more recently, vision-language models (VLMs) and uncertainty calibration to examine whether multimodal foundation models can produce reliable evidence for planning. Across these projects, the recurring question has been not simply what AI can predict, but what forms of urban evidence can become sufficiently robust, interpretable, and actionable to inform design.</p>
-        <p class="research-statement__text">The next frontier of this work is to move urban AI from perception to reasoning. I am investigating how large language models, multimodal foundation models, and tool-augmented reasoning systems can operate across heterogeneous spatial evidence, from maps, imagery, environmental measurements, and mobility patterns to planning rules, community-generated data, and design objectives. Rather than asking AI to produce a single optimal solution, I am interested in systems that can decompose planning problems into spatial reasoning tasks, evaluate constraints and competing objectives, generate and compare alternative spatial interventions, and make uncertainty, assumptions, and trade-offs explicit.</p>
-        <p class="research-statement__text">I see this as an emerging frontier for urban design: not AI-generated design, but AI-mediated design. These systems can become a design and deliberation medium through which computational evidence, professional expertise, and situated knowledge are brought together to formulate problems, construct and interrogate alternatives, test assumptions, and explore possible urban futures. AI, in this formulation, does not replace the designer or planner; it expands the space of alternatives that people can examine and the evidence through which they can reason about them.</p>
-        <p class="research-statement__text">This shift also creates an opportunity to rethink who participates in producing urban knowledge and making spatial decisions. Building on my work with community-generated sensing and locally produced urban data, I want community knowledge and lived experience to enter the process not only after alternatives have been produced, but in defining what evidence matters, which objectives are prioritized, which constraints are considered, and how alternatives are evaluated. Human-centered urban AI can therefore contribute to spatial justice not simply by producing better evidence about communities, but by expanding communities&rsquo; capacity to represent their environments, articulate priorities, challenge assumptions, and participate in shaping the decisions that affect them.</p>
-        <p class="research-statement__text">My broader goal is to establish human-centered urban AI as a new medium for evidence-driven urban design, connecting urban evidence to spatial reasoning, reasoning to design alternatives, and alternatives to collective deliberation and action. The role of AI is not to determine what cities should become. Questions of value, justice, priority, and desirable urban futures remain fundamentally human and political. Instead, I see AI as expanding the capacity of planners, designers, and communities to understand complex evidence, make assumptions and trade-offs visible, explore alternatives, and deliberate over their consequences.</p>
-        <p class="research-statement__text">The future I am interested in is not one in which AI designs cities for people, but one in which AI expands people&rsquo;s capacity to design cities together.</p>
-      </div>
-      <button class="btn btn--quiet statement__more-btn" id="statementMore">Read the full statement ↓</button>
+      <div class="statement__where">Where it is going</div>
+      <ul class="statement__directions">
+        <li><strong>Resilient and livable urban design:</strong> streets, shared spaces, and nature-based systems that improve everyday life and hold up under environmental pressure.</li>
+        <li><strong>Reliable urban evidence and spatial reasoning:</strong> AI that observes and reasons with verifiable evidence and explicit uncertainty.</li>
+        <li><strong>AI-mediated design and collective action:</strong> communities help define evidence, priorities, and alternatives before decisions are made.</li>
+      </ul>
+
+      <p class="research-statement__close">The future I am interested in is not one in which AI designs cities for people, but one in which AI expands people&rsquo;s capacity to design cities together.</p>
       <a class="research-statement__cta" href="#publications">Explore the research behind this agenda →</a>
     </div>
 
@@ -2758,7 +2757,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
 
       <div id="pub-12" class="pub" data-theme="climate ai data"><div class="pub__year">2022</div><div><div class="pub__title">Optimization of photovoltaic provision in a three-dimensional city using real-time electricity demand</div><div class="pub__venue">Applied Energy · Zhu, Cheng, Santi, Chen, Zhang, Mazzarello, Wong, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220328_Zhu-etal_OptimizationPhotovoltaic_AppliedEnergy.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
-      <div id="pub-13" class="pub pub--visual" data-theme="behavior ai"><div class="pub__year">2022</div><img class="pub__thumb" src="images/img-24.jpg" alt="Proximate network visualization" loading="lazy"><div><div class="pub__title">The effect of co-location on human communication networks</div><div class="pub__venue">Nature Computational Science · Carmody, Mazzarello, Santi, Harris, Lehmann, Abbiasov, Dunbar, Ratti</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Read ↗</a></div>
+      <div id="pub-13" class="pub pub--visual" data-theme="behavior ai"><div class="pub__year">2022</div><img class="pub__thumb" src="images/img-24.jpg" alt="Proximate network visualization" loading="lazy"><div><div class="pub__title">The effect of co-location on human communication networks</div><div class="pub__venue">Nature Computational Science · Carmody*, Mazzarello*, Santi, Harris, Lehmann, Abbiasov, Dunbar, Ratti · *equal contribution</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20220822_Carmody-etal_EffectColocation_NatureComputationalScience.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 
       <div id="pub-14" class="pub" data-theme="behavior data"><div class="pub__year">2020</div><div><div class="pub__title">Leveraging the use of digital technologies to activate public areas and foster creativity</div><div class="pub__venue">How Smart is your city? (Springer) · Mazzarello, Ratti — first author</div></div><a class="pub__link" href="https://senseable.mit.edu/papers/pdf/20201215_Mazzarello-Ratti_LeveragingDigital_Springer-chapter.pdf" target="_blank" rel="noopener">Read ↗</a></div>
 <div class="preprints-head reveal" style="margin-top:64px; padding-top:0;">
@@ -2771,7 +2770,7 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
       <div class="pub"><div class="pub__year">01</div><div><div class="pub__title">Can VLMs Reliably Assess Sidewalk Accessibility Attributes from Pedestrian-Level Imagery?</div><div class="pub__venue">arXiv preprint · Lieu, Morra, Cadoni, Song, Mazzarello, Ratti</div></div><a class="pub__link" href="https://arxiv.org/abs/2609.17882" target="_blank" rel="noopener">Read ↗</a></div>
       <div class="pub"><div class="pub__year">02</div><div><div class="pub__title">Age segregation emerges from distance constraints and age homophily</div><div class="pub__venue">Under submission · Wang, Li, Gu, Mazzarello, Wang, Santi, Ratti</div></div></div>
       <div class="pub"><div class="pub__year">03</div><div><div class="pub__title">The Built Environment as a Structural Determinant of Sunlight and Ventilation in Rio de Janeiro's Informal Settlements (Favelas)</div><div class="pub__venue">Submitted to The Lancet Planetary Health · Herrmann, Chen, Gobart, Mazzarello, Duarte, Ratti</div></div></div>
-      <div class="pub"><div class="pub__year">04</div><div><div class="pub__title">From Exposure to Inhaled Dose: Wearable Environmental and Physiological Monitoring for Personalized Air Pollution Assessment</div><div class="pub__venue">Manuscript · Massone, Ferretti, Dubey, Angelucci, Mora, Mazzarello, Ratti, Aliverti</div></div></div>
+      <div class="pub"><div class="pub__year">04</div><div><div class="pub__title">From Exposure to Inhaled Dose: Wearable Environmental and Physiological Monitoring for Personalized Air Pollution Assessment</div><div class="pub__venue">Environment International · conditionally accepted · Massone, Ferretti, Dubey, Angelucci, Mora, Mazzarello, Ratti, Aliverti</div></div></div>
       <div class="pub"><div class="pub__year">05</div><div><div class="pub__title">Open Walks: A global crowdsourced mapping of sidewalk accessibility using smartphones and multimodal AI</div><div class="pub__venue">Submitted · Morra, Choi, Liu, Mazzarello, Duarte, Ratti</div></div></div>
       <div class="pub"><div class="pub__year">06</div><div><div class="pub__title">Rio Segregation — tentative title TBD</div><div class="pub__venue">Manuscript in preparation · authors TBD</div></div></div>
     </div>
@@ -2836,45 +2835,16 @@ html:not(.has-custom-cursor) .cursor-dot, html:not(.has-custom-cursor) .cursor-r
     <div class="research-statement reveal" id="how-i-teach">
       <div class="eyebrow">How I teach</div>
       <h3 class="research-statement__title">Teaching Cities as a Way of Seeing, Reasoning, and Designing</h3>
-      <p class="research-statement__text">I teach urban design as both a way of understanding cities and a practice for imagining how they might change. Students need to learn how to observe places closely, read spatial and social conditions, represent complexity, formulate design questions, and develop alternatives through iteration and critique.</p>
-      <p class="research-statement__text">My teaching brings these foundational practices into conversation with emerging computational methods. Urban data, sensing, computer vision, and AI can expand what students are able to observe and reason about, but they should strengthen, rather than replace, field observation, design judgment, creativity, and engagement with people.</p>
+      <p class="research-statement__text">I teach urban design and environmental planning as spatial inquiry and collective transformation. Drawing, mapping, field observation, and critique are the foundation; data and AI expand the questions students can ask, without replacing design judgment or engagement with people.</p>
 
-      <ol class="chain" aria-label="From observation to deliberation">
-        <li class="chain__step"><span class="chain__dot"></span>Observe</li>
-        <li class="chain__step"><span class="chain__dot"></span>Interpret</li>
-        <li class="chain__step"><span class="chain__dot"></span>Design</li>
-        <li class="chain__step"><span class="chain__dot"></span>Deliberate</li>
+      <ol class="chain chain--noted" aria-label="From observation to deliberation">
+        <li class="chain__step"><span class="chain__dot"></span>Observe<span class="chain__note">Walk, draw, and watch how places are used.</span></li>
+        <li class="chain__step"><span class="chain__dot"></span>Interpret<span class="chain__note">Compare observation with spatial and environmental data.</span></li>
+        <li class="chain__step"><span class="chain__dot"></span>Design<span class="chain__note">Build and test alternatives through critique.</span></li>
+        <li class="chain__step"><span class="chain__dot"></span>Deliberate<span class="chain__note">Explain who benefits and what it takes to implement.</span></li>
       </ol>
 
-      <div class="statement__extended" id="teachStatementExtended">
-        <p class="research-statement__text">I approach teaching urban design as both a discipline of spatial inquiry and a practice of collective transformation. Before students can intervene in a city, they need to learn how to see it: to observe how space is used, read relationships among buildings, public space, infrastructure, landscape, and everyday life, and understand how environmental and social conditions are expressed spatially. Drawing, mapping, field observation, precedent analysis, and spatial representation are therefore not simply techniques to master; they are ways of asking questions about cities.</p>
-        <h4 class="statement__subhead">Learning through making</h4>
-        <p class="research-statement__text">I believe that urban design is learned through iteration, experimentation, and critique. The studio is particularly important because students move repeatedly between observation and proposition: documenting existing conditions, framing a problem, constructing alternatives, testing them, receiving critique, and returning to the design.</p>
-        <p class="research-statement__text">My role as an educator is not to direct students toward a predetermined solution, but to help them develop the ability to formulate stronger questions, make spatial arguments, explain their choices, and understand the consequences of different design decisions. Critique becomes a form of reasoning rather than simply evaluation.</p>
-        <p class="research-statement__text">This philosophy has developed through teaching across design studios, seminars, and computational urban-design courses. Working with students from different design disciplines has reinforced my belief that the most productive learning environments combine rigorous analysis with experimentation and allow different forms of knowledge to challenge one another.</p>
-        <h4 class="statement__subhead">Expanding the instruments of urban design</h4>
-        <p class="research-statement__text">The instruments available to designers are changing. Alongside drawings, models, maps, fieldwork, and interviews, students can now work with urban sensing, geospatial data, computer vision, vision-language models, and increasingly capable AI reasoning systems.</p>
-        <p class="research-statement__text">I see these methods as an expansion of the urban designer&rsquo;s toolkit rather than a replacement for established forms of design knowledge.</p>
-        <p class="research-statement__text">Students should understand enough about these technologies to use them creatively, but also enough to question their assumptions, uncertainty, biases, and limitations. A model may identify patterns invisible to individual observation or reason across thousands of spatial relationships, but it cannot determine what constitutes a desirable neighborhood, whose experience should matter most, or which trade-offs a community should accept.</p>
-        <p class="research-statement__text">For this reason, I see AI literacy increasingly becoming part of urban design literacy.</p>
-        <h4 class="statement__subhead">From analyzing cities to constructing alternatives</h4>
-        <p class="research-statement__text">The pedagogical opportunity I find most exciting is to move beyond using computation only to analyze existing conditions.</p>
-        <p class="research-statement__text">I want students to explore how evidence can become part of the design process itself: how environmental measurements, spatial data, imagery, mobility patterns, planning rules, and qualitative observations can be brought together to formulate problems and construct alternative interventions.</p>
-        <p class="research-statement__text">AI can make it possible to reason across these heterogeneous forms of evidence, expose conflicts among objectives, test assumptions, and compare alternatives. The objective, however, is not to ask a model to produce the &ldquo;best&rdquo; design. It is to create a richer environment in which students can ask:</p>
-        <p class="statement__questions">What changes if we optimize for shade rather than speed? Accessibility rather than capacity? One population rather than another? What assumptions produced this alternative? Who benefits, who does not, and what evidence is missing?</p>
-        <p class="research-statement__text">In this sense, I am interested not in AI-generated urban design, but AI-mediated urban design: using computation to expand the space of possibilities that designers can construct, interrogate, and debate.</p>
-        <h4 class="statement__subhead">Designing with, rather than only for, people</h4>
-        <p class="research-statement__text">This also changes how I think about participation in design education.</p>
-        <p class="research-statement__text">Community engagement should not happen only after students have produced proposals. Situated and community knowledge can enter much earlier in the process: determining what should be observed, revealing conditions that conventional datasets overlook, defining priorities and constraints, and evaluating the consequences of different alternatives.</p>
-        <p class="research-statement__text">Students can therefore learn to work across multiple forms of evidence, from quantitative urban data to lived experience, without assuming that one is inherently more authoritative than another.</p>
-        <p class="research-statement__text">This is especially important as AI becomes part of planning and design. Students should learn that questions of value, justice, priority, and desirable urban futures cannot be delegated to an algorithm. Technology can help make alternatives and their consequences more legible; choosing among them remains a human and collective responsibility.</p>
-        <h4 class="statement__subhead">The designer I want to educate</h4>
-        <p class="research-statement__text">Ultimately, I want students to leave my classroom able to move comfortably between observation and imagination, evidence and design, computation and human experience.</p>
-        <p class="research-statement__text">They should be able to walk through a neighborhood and notice what a dataset misses; examine a dataset and discover what individual observation cannot reveal; use computational tools to explore possibilities beyond what they could generate alone; and then have the critical judgment to question those possibilities.</p>
-        <p class="research-statement__text">The goal is therefore not to train students simply to use the newest tools. Tools will change. The more durable skill is learning how to formulate questions, construct evidence, reason through alternatives, make spatial arguments, and engage others in deciding what should happen next.</p>
-        <p class="research-statement__text">I want to educate designers who can use new forms of intelligence without surrendering their own, and who understand urban design as a process of seeing more clearly, imagining alternatives, and enabling people to shape cities together.</p>
-      </div>
-      <button class="btn btn--quiet statement__more-btn" id="teachStatementMore" aria-expanded="false" aria-controls="teachStatementExtended">Read the full statement ↓</button>
+      <p class="research-statement__close">I want to educate designers who use new forms of intelligence without surrendering their own judgment.</p>
     </div>
   </div>
 </section>
@@ -3284,17 +3254,6 @@ document.querySelectorAll('.timeline-dot--pub[data-pub-href]').forEach(dot => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // about "my story" expand
-document.getElementById('statementMore')?.addEventListener('click', (e) => {
-  const ext = document.getElementById('statementExtended');
-  ext.classList.toggle('is-open');
-  e.target.textContent = ext.classList.contains('is-open') ? 'Show less ↑' : 'Read the full statement ↓';
-});
-document.getElementById('teachStatementMore')?.addEventListener('click', (e) => {
-  const ext = document.getElementById('teachStatementExtended');
-  const open = ext.classList.toggle('is-open');
-  e.target.setAttribute('aria-expanded', String(open));
-  e.target.textContent = open ? 'Show less ↑' : 'Read the full statement ↓';
-});
 document.getElementById('aboutMore').addEventListener('click', (e) => {
   const ext = document.getElementById('aboutExtended');
   ext.classList.toggle('is-open');
